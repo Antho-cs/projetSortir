@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=ParticipantsRepository::class)
  * @UniqueEntity(fields={"Pseudo"}, message="There is already an account with this Pseudo")
@@ -23,6 +23,13 @@ class Participants implements UserInterface
     private $id;
 
     /**
+     * @Assert\NotBlank(message="SVP renseignez votre pseudo!")
+     * @Assert\Length(
+     *     min="3",
+     *     max="8",
+     *     minMessage="trop court",
+     *     maxMessage="trop long"
+     * )
      * @ORM\Column(type="string", length=30, unique=true)
      */
     private $Pseudo;
@@ -33,17 +40,26 @@ class Participants implements UserInterface
     private $roles = [];
 
     /**
+     *@Assert\NotBlank(message="SVP renseignez le mot de passe!")
+     *@Assert\Regex(
+     *     (?=(.*[A-Z]){1,}),          //Only one uppercase letters
+     *     (?=(.*[0-9]){2,}),         // Only one numbers
+     *     (?=[^!@#$&*]*[!@#$&*]),   // At least one "special"
+     *     {8,}                     // At least 8 characters
+     * )
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     *@Assert\NotBlank(message="SVP renseignez le nom!")
      * @ORM\Column(type="string", length=50)
      */
     private $nom;
 
     /**
+     * @Assert\NotBlank(message="SVP renseignez le prénom!")
      * @ORM\Column(type="string", length=50)
      */
     private $prenom;
