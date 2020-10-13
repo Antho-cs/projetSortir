@@ -19,6 +19,7 @@ class Inscriptions
     /**
      * @ORM\Id()
      * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Sorties::class, inversedBy="noSortie")
      */
     private $sortiesNoSortie;
 
