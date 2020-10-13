@@ -11,13 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Lieux
 {
     /**
-     * @ORM\Id
+     * @ORM\Id()
      * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $noLieu;
@@ -46,11 +41,6 @@ class Lieux
      * @ORM\Column(type="integer")
      */
     private $villesNoVille;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getNoLieu(): ?int
     {
