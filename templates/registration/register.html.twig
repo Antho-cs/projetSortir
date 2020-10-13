@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block scrollableInfo %}
+    <main id="main">
+        <section id="about" class="about">
+            <div class="container connexion-wrapper">
+                {% for flashError in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                {% endfor %}
+
+                <h1>Connexion</h1>
+
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.Pseudo) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+
+                <button type="submit" class="btn">Register</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </section>
+    </main><!-- End #main -->
+{% endblock %}
