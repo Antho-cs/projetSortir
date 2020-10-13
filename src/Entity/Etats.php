@@ -11,13 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Etats
 {
     /**
-     * @ORM\Id
+     * @ORM\Id()
      * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $noEtat;
@@ -27,10 +22,6 @@ class Etats
      */
     private $libelle;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getNoEtat(): ?int
     {

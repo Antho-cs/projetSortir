@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Villes
 {
     /**
-     * @ORM\Id
+     * @ORM\Id()
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
@@ -32,10 +32,6 @@ class Villes
      */
     private $codePostal;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getNoVille(): ?int
     {
@@ -71,5 +67,10 @@ class Villes
         $this->codePostal = $codePostal;
 
         return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 }
