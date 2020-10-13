@@ -16,7 +16,7 @@ class Participants implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private $noParticipant;
 
     /**
      * @ORM\Column(type="string", length=30, unique=true)
@@ -65,9 +65,9 @@ class Participants implements UserInterface
      */
     private $actif;
 
-    public function getId(): ?int
+    public function getNoParticipant(): ?int
     {
-        return $this->id;
+        return $this->noParticipant;
     }
 
     public function getPseudo(): ?string
