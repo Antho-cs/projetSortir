@@ -17,6 +17,7 @@ class EventController extends AbstractController
      */
     public function createEvent()
     {
+        //TODO Ecrire la fonction
         return $this->render('event/createevent.html.twig', [
             'controller_name' => 'EventController',
         ]);
@@ -27,6 +28,7 @@ class EventController extends AbstractController
      */
     public function event() //TODO Injecter l'ID
     {
+        //TODO Ecrire la fonction
         return $this->render('event/event.html.twig', [
             'controller_name' => 'EventController',
         ]);
@@ -37,6 +39,7 @@ class EventController extends AbstractController
      */
     public function updateEvent() //TODO Injecter l'ID
     {
+        //TODO Ecrire la fonction
         return $this->render('event/upevent.html.twig', [
             'controller_name' => 'EventController',
         ]);
@@ -47,6 +50,7 @@ class EventController extends AbstractController
      */
     public function deleteEvent() //TODO Injecter l'ID
     {
+        //TODO Ecrire la fonction
         return $this->render('event/delevent.html.twig', [
             'controller_name' => 'EventController',
         ]);
