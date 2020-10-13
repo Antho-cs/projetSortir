@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LoginController extends AbstractController
 {
     /**
-     * @Route("/", name="landing")
+     * @Route("/", name="login")
      */
     public function landing()
     {
