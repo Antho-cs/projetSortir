@@ -73,7 +73,7 @@ class Participants implements UserInterface
     private $campus;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Inscriptions::class, inversedBy="participants")
+     * @ORM\OneToMany(targetEntity=Inscriptions::class, mappedBy="participant")
      */
     private $inscriptions;
 
@@ -257,6 +257,7 @@ class Participants implements UserInterface
     {
         if (!$this->inscriptions->contains($inscription)) {
             $this->inscriptions[] = $inscription;
+            $inscription->setParticipant($this);
         }
 
         return $this;
@@ -266,6 +267,10 @@ class Participants implements UserInterface
     {
         if ($this->inscriptions->contains($inscription)) {
             $this->inscriptions->removeElement($inscription);
+            // set the owning side to null (unless already changed)
+            if ($inscription->getParticipant() === $this) {
+                $inscription->setParticipant(null);
+            }
         }
 
         return $this;

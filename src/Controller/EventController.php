@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Sorties;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,10 +18,10 @@ class EventController extends AbstractController
      */
     public function createEvent()
     {
-        //TODO Ecrire la fonction
-        return $this->render('event/createevent.html.twig', [
-            'controller_name' => 'EventController',
-        ]);
+        $newEvent = new Sorties();
+        $newEvent->setDateDebut(new \DateTime());
+        $newEvent->setDateCloture();
+        return $this->render('event/createEvent.html.twig');
     }
 
     /**

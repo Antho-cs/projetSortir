@@ -25,16 +25,18 @@ class Inscriptions
      */
     private $dateInscription;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Participants::class, mappedBy="inscriptions")
-     */
-    private $participants;
 
     /**
      * @ORM\ManyToOne(targetEntity=Sorties::class, inversedBy="inscriptions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $sortie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Participants::class, inversedBy="inscriptions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $participant;
 
     public function __construct()
     {
@@ -61,33 +63,6 @@ class Inscriptions
         return $this;
     }
 
-    /**
-     * @return Collection|Participants[]
-     */
-    public function getParticipants(): Collection
-    {
-        return $this->participants;
-    }
-
-    public function addParticipant(Participants $participant): self
-    {
-        if (!$this->participants->contains($participant)) {
-            $this->participants[] = $participant;
-            $participant->addInscription($this);
-        }
-
-        return $this;
-    }
-
-    public function removeParticipant(Participants $participant): self
-    {
-        if ($this->participants->contains($participant)) {
-            $this->participants->removeElement($participant);
-            $participant->removeInscription($this);
-        }
-
-        return $this;
-    }
 
     public function getSortie(): ?Sorties
     {
@@ -104,6 +79,18 @@ class Inscriptions
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getParticipant(): ?Participants
+    {
+        return $this->participant;
+    }
+
+    public function setParticipant(?Participants $participant): self
+    {
+        $this->participant = $participant;
+
+        return $this;
     }
 
 }
