@@ -83,13 +83,6 @@ class Sorties
         return $this->noSortie;
     }
 
-    public function setNoSortie(int $noSortie): self
-    {
-        $this->noSortie = $noSortie;
-
-        return $this;
-    }
-
     public function getNom(): ?string
     {
         return $this->nom;

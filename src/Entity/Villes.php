@@ -38,13 +38,6 @@ class Villes
         return $this->noVille;
     }
 
-    public function setNoVille(int $noVille): self
-    {
-        $this->noVille = $noVille;
-
-        return $this;
-    }
-
     public function getNomVille(): ?string
     {
         return $this->nomVille;
@@ -72,5 +65,12 @@ class Villes
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setNoVille(int $noVille): self
+    {
+        $this->noVille = $noVille;
+
+        return $this;
     }
 }

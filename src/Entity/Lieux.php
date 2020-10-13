@@ -47,13 +47,6 @@ class Lieux
         return $this->noLieu;
     }
 
-    public function setNoLieu(int $noLieu): self
-    {
-        $this->noLieu = $noLieu;
-
-        return $this;
-    }
-
     public function getNomLieu(): ?string
     {
         return $this->nomLieu;
