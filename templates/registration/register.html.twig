@@ -8,17 +8,33 @@
                     <div class="alert alert-danger" role="alert">{{ flashError }}</div>
                 {% endfor %}
 
-                <h1>Connexion</h1>
+                <div class="titreCo">
+                    <h1>Connexion</h1>
+                </div>
 
+                <div class="formCo">
                 {{ form_start(registrationForm) }}
-                {{ form_row(registrationForm.Pseudo) }}
-                {{ form_row(registrationForm.plainPassword, {
-                    label: 'Password'
-                }) }}
+                    <div class="formCo-pseudo">
+                        {{ form_label(registrationForm.Pseudo) }}
+                        {{ form_widget(registrationForm.Pseudo) }}
+                        {{ form_errors(registrationForm.Pseudo) }}
+                    </div>
 
-                <button type="submit" class="btn">Register</button>
+                    <div class="formCo-mdp">
+                        {{ form_label(registrationForm.plainPassword) }}
+                        {{ form_widget(registrationForm.plainPassword) }}
+                        {{ form_errors(registrationForm.plainPassword) }}
+                    </div>
+
+                    <div class="formCo-btn">
+                        <button type="submit" class="btn">Se connecter</button>
+                    </div>
+
                 {{ form_end(registrationForm) }}
+                </div>
+
             </div>
+
         </section>
     </main><!-- End #main -->
 {% endblock %}
