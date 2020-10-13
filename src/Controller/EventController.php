@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Sorties;
+use App\Form\EventType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -16,12 +18,29 @@ class EventController extends AbstractController
     /**
      * @Route("/create", name="create_event")
      */
-    public function createEvent()
+    public function createEvent(Request $request)
     {
         $newEvent = new Sorties();
+
+        //créer une intité
         $newEvent->setDateDebut(new \DateTime());
         $newEvent->setDateCloture();
-        return $this->render('event/createEvent.html.twig');
+        $newEvent->setDuree();
+        $newEvent->setDescriptionsInfos();
+        $newEvent->setEtat();
+        $newEvent->setNbInscriptionsmax();
+        $newEvent->setNom();
+        $newEvent->setUrlPhoto();
+        $newEvent->setEtatSortie();
+        $newEvent->setDateCloture();
+
+
+
+        $eventForm = $this->createForm(EventType::class, $newEvent);
+        $eventForm->handleRequest($request);
+        return $this->render('event/createEvent.html.twig', [
+            'sortie' => $eventForm->createView()
+        ]);
     }
 
     /**

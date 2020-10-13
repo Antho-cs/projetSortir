@@ -1,1 +1,10 @@
 {% extends 'layout.html.twig' %}
+
+{% block title %}Creation de sortie{% endblock %}
+
+{% block mainSection%}
+    {{ form_start(eventForm) }}
+
+    <button type="submit" class="btn">Register</button>
+    {{ form_end(eventForm) }}
+{% endblock %}

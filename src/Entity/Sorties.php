@@ -83,11 +83,6 @@ class Sorties
     }
 
 
-    public function getNoSortie(): ?int
-    {
-        return $this->noSortie;
-    }
-
     public function getNom(): ?string
     {
         return $this->nom;
@@ -230,18 +225,6 @@ class Sorties
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getEtatSortie(): ?int
-    {
-        return $this->etatSortie;
-    }
-
-    public function setEtatSortie(?int $etatSortie): self
-    {
-        $this->etatSortie = $etatSortie;
-
-        return $this;
     }
 
 }
