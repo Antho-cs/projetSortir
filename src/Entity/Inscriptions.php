@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\InscriptionsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,26 +14,39 @@ class Inscriptions
 {
 
     /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $dateInscription;
 
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
-     * @ORM\ManyToOne(targetEntity=Sorties::class, inversedBy="noSortie")
+     * @ORM\ManyToMany(targetEntity=Participants::class, mappedBy="inscriptions")
      */
-    private $sortiesNoSortie;
+    private $participants;
 
     /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Sorties::class, inversedBy="inscriptions")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $participantsNoParticipant;
+    private $sortie;
 
-    public function getId(): ?int
+    public function __construct()
     {
-        return $this->id;
+        $this->participants = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNoInscription()
+    {
+        return $this->noInscription;
     }
 
     public function getDateInscription(): ?\DateTimeInterface
@@ -46,27 +61,49 @@ class Inscriptions
         return $this;
     }
 
-    public function getSortiesNoSortie(): ?int
+    /**
+     * @return Collection|Participants[]
+     */
+    public function getParticipants(): Collection
     {
-        return $this->sortiesNoSortie;
+        return $this->participants;
     }
 
-    public function setSortiesNoSortie(int $sortiesNoSortie): self
+    public function addParticipant(Participants $participant): self
     {
-        $this->sortiesNoSortie = $sortiesNoSortie;
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->addInscription($this);
+        }
 
         return $this;
     }
 
-    public function getParticipantsNoParticipant(): ?int
+    public function removeParticipant(Participants $participant): self
     {
-        return $this->participantsNoParticipant;
-    }
-
-    public function setParticipantsNoParticipant(int $participantsNoParticipant): self
-    {
-        $this->participantsNoParticipant = $participantsNoParticipant;
+        if ($this->participants->contains($participant)) {
+            $this->participants->removeElement($participant);
+            $participant->removeInscription($this);
+        }
 
         return $this;
     }
+
+    public function getSortie(): ?Sorties
+    {
+        return $this->sortie;
+    }
+
+    public function setSortie(?Sorties $sortie): self
+    {
+        $this->sortie = $sortie;
+
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
 }

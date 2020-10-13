@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ParticipantsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -16,13 +18,12 @@ class Participants implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $noParticipant;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=30, unique=true)
      */
     private $Pseudo;
-
 
     /**
      * @ORM\Column(type="json")
@@ -71,11 +72,20 @@ class Participants implements UserInterface
      */
     private $campus;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Inscriptions::class, inversedBy="participants")
+     */
+    private $inscriptions;
 
-
-    public function getNoParticipant(): ?int
+    public function __construct()
     {
-        return $this->noParticipant;
+        $this->inscriptions = new ArrayCollection();
+    }
+
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getPseudo(): ?string
@@ -231,6 +241,32 @@ class Participants implements UserInterface
     public function setCampus(?Campus $campus): self
     {
         $this->campus = $campus;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Inscriptions[]
+     */
+    public function getInscriptions(): Collection
+    {
+        return $this->inscriptions;
+    }
+
+    public function addInscription(Inscriptions $inscription): self
+    {
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions[] = $inscription;
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Inscriptions $inscription): self
+    {
+        if ($this->inscriptions->contains($inscription)) {
+            $this->inscriptions->removeElement($inscription);
+        }
 
         return $this;
     }

@@ -18,7 +18,7 @@ class Campus
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $noCampus;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=30)
@@ -40,14 +40,9 @@ class Campus
         return $this->id;
     }
 
-    public function getNoCampus(): ?int
+    public function setId(int $id): self
     {
-        return $this->noCampus;
-    }
-
-    public function setNoCampus(int $noCampus): self
-    {
-        $this->noCampus = $noCampus;
+        $this->id = $id;
 
         return $this;
     }

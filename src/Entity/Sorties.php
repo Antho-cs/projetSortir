@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SortiesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,7 +18,7 @@ class Sorties
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $noSortie;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=30)
@@ -59,24 +61,27 @@ class Sorties
     private $urlPhoto;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToMany(targetEntity=Inscriptions::class, mappedBy="sortie")
      */
-    private $organisateur;
+    private $inscriptions;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Etats::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $lieuxNoLieu;
+    private $etat;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Lieux::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $etatsNoEtat;
+    private $lieu;
 
-    public function getId(): ?int
+    public function __construct()
     {
-        return $this->id;
+        $this->inscriptions = new ArrayCollection();
     }
+
 
     public function getNoSortie(): ?int
     {
@@ -155,18 +160,6 @@ class Sorties
         return $this;
     }
 
-    public function getEtatSortie(): ?int
-    {
-        return $this->etatSortie;
-    }
-
-    public function setEtatSortie(?int $etatSortie): self
-    {
-        $this->etatSortie = $etatSortie;
-
-        return $this;
-    }
-
     public function getUrlPhoto(): ?string
     {
         return $this->urlPhoto;
@@ -179,39 +172,76 @@ class Sorties
         return $this;
     }
 
-    public function getOrganisateur(): ?int
+    /**
+     * @return Collection|Inscriptions[]
+     */
+    public function getInscriptions(): Collection
     {
-        return $this->organisateur;
+        return $this->inscriptions;
     }
 
-    public function setOrganisateur(int $organisateur): self
+    public function addInscription(Inscriptions $inscription): self
     {
-        $this->organisateur = $organisateur;
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions[] = $inscription;
+            $inscription->setSortie($this);
+        }
 
         return $this;
     }
 
-    public function getLieuxNoLieu(): ?int
+    public function removeInscription(Inscriptions $inscription): self
     {
-        return $this->lieuxNoLieu;
-    }
-
-    public function setLieuxNoLieu(int $lieuxNoLieu): self
-    {
-        $this->lieuxNoLieu = $lieuxNoLieu;
+        if ($this->inscriptions->contains($inscription)) {
+            $this->inscriptions->removeElement($inscription);
+            // set the owning side to null (unless already changed)
+            if ($inscription->getSortie() === $this) {
+                $inscription->setSortie(null);
+            }
+        }
 
         return $this;
     }
 
-    public function getEtatsNoEtat(): ?int
+    public function getEtat(): ?Etats
     {
-        return $this->etatsNoEtat;
+        return $this->etat;
     }
 
-    public function setEtatsNoEtat(int $etatsNoEtat): self
+    public function setEtat(?Etats $etat): self
     {
-        $this->etatsNoEtat = $etatsNoEtat;
+        $this->etat = $etat;
 
         return $this;
     }
+
+    public function getLieu(): ?Lieux
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(?Lieux $lieu): self
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getEtatSortie(): ?int
+    {
+        return $this->etatSortie;
+    }
+
+    public function setEtatSortie(?int $etatSortie): self
+    {
+        $this->etatSortie = $etatSortie;
+
+        return $this;
+    }
+
 }
