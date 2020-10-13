@@ -15,12 +15,8 @@ class Villes
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $noVille;
+
 
     /**
      * @ORM\Column(type="string", length=30)
@@ -62,15 +58,5 @@ class Villes
         return $this;
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
-    public function setNoVille(int $noVille): self
-    {
-        $this->noVille = $noVille;
-
-        return $this;
-    }
 }
