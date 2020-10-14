@@ -51,11 +51,6 @@ class Sorties
     private $descriptionsInfos;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $etatSortie;
-
-    /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */
     private $urlPhoto;

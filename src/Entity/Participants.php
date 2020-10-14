@@ -65,6 +65,7 @@ class Participants implements UserInterface
     private $telephone;
 
     /**
+     *@Assert\NotBlank(message="SVP renseignez le mail!")
      * @ORM\Column(type="string", length=150)
      */
     private $mail;
