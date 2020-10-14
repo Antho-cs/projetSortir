@@ -18,15 +18,11 @@
   width: 100%;
 }
 
-.imgLoader, .save {
+.save, .imgLoader {
   border-radius: 20px;
   box-shadow: 2px 2px #6c757d;
   font-family: "Mako", sans-serif;
   font-weight: bold;
-}
-
-#hero {
-  background-color: rgba(254, 224, 154, 0.6);
 }
 
 label, legend {
@@ -51,20 +47,29 @@ h1 {
   align-items: flex-start;
 }
 
-.imgLoader {
-  background: #C56183;
-  color: #030509;
-  padding: 7px 20px;
-}
-
 #event-creation-btn-save-container {
   width: 100%;
 }
 
+.dates {
+  width: 100%;
+}
+
+.dates fieldset {
+  width: 50%;
+}
+
+/*Btns*/
 .save {
   padding: 7px 65px;
   color: #030509;
   background: #D7EAFB;
+}
+
+.imgLoader {
+  background: #C56183;
+  color: #030509;
+  padding: 7px 20px;
 }
 
 /*# sourceMappingURL=ourstyle.css.map */

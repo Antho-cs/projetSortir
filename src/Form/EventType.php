@@ -8,7 +8,7 @@ use App\Entity\Sorties;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,11 +21,11 @@ class EventType extends AbstractType
         $builder
             ->add('nom', null, [
                 'label' => 'Nommer la sortie :'])
-            ->add('dateDebut', DateType::class, [
+            ->add('dateDebut', DateTimeType::class, [
                 'label' => 'Date de début :'])
             ->add('duree', null, [
                 'label' => 'Durée : '])
-            ->add('dateCloture', DateType::class, [
+            ->add('dateCloture', DateTimeType::class, [
                 'label' => 'Date de fin : '])
             ->add('nbInscriptionsmax', null, [
                 'label' => 'Nombre maximale des participants : '])
@@ -41,9 +41,7 @@ class EventType extends AbstractType
             ->add('etat', EntityType::class, [
                 'class' => Etats::class,
                 'choice_label' => 'libelle'])
-            ->add('lieu', EntityType::class, [
-                'class' => Lieux::class,
-                'choice_label' => 'nomLieu'])
+            ->add('lieu', LieuType::class)
             ->add('save', SubmitType::class, [
                 'attr' => ['class' => 'save'],
             ]);
