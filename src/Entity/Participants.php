@@ -41,21 +41,11 @@ class Participants implements UserInterface
 
     /**
      *@Assert\NotBlank(message="SVP renseignez le mot de passe!")
-     *
+     *@Assert\Regex("/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*$/g")
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password; //TODO Regex mdp
-
-    // Probleme sur regex à voir ensemble //
-    /*
-    *@Assert\Regex(
-    *     (?=(.*[A-Z]){1,}),          //Only one uppercase letters
-    *     (?=(.*[0-9]){2,}),         // Only one numbers
-    *     (?=[^!@#$&*]*[!@#$&*]),   // At least one "special"
-    *     {8,}                     // At least 8 characters
-    * )
-    */
 
     /**
      *@Assert\NotBlank(message="SVP renseignez le nom!")
