@@ -25,6 +25,10 @@
   font-weight: bold;
 }
 
+#hero {
+  background-color: rgba(254, 224, 154, 0.6);
+}
+
 label, legend {
   color: #030509;
   font-weight: bold;
