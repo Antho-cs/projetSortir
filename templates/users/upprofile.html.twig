@@ -1,1 +1,66 @@
 {% extends 'layout.html.twig' %}
+
+{% block mainSection %}
+    <link rel="photo" href="{{ asset('https://via.placeholder.com/150') }}">
+    <h1>Mon profil</h1>
+
+    <div class="upProfileUser">
+        {{ form_start(upProfileUser) }}
+
+        <div class="upProfileUser-pseudo">
+            {{ form_label(upProfileForm.Pseudo) }}
+            {{ form_widget(upProfileForm.Pseudo) }}
+            {{ form_errors(upProfileForm.Pseudo) }}
+        </div>
+
+        <div class="upProfileUser-prenom">
+            {{ form_label(upProfileForm.prenom) }}
+            {{ form_widget(upProfileForm.prenom) }}
+            {{ form_errors(upProfileForm.prenom) }}
+        </div>
+
+        <div class="upProfileUser-nom">
+            {{ form_label(upProfileForm.nom) }}
+            {{ form_widget(upProfileForm.nom) }}
+            {{ form_errors(upProfileForm.nom) }}
+        </div>
+
+        <div class="upProfileUser-tel">
+            {{ form_label(upProfileForm.telephone) }}
+            {{ form_widget(upProfileForm.telephone) }}
+            {{ form_errors(upProfileForm.telephone) }}
+        </div>
+
+        <div class="upProfileUser-email">
+            {{ form_label(upProfileForm.email) }}
+            {{ form_widget(upProfileForm.email) }}
+            {{ form_errors(upProfileForm.email) }}
+        </div>
+
+        <div class="upProfileUser-mdp">
+            {{ form_label(upProfileForm.mdp) }}
+            {{ form_widget(upProfileForm.mdp) }}
+            {{ form_errors(upProfileForm.mdp) }}
+        </div>
+
+        <div class="upProfileUser-confMdp">
+            {{ form_label(upProfileForm.confirmationMdp) }}
+            {{ form_widget(upProfileForm.confirmationMdp) }}
+            {{ form_errors(upProfileForm.confirmationMdp) }}
+        </div>
+
+        <div class="upProfileUser-photo">
+            {{ form_label(upProfileForm.photo) }}
+            {{ form_widget(upProfileForm.photo) }}
+            {{ form_errors(upProfileForm.photo) }}
+        </div>
+
+        <div class="upProfileUser-btn">
+            <button type="submit" class="btn">Enregistrer</button>
+            <button type="submit" class="btn">Annuler</button>
+        </div>
+
+        {{ form_end(upProfileUser) }}
+    </div>
+
+{% endblock %}

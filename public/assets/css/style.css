@@ -339,10 +339,11 @@ h1, h2, h3, h4, h5, h6 {
 .connexion-wrapper{
   height: 100vh;
 }
+
 #hero {
   width: 100%;
   height: 100vh;
-  background-img: url("../img/background.jpg") top center;
+  background: url("../img/background.jpg") top center;
   background-size: cover;
   position: relative;
   margin-bottom: -90px;
@@ -399,11 +400,6 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(255, 255, 255, 0.15);
 }
 
-@media (min-width: 1024px) {
-  #hero {
-    background-attachment: fixed;
-  }
-}
 
 @media (max-width: 768px) {
   #hero h1 {

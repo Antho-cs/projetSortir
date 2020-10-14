@@ -91,11 +91,11 @@ class Participants implements UserInterface
      */
     private $inscriptions;
 
+
     public function __construct()
     {
         $this->inscriptions = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {

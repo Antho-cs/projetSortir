@@ -13,13 +13,18 @@
                     {{ form_row(eventForm.nom) }}
                     {{ form_row(eventForm.descriptionsInfos) }}
                     {{ form_row(eventForm.etat) }}
-                    {{ form_row(eventForm.lieu) }}
+                    {{ form_widget(eventForm.lieu) }}
+                    <div class="dates">
+                        {{ form_row(eventForm.dateDebut) }}
+                        {{ form_row(eventForm.dateCloture) }}
+                    </div>
+                    {{ form_row(eventForm.duree) }}
+                    {{ form_row(eventForm.nbInscriptionsmax) }}
+
                 </section>
                 <section class="event-creation-form-second-cl">
-                    {{ form_row(eventForm.dateDebut) }}
-                    {{ form_row(eventForm.duree) }}
-                    {{ form_row(eventForm.dateCloture) }}
-                    {{ form_row(eventForm.nbInscriptionsmax) }}
+
+
                 </section>
                 <section id="event-creation-btn-save-container">
                     <div id="event-creation-btn">

@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Lieux;
 use App\Entity\Sorties;
 use App\Form\EventType;
+use App\Form\LieuType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,17 +21,29 @@ class EventController extends AbstractController
     /**
      * @Route("/create", name="create_event")
      */
-    public function createEvent(Request $request)
+    public function createEvent(Request $request, EntityManagerInterface $em)
     {
+        //créer une entité vide
+        $newLieu = new Lieux();
         $newEvent = new Sorties();
 
-        //créer une intité
-
-
+        //créer des formulaire
+       // $lieuForm = $this->createForm(LieuType::class,$newLieu);
         $eventForm = $this->createForm(EventType::class, $newEvent);
+
+       // $lieuForm->handleRequest($request);
         $eventForm->handleRequest($request);
+
         if($eventForm->isSubmitted() && $eventForm->isValid()){
-            $newEvent->setDateDebut(new \DateTime());
+
+            //todo manage the photo upload
+
+            $em->persist($newEvent);
+            $em->flush();
+            $this->addFlash('success', 'La sortie est bien créée!');
+
+            return $this->render('event/createEvent.html.twig');
+
         }
         return $this->render('event/createEvent.html.twig', [
             'eventForm' => $eventForm->createView(),
