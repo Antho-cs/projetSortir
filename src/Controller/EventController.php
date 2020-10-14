@@ -23,13 +23,16 @@ class EventController extends AbstractController
         $newEvent = new Sorties();
 
         //créer une intité
+        $newEvent->setNom();
         $newEvent->setDateDebut(new \DateTime());
-        $newEvent->setDateCloture();
         $newEvent->setDuree();
+        $newEvent->setDateCloture();
+        $newEvent->setNbInscriptionsmax();
+
         $newEvent->setDescriptionsInfos();
         $newEvent->setEtat();
-        $newEvent->setNbInscriptionsmax();
-        $newEvent->setNom();
+
+
         $newEvent->setUrlPhoto();
         $newEvent->setEtatSortie();
         $newEvent->setDateCloture();

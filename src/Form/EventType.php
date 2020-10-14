@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Etats;
+use App\Entity\Lieux;
 use App\Entity\Sorties;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,15 +26,15 @@ class EventType extends AbstractType
                 'label' => 'Nombre maximale des participants : '])
             ->add('descriptionsInfos', null, [
                 'label' => 'Description : '])
-            ->add('etatSortie')
+            ->add('etat')
             ->add('urlPhoto', null, [
                 'label' => 'Ajouter une photo'])
             ->add('etat', EntityType::class, [
                 'class' => Etats::class,
                 'choice_label' => 'libelle'])
             ->add('lieu', EntityType::class, [
-                'class' => Etats::class,
-                'choice_label' => 'libelle'])
+                'class' => Lieux::class,
+                'choice_label' => 'nomLieu'])
         ;
     }
 
