@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Participants;
+use App\Form\UpProfileUserFormType;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -26,11 +30,25 @@ class UsersController extends AbstractController
     /**
      * @Route("/update/{id}", name="update_user")
      */
-    public function updateUser() //TODO Injecter l'ID
+    public function updateUser(Participants $participant, Request $request, EntityManager $em)
     {
-        //TODO Ecrire la fonction
-        return $this->render('users/upprofile.html.twig', [
-            'controller_name' => 'UsersController',
+        $form = $this->createForm(UpProfileUserFormType::class);
+
+        $form ->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $participant = $form->getData();
+
+            $em->persist($participant);
+            $em->flush();
+
+            $this->addFlash('Bravo', 'Votre profil a bien été mis à jour!');
+
+            return $this->redirectToRoute('/');
+        }
+
+        return $this->render('Participants/upProfile.html.twig', [
+            'upProfilUserFormType' => $form->createView()
         ]);
     }
 }
