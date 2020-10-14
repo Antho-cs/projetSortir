@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,11 +25,11 @@ class EventType extends AbstractType
                 'label' => 'Date de début :'])
             ->add('duree', null, [
                 'label' => 'Durée : '])
-            ->add('dateCloture', null, [
+            ->add('dateCloture', DateType::class, [
                 'label' => 'Date de fin : '])
-            ->add('nbInscriptionsmax', DateType::class, [
+            ->add('nbInscriptionsmax', null, [
                 'label' => 'Nombre maximale des participants : '])
-            ->add('descriptionsInfos', null, [
+            ->add('descriptionsInfos', TextType::class, [
                 'label' => 'Description : '])
             ->add('etat')
             ->add('urlPhoto',ButtonType::class, [

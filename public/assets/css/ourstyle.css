@@ -1,5 +1,70 @@
-body {
-  background: #916319;
+/*Variables*/
+/*classes to extend*/
+.wrapper-event-creation, .wrapper-event-creation header, main, form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#event-creation-btn-save-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.wrapper-event-creation, .wrapper-event-creation header, main, form {
+  width: 100%;
+}
+
+.imgLoader, .save {
+  border-radius: 20px;
+  box-shadow: 2px 2px #6c757d;
+  font-family: "Mako", sans-serif;
+  font-weight: bold;
+}
+
+#hero {
+  background-color: rgba(254, 224, 154, 0.6);
+}
+
+label, legend {
+  color: #030509;
+  font-weight: bold;
+  text-shadow: 1px 1px white;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+.event-creation-form-first-cl {
+  width: 50%;
+  padding: 20px 60px;
+  align-items: flex-start;
+}
+
+.event-creation-form-second-cl {
+  width: 50%;
+  padding: 20px 60px;
+  align-items: flex-start;
+}
+
+.imgLoader {
+  background: #C56183;
+  color: #030509;
+  padding: 7px 20px;
+}
+
+#event-creation-btn-save-container {
+  width: 100%;
+}
+
+.save {
+  padding: 7px 65px;
+  color: #030509;
+  background: #D7EAFB;
 }
 
 /*# sourceMappingURL=ourstyle.css.map */

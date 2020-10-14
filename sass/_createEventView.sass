@@ -1,2 +1,41 @@
 @use 'config'
+@use 'general'
+
+.wrapper-event-creation
+  @extend %flex-container-centered
+  @extend %width-100
+
+.wrapper-event-creation header, main, form
+  @extend %width-100
+  @extend %flex-container-centered
+
+.event-creation-form-first-cl
+  width: 50%
+  padding: 20px 60px
+  align-items: flex-start
+
+.event-creation-form-second-cl
+  width: 50%
+  padding: 20px 60px
+  align-items: flex-start
+
+.imgLoader
+  background: config.$roseColor
+  color: config.$textColor
+  padding: 7px 20px
+  @extend %btn-pd-br-bsh
+
+#event-creation-btn-save-container
+  width: 100%
+  @extend %flex-container-spaceArd
+
+
+.save
+  padding: 7px 65px
+  color: config.$textColor
+  background: config.$blueColor
+  @extend %btn-pd-br-bsh
+
+
+
 
