@@ -45,17 +45,18 @@
             </div>
             <nav class="nav-menu d-none d-lg-block">
                 <ul>
-                    {% if is_granted("ROLE_USER") %} {# Quand connecté en user #}
-                        <a href="{{ path('home') }}">Accueil</a>
-                        <a href="#">Mon profil</a> {# //TODO {{ path('user') }} #}
-                        <a href="{{ path('app_logout') }}">Déconnecter</a>
-
-                    {% elseif is_granted("ROLE_ADMIN") %} {# Quand connecté en admin #}
+                    {% if is_granted("ROLE_ADMIN") %} {# Quand connecté en admin #}
                         <a href="{{ path('edit_villes') }}">Ville</a>
                         <a href="{{ path('edit_campus') }}">Campus</a>
                         <a href="{{ path('home') }}">Accueil</a>
                         <a href="#">Mon profil</a> {# //TODO {{ path('user') }} #}
                         <a href="{{ path('app_logout') }}">Déconnecter</a>
+
+                    {% elseif is_granted("ROLE_USER") %} {# Quand connecté en user #}
+                        <a href="{{ path('home') }}">Accueil</a>
+                        <a href="#">Mon profil</a> {# //TODO {{ path('user') }} #}
+                        <a href="{{ path('app_logout') }}">Déconnecter</a>
+
 
                     {% else %}
                         {# ici lien quand non connecté #}
