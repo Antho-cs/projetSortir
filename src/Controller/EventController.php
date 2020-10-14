@@ -19,6 +19,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class EventController extends AbstractController
 {
     /**
+     * @Route("/", name="home")
+     */
+    public function home()
+    {
+        //TODO Ecrire la fonction
+        return $this->render('event/home.html.twig', [
+            'controller_name' => 'EventController',
+        ]);
+    }
+
+    /**
      * @Route("/create", name="create_event")
      */
     public function createEvent(Request $request, EntityManagerInterface $em)
