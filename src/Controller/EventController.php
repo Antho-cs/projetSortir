@@ -8,6 +8,7 @@ use App\Entity\Sorties;
 use App\Form\EventType;
 use App\Form\LieuType;
 use App\Repository\CampusRepository;
+use App\Repository\SortiesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -103,33 +104,36 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event")
      */
-    public function event() //TODO Injecter l'ID
+    public function event(int $id, SortiesRepository $sortiesRepository)
     {
-        //TODO Ecrire la fonction
+        $sortie = $sortiesRepository->find($id);
         return $this->render('event/event.html.twig', [
             'controller_name' => 'EventController',
+            'sortie' => $sortie
         ]);
     }
 
     /**
      * @Route("/update/{id}", name="update_event")
      */
-    public function updateEvent() //TODO Injecter l'ID
+    public function updateEvent(int $id, SortiesRepository $sortiesRepository)
     {
-        //TODO Ecrire la fonction
+        $sortie = $sortiesRepository->find($id);
         return $this->render('event/upevent.html.twig', [
             'controller_name' => 'EventController',
+            'sortie' => $sortie
         ]);
     }
 
     /**
      * @Route("/delete/{id}", name="delete_event")
      */
-    public function deleteEvent() //TODO Injecter l'ID
+    public function deleteEvent(int $id, SortiesRepository $sortiesRepository)
     {
-        //TODO Ecrire la fonction
+        $sortie = $sortiesRepository->find($id);
         return $this->render('event/delevent.html.twig', [
             'controller_name' => 'EventController',
+            'sortie' => $sortie
         ]);
     }
 }

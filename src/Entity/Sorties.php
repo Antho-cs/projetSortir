@@ -157,18 +157,6 @@ class Sorties
         return $this;
     }
 
-    public function getUrlPhoto(): ?string
-    {
-        return $this->urlPhoto;
-    }
-
-    public function setUrlPhoto(?string $urlPhoto): self
-    {
-        $this->urlPhoto = $urlPhoto;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Inscriptions[]
      */

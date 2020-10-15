@@ -23,11 +23,10 @@ class UsersController extends AbstractController
     /**
      * @Route("/{id}", name="user")
      */
-    public function displayProfile(int $id, ParticipantsRepository $participant) //TODO Injecter l'ID
+    public function displayProfile(int $id, ParticipantsRepository $participant)
     {
 
         $currentUser = $participant->find($id);
-        //TODO Ecrire la fonction
         return $this->render('users/profile.html.twig', [
             'controller_name' => 'UsersController',
             'currentUser' => $currentUser

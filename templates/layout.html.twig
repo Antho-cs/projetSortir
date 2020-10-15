@@ -50,12 +50,12 @@
                         <a href="{{ path('edit_villes') }}">Ville</a>
                         <a href="{{ path('edit_campus') }}">Campus</a>
                         <a href="{{ path('home') }}">Accueil</a>
-                        <a href="#">Mon profil</a> {# //TODO {{ path('user') }} #}
+                        <a href="{{ path('user',{'id' : app.user.id}) }}">Mon profil</a>
                         <a href="{{ path('app_logout') }}">Déconnecter</a>
 
                     {% elseif is_granted("ROLE_USER") %} {# Quand connecté en user #}
                         <a href="{{ path('home') }}">Accueil</a>
-                        <a href="#">Mon profil</a> {# //TODO {{ path('user') }} #}
+                        <a href="{{ path('user',{'id' : app.user.id}) }}">Mon profil</a>
                         <a href="{{ path('app_logout') }}">Déconnecter</a>
                     {% else %}
                         {# ici lien quand non connecté #}

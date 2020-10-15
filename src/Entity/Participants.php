@@ -95,6 +95,11 @@ class Participants implements UserInterface
      * @ORM\OneToMany(targetEntity=Sorties::class, mappedBy="organisateur")
      */
     private $sortiesCreated;
+    
+    /**
+     * @ORM\Column(type="string", length=250, nullable=true)
+     */
+    private $urlPhoto;
 
 
     public function __construct()
@@ -323,6 +328,18 @@ class Participants implements UserInterface
                 $sortiesCreated->setOrganisateur(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUrlPhoto(): ?string
+    {
+        return $this->urlPhoto;
+    }
+
+    public function setUrlPhoto(?string $urlPhoto): self
+    {
+        $this->urlPhoto = $urlPhoto;
 
         return $this;
     }
