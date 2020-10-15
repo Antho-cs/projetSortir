@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Participants;
 use App\Form\UpProfileUserFormType;
+use App\Repository\ParticipantsRepository;
 use Doctrine\ORM\EntityManager;
+use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class UsersController
@@ -19,11 +22,14 @@ class UsersController extends AbstractController
     /**
      * @Route("/{id}", name="user")
      */
-    public function displayProfile() //TODO Injecter l'ID
+    public function displayProfile(int $id, ParticipantsRepository $participant) //TODO Injecter l'ID
     {
+
+        $currentUser = $participant->find($id);
         //TODO Ecrire la fonction
         return $this->render('users/profile.html.twig', [
             'controller_name' => 'UsersController',
+            'currentUser' => $currentUser
         ]);
     }
 
