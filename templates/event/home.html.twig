@@ -1,109 +1,111 @@
 {% extends 'layout.html.twig' %}
 
 {% block mainSection %}
-<div>
-    {{ parent() }}
     <div>
-        <p> Date du jour : {{ "now"|date("d/m/Y") }}</p> {# //TODO  Date du jour   #}
-        <p> Participant : {{ app.user.Pseudo }}</p>  {# //TODO  Nom du participant  #}
+        <div id="infos">
+            Date du jour : {{ "now"|date("d/m/Y") }} <br>
+            Participant : {{ app.user.Pseudo }}
+        </div>
+        {{ parent() }}
+
+        <div>
+
+            <h3>Filtrer les sorties</h3>
+
+            <form>
+
+                {# ------------------- Liste deroulante Campus  ----------------------- #}
+
+                <div class="form-group">  {# //TODO  les campus #}
+                    <label for="exampleFormControlSelect1">Campus : </label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+
+                    </select>
+                </div>
+
+                {# -------------------  Barre de recherche ----------------------- #}
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Le nom de la sortie contient :</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                </div>
+
+                {# -------------------  Date ----------------------- #}
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Entre :</label>
+                    <input type="date" class="form-control" id="exampleFormControlInput1">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1"> Et :</label>
+                    <input type="date" class="form-control" id="exampleFormControlInput1">
+                </div>
+
+                {# -------------------  Checkbox-Group ----------------------- #}
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Sorties dont je suis
+                        l'organisateur/trice</label>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Sorties auxquelles je suis inscrit/e</label>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Sorties auxquelles je ne suis pas
+                        inscrit/e</label>
+                </div>
+
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Sorties passées</label>
+                </div>
+
+                {# -------------------  Boutton Submit Form ----------------------- #}
+
+                <button type="submit" class="btn btn-primary mb-2">Rechercher</button>
+
+            </form>
+
+
+        </div>
+        {# -------------------  Liste Déroulante des Sorties ----------------------- #}
+
+        <div>
+            <table>
+                <tr>
+                    <th>Nom de la sortie</th>
+                    <th>Date de la sortie</th>
+                    <th>Clôture</th>
+                    <th>Inscrits/Places</th>
+                    <th>Etat</th>
+                    <th>Inscrit</th>
+                    <th>Organisateur</th>
+                    <th>Actions</th>
+                </tr>
+
+                <tr>
+                    {# //TODO  Afficher les sorties avec des for #}
+                    <td> {# Contenu des sorties #} </td>
+
+
+                </tr>
+
+            </table>
+
+        </div>
+        {# -------------------  Bouton Création d'une sortie ----------------------- #}
+        <div>
+            <button type="submit" class="btn btn-primary mb-2">Créer une sortie</button>
+
+        </div>
+
+
     </div>
-
-    <div>
-
-        <h3>Filtrer les sorties</h3>
-
-        <form>
-
-            {# ------------------- Liste deroulante Campus  -----------------------   #}
-
-            <div class="form-group">  {# //TODO  les campus   #}
-                <label for="exampleFormControlSelect1">Campus : </label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-
-                </select>
-            </div>
-
-            {# -------------------  Barre de recherche -----------------------   #}
-
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Le nom de la sortie contient :</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
-            </div>
-
-            {# -------------------  Date -----------------------   #}
-
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Entre :</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlInput1"> Et :</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1">
-            </div>
-
-            {# -------------------  Checkbox-Group -----------------------   #}
-
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Sorties dont je suis l'organisateur/trice</label>
-            </div>
-
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Sorties auxquelles je suis inscrit/e</label>
-            </div>
-
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Sorties auxquelles je ne suis pas inscrit/e</label>
-            </div>
-
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Sorties passées</label>
-            </div>
-
-            {# -------------------  Boutton Submit Form -----------------------   #}
-
-            <button type="submit" class="btn btn-primary mb-2">Rechercher</button>
-
-        </form>
-
-
-    </div>
-    {# -------------------  Liste Déroulante des Sorties -----------------------   #}
-
-    <div>
-        <table>
-            <tr>
-                <th>Nom de la sortie</th>
-                <th>Date de la sortie</th>
-                <th>Clôture</th>
-                <th>Inscrits/Places</th>
-                <th>Etat</th>
-                <th>Inscrit</th>
-                <th>Organisateur</th>
-                <th>Actions</th>
-            </tr>
-
-            <tr>
-                {# //TODO  Afficher les sorties avec des for   #}
-                <td> {# Contenu des sorties  #} </td>
-
-
-            </tr>
-
-        </table>
-
-    </div>
-    {# -------------------  Bouton Création d'une sortie -----------------------   #}
-    <div>
-        <button type="submit" class="btn btn-primary mb-2">Créer une sortie</button>
-
-    </div>
-
-
-</div>
 {% endblock %}
