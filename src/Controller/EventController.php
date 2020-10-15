@@ -7,6 +7,7 @@ use App\Entity\Lieux;
 use App\Entity\Sorties;
 use App\Form\EventType;
 use App\Form\LieuType;
+use App\Repository\CampusRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,11 +23,13 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home()
+    public function home(CampusRepository $campusRepository)
     {
+        $campus = $campusRepository->findAll();
         //TODO Ecrire la fonction
-        return $this->render('event/home.html.twig', [
-            'controller_name' => 'EventController',
+
+        return $this->render('event/home.html.twig', ['controller_name' => 'EventController',
+            'campus' => $campus
         ]);
     }
 

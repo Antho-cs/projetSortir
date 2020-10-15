@@ -25,6 +25,15 @@
   font-weight: bold;
 }
 
+.sidebyside {
+  display: flex;
+}
+
+.side {
+  width: 50%;
+  margin: 3rem;
+}
+
 #mainBg {
   background: url("../img/background.jpg") top center;
   width: 100%;
