@@ -30,21 +30,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    {# pages accessible to admin #}
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('edit_villes') }}">Ville</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('edit_campus') }}">Campus</a>
+                        </li>
+                    {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ville <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Campus</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Accueil</a>
+                        <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Mon profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Se déconnecter</a>
+                        <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
                     </li>
+
                 </ul>
             </div>
         </nav> <!-- End Nav -->

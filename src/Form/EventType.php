@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Campus;
 use App\Entity\Etats;
 use App\Entity\Lieux;
 use App\Entity\Sorties;
@@ -44,7 +45,11 @@ class EventType extends AbstractType
             ->add('lieu', LieuType::class)
             ->add('save', SubmitType::class, [
                 'attr' => ['class' => 'save'],
-            ]);
+            ])
+            ->add('campus', EntityType::class, [
+                'class' => Campus::class,
+                'choice_label' => 'nomCampus']);
+
         ;
     }
 

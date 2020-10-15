@@ -67,7 +67,7 @@ class Sorties
     private $etat;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Lieux::class, inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity=Lieux::class, inversedBy="sorties", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $lieu;

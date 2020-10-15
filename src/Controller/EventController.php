@@ -53,7 +53,7 @@ class EventController extends AbstractController
             $em->flush();
             $this->addFlash('success', 'La sortie est bien créée!');
 
-            return $this->render('event/createEvent.html.twig');
+            return $this->render('event/home.html.twig');
 
         }
         return $this->render('event/createEvent.html.twig', [
