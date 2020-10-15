@@ -93,9 +93,7 @@ class EventController extends AbstractController
 
                 $this->addFlash('alert ', 'La sortie est annulée!');
                 return $this->render('event/home.html.twig');
-
             }
-
         }
         return $this->render('event/createEvent.html.twig', [
             'eventForm' => $eventForm->createView(),
