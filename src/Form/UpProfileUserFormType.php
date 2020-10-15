@@ -13,13 +13,13 @@ class UpProfileUserFormType extends AbstractType
     {
         $builder
             ->add('Pseudo')
-            ->add('roles')
+           // ->add('roles')
             ->add('password')
             ->add('nom')
             ->add('prenom')
             ->add('telephone')
             ->add('mail')
-            ->add('mdpr')
+           // ->add('mdpr')
             ->add('confirmation')
             ->add('photo')
         ;

@@ -30,8 +30,9 @@ class UsersController extends AbstractController
     /**
      * @Route("/update/{id}", name="update_user")
      */
-    public function updateUser(Participants $participant, Request $request, EntityManager $em)
+    public function updateUser(Participants $participant, Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(UpProfileUserFormType::class);
 
         $form ->handleRequest($request);
@@ -47,7 +48,7 @@ class UsersController extends AbstractController
             return $this->redirectToRoute('/');
         }
 
-        return $this->render('Participants/upProfile.html.twig', [
+        return $this->render('/users/upprofile.html.twig', [
             'upProfilUserFormType' => $form->createView()
         ]);
     }

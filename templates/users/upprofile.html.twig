@@ -5,62 +5,64 @@
     <h1>Mon profil</h1>
 
     <div class="upProfileUser">
-        {{ form_start(upProfileUser) }}
+        {{ form_start(upProfilUserFormType) }}
 
         <div class="upProfileUser-pseudo">
-            {{ form_label(upProfileForm.Pseudo) }}
-            {{ form_widget(upProfileForm.Pseudo) }}
-            {{ form_errors(upProfileForm.Pseudo) }}
+            {{ form_label(upProfilUserFormType.Pseudo) }}
+            {{ form_widget(upProfilUserFormType.Pseudo, {'attr' : {'placeholder': app.user.Pseudo }}) }}
+            {{ form_errors(upProfilUserFormType.Pseudo) }}
         </div>
 
         <div class="upProfileUser-prenom">
-            {{ form_label(upProfileForm.prenom) }}
-            {{ form_widget(upProfileForm.prenom) }}
-            {{ form_errors(upProfileForm.prenom) }}
+            {{ form_label(upProfilUserFormType.prenom) }}
+            {{ form_widget(upProfilUserFormType.prenom, {'attr' : {'placeholder': app.user.prenom }}) }}
+            {{ form_errors(upProfilUserFormType.prenom) }}
         </div>
 
         <div class="upProfileUser-nom">
-            {{ form_label(upProfileForm.nom) }}
-            {{ form_widget(upProfileForm.nom) }}
-            {{ form_errors(upProfileForm.nom) }}
+            {{ form_label(upProfilUserFormType.nom) }}
+            {{ form_widget(upProfilUserFormType.nom, {'attr' : {'placeholder': app.user.nom }}) }}
+            {{ form_errors(upProfilUserFormType.nom) }}
         </div>
 
         <div class="upProfileUser-tel">
-            {{ form_label(upProfileForm.telephone) }}
-            {{ form_widget(upProfileForm.telephone) }}
-            {{ form_errors(upProfileForm.telephone) }}
+            {{ form_label(upProfilUserFormType.telephone) }}
+            {{ form_widget(upProfilUserFormType.telephone, {'attr' : {'placeholder': app.user.telephone }}) }}
+            {{ form_errors(upProfilUserFormType.telephone) }}
         </div>
 
         <div class="upProfileUser-email">
-            {{ form_label(upProfileForm.email) }}
-            {{ form_widget(upProfileForm.email) }}
-            {{ form_errors(upProfileForm.email) }}
+            {{ form_label(upProfilUserFormType.mail) }}
+            {{ form_widget(upProfilUserFormType.mail, {'attr' : {'placeholder': app.user.mail }}) }}
+            {{ form_errors(upProfilUserFormType.mail) }}
         </div>
 
-        <div class="upProfileUser-mdp">
-            {{ form_label(upProfileForm.mdp) }}
-            {{ form_widget(upProfileForm.mdp) }}
-            {{ form_errors(upProfileForm.mdp) }}
+        <div class="upProfileUser-password">
+            {{ form_label(upProfilUserFormType.password) }}
+            {{ form_widget(upProfilUserFormType.password) }}
+            {{ form_errors(upProfilUserFormType.password) }}
         </div>
-
+{#
         <div class="upProfileUser-confMdp">
-            {{ form_label(upProfileForm.confirmationMdp) }}
-            {{ form_widget(upProfileForm.confirmationMdp) }}
-            {{ form_errors(upProfileForm.confirmationMdp) }}
+            {{ form_label(upProfilUserFormType.confirmationMdp) }}
+            {{ form_widget(upProfilUserFormType.confirmationMdp) }}
+            {{ form_errors(upProfilUserFormType.confirmationMdp) }}
         </div>
 
         <div class="upProfileUser-photo">
-            {{ form_label(upProfileForm.photo) }}
-            {{ form_widget(upProfileForm.photo) }}
-            {{ form_errors(upProfileForm.photo) }}
+            {{ form_label(upProfilUserFormType.photo) }}
+            {{ form_widget(upProfilUserFormType.photo) }}
+            {{ form_errors(upProfilUserFormType.photo) }}
         </div>
+#}
+
+
+        {{ form_end(upProfilUserFormType) }}
 
         <div class="upProfileUser-btn">
             <button type="submit" class="btn">Enregistrer</button>
             <button type="submit" class="btn">Annuler</button>
         </div>
-
-        {{ form_end(upProfileUser) }}
     </div>
 
 {% endblock %}
