@@ -30,8 +30,16 @@
 }
 
 .side {
-  width: 50%;
+  text-align: left;
   margin: 3rem;
+}
+
+.side p {
+  margin: 1rem;
+}
+
+.displayPseudo {
+  color: red !important;
 }
 
 #mainBg {
@@ -127,13 +135,6 @@ button {
   padding: 7px 20px;
 }
 
-<<<<<<< Updated upstream
-.upProfileUser {
-  width: 50%;
-  padding: 20px 60px;
-  align-items: flex-start;
-  justify-content: center;
-=======
 .event-creation-btns-wrapper {
   padding: 20px 25px;
 }
@@ -153,7 +154,21 @@ button {
 /* Nav */
 #event-creation-nav-wrapper {
   background-color: rgba(197, 97, 131, 0.4) !important;
->>>>>>> Stashed changes
+}
+
+.upProfileUser {
+  width: 50%;
+  padding: 20px 60px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.pageComplet {
+  width: 100%;
+}
+
+.formComplet {
+  width: 100%;
 }
 
 /*# sourceMappingURL=ourstyle.css.map */

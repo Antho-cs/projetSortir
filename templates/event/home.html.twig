@@ -16,14 +16,16 @@
 
             <div class="formGauche">
 
-            <div class="formTitre">
-            <h3>Filtrer les sorties</h3>
-            </div>
-            <form>
+                <div class="formTitre">
+                    <h3>Filtrer les sorties</h3>
+                </div>
 
-                {# ------------------- Liste deroulante Campus  ----------------------- #}
 
-                <div class="formListCampus">
+                <form>
+
+                    {# ------------------- Liste deroulante Campus  ----------------------- #}
+
+                    <div class="formListCampus">
                         <label for="exampleFormControlSelect1">Campus : </label>
                         <select class="form-control" id="exampleFormControlSelect1">
                             {% for c in campus %}
@@ -34,26 +36,26 @@
                         </select>
                     </div>
 
-                </div>
 
-                {# -------------------  Barre de recherche ----------------------- #}
 
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Le nom de la sortie contient :</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1">
-                </div>
+            {# -------------------  Barre de recherche ----------------------- #}
 
-                {# -------------------  Date ----------------------- #}
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Le nom de la sortie contient :</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1">
+            </div>
 
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Entre :</label>
-                    <input type="date" class="form-control" id="exampleFormControlInput1">
-                </div>
+            {# -------------------  Date ----------------------- #}
 
-                <div class="form-group">
-                    <label for="exampleFormControlInput1"> Et :</label>
-                    <input type="date" class="form-control" id="exampleFormControlInput1">
-                </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Entre :</label>
+                <input type="date" class="form-control" id="exampleFormControlInput1">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlInput1"> Et :</label>
+                <input type="date" class="form-control" id="exampleFormControlInput1">
+            </div>
 
 
 
