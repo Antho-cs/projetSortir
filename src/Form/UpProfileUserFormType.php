@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Participants;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 class UpProfileUserFormType extends AbstractType
 {
@@ -21,7 +23,15 @@ class UpProfileUserFormType extends AbstractType
             ->add('mail')
            // ->add('mdpr')
             ->add('confirmation')
-            ->add('photo')
+            ->add('photo', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new Image([
+                        'maxSize' => '7024k',
+                    ])
+                ],
+            ])
         ;
     }
 
@@ -31,4 +41,6 @@ class UpProfileUserFormType extends AbstractType
             'data_class' => Participants::class,
         ]);
     }
+
+
 }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Participants;
 use App\Form\UpProfileUserFormType;
+use App\Repository\CampusRepository;
 use App\Repository\ParticipantsRepository;
 use Doctrine\ORM\EntityManager;
 use http\Client\Curl\User;
@@ -36,9 +37,11 @@ class UsersController extends AbstractController
     /**
      * @Route("/update/{id}", name="update_user")
      */
-    public function updateUser(Participants $participant, Request $request)
+    public function updateUser(Participants $participant, Request $request, CampusRepository $campusRepository)
     {
         $em = $this->getDoctrine()->getManager();
+        $campus = $campusRepository->findAll();
+
         $form = $this->createForm(UpProfileUserFormType::class);
 
         $form ->handleRequest($request);
@@ -55,7 +58,7 @@ class UsersController extends AbstractController
         }
 
         return $this->render('/users/upprofile.html.twig', [
-            'upProfilUserFormType' => $form->createView()
+            'upProfilUserFormType' => $form->createView(), 'campus' => $campus
         ]);
     }
 }

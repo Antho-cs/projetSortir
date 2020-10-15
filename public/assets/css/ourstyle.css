@@ -1,6 +1,6 @@
 /*Variables*/
 /*classes to extend*/
-.wrapper-event-creation, .wrapper-event-creation header, main, form {
+.upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-.save, .imgLoader {
+.recordBtn, .cancelBtn, .save, .imgLoader {
   border-radius: 20px;
   box-shadow: 2px 2px #6c757d;
   font-family: "Mako", sans-serif;
@@ -106,6 +106,13 @@ h1 {
   background: #C56183;
   color: #030509;
   padding: 7px 20px;
+}
+
+.upProfileUser {
+  width: 50%;
+  padding: 20px 60px;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=ourstyle.css.map */

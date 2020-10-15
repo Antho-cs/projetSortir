@@ -5,64 +5,80 @@
     <h1>Mon profil</h1>
 
     <div class="upProfileUser">
-        {{ form_start(upProfilUserFormType) }}
 
-        <div class="upProfileUser-pseudo">
-            {{ form_label(upProfilUserFormType.Pseudo) }}
-            {{ form_widget(upProfilUserFormType.Pseudo, {'attr' : {'placeholder': app.user.Pseudo }}) }}
-            {{ form_errors(upProfilUserFormType.Pseudo) }}
-        </div>
+            {{ form_start(upProfilUserFormType) }}
 
-        <div class="upProfileUser-prenom">
-            {{ form_label(upProfilUserFormType.prenom) }}
-            {{ form_widget(upProfilUserFormType.prenom, {'attr' : {'placeholder': app.user.prenom }}) }}
-            {{ form_errors(upProfilUserFormType.prenom) }}
-        </div>
+            <div class="upProfileUser-pseudo">
+                {{ form_label(upProfilUserFormType.Pseudo) }}
+                {{ form_widget(upProfilUserFormType.Pseudo, {'attr' : {'placeholder': app.user.Pseudo }}) }}
+                {{ form_errors(upProfilUserFormType.Pseudo) }}
+            </div>
 
-        <div class="upProfileUser-nom">
-            {{ form_label(upProfilUserFormType.nom) }}
-            {{ form_widget(upProfilUserFormType.nom, {'attr' : {'placeholder': app.user.nom }}) }}
-            {{ form_errors(upProfilUserFormType.nom) }}
-        </div>
+            <div class="upProfileUser-prenom">
+                {{ form_label(upProfilUserFormType.prenom) }}
+                {{ form_widget(upProfilUserFormType.prenom, {'attr' : {'placeholder': app.user.prenom }}) }}
+                {{ form_errors(upProfilUserFormType.prenom) }}
+            </div>
 
-        <div class="upProfileUser-tel">
-            {{ form_label(upProfilUserFormType.telephone) }}
-            {{ form_widget(upProfilUserFormType.telephone, {'attr' : {'placeholder': app.user.telephone }}) }}
-            {{ form_errors(upProfilUserFormType.telephone) }}
-        </div>
+            <div class="upProfileUser-nom">
+                {{ form_label(upProfilUserFormType.nom) }}
+                {{ form_widget(upProfilUserFormType.nom, {'attr' : {'placeholder': app.user.nom }}) }}
+                {{ form_errors(upProfilUserFormType.nom) }}
+            </div>
 
-        <div class="upProfileUser-email">
-            {{ form_label(upProfilUserFormType.mail) }}
-            {{ form_widget(upProfilUserFormType.mail, {'attr' : {'placeholder': app.user.mail }}) }}
-            {{ form_errors(upProfilUserFormType.mail) }}
-        </div>
+            <div class="upProfileUser-tel">
+                {{ form_label(upProfilUserFormType.telephone) }}
+                {{ form_widget(upProfilUserFormType.telephone, {'attr' : {'placeholder': app.user.telephone }}) }}
+                {{ form_errors(upProfilUserFormType.telephone) }}
+            </div>
 
-        <div class="upProfileUser-password">
-            {{ form_label(upProfilUserFormType.password) }}
-            {{ form_widget(upProfilUserFormType.password) }}
-            {{ form_errors(upProfilUserFormType.password) }}
-        </div>
+            <div class="upProfileUser-email">
+                {{ form_label(upProfilUserFormType.mail) }}
+                {{ form_widget(upProfilUserFormType.mail, {'attr' : {'placeholder': app.user.mail }}) }}
+                {{ form_errors(upProfilUserFormType.mail) }}
+            </div>
+
+            <div class="upProfileUser-password">
+                {{ form_label(upProfilUserFormType.password) }}
+                {{ form_widget(upProfilUserFormType.password) }}
+                {{ form_errors(upProfilUserFormType.password) }}
+            </div><br>
 {#
-        <div class="upProfileUser-confMdp">
-            {{ form_label(upProfilUserFormType.confirmationMdp) }}
-            {{ form_widget(upProfilUserFormType.confirmationMdp) }}
-            {{ form_errors(upProfilUserFormType.confirmationMdp) }}
-        </div>
-
-        <div class="upProfileUser-photo">
-            {{ form_label(upProfilUserFormType.photo) }}
-            {{ form_widget(upProfilUserFormType.photo) }}
-            {{ form_errors(upProfilUserFormType.photo) }}
-        </div>
+            <div class="upProfileUser-confMdp">
+                {{ form_label(upProfilUserFormType.confirmationMdp) }}
+                {{ form_widget(upProfilUserFormType.confirmationMdp) }}
+                {{ form_errors(upProfilUserFormType.confirmationMdp) }}
+            </div>
 #}
+            <div class="upProfileUser-campus">
+                <label for="exampleFormControlSelect1">Campus : </label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    {% for c in campus %}
+                        <option>
+                            {{ c.nomCampus }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        {#
+            <div class="upProfileUser-photo">
+                {{ form_label(upProfilUserFormType.photo) }}
+                {{ form_widget(upProfilUserFormType.photo, ) }}
+                     {% if form.vars.value.image is not null %}
+                        <img src="{{ asset('upload/dir/' ~ form.vars.value.image) }}" />
+                     {% endif %}
+                {{ form_errors(upProfilUserFormType.photo) }}
+            </div>
+        #}
 
+            {{ form_end(upProfilUserFormType) }}
 
-        {{ form_end(upProfilUserFormType) }}
+        </div>
 
         <div class="upProfileUser-btn">
-            <button type="submit" class="btn">Enregistrer</button>
-            <button type="submit" class="btn">Annuler</button>
+            <button class="recordBtn" type="submit" class="btn">Enregistrer</button>
+            <button class="cancelBtn" type="submit" class="btn">Annuler</button>
         </div>
-    </div>
+
 
 {% endblock %}
