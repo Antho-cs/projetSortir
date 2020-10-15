@@ -25,6 +25,7 @@ class SmokeTest extends WebTestCase
         yield ['/users/update/1'];
         yield ['/event/create'];
         yield ['/event/1'];
+        yield ['/event'];
         yield ['/event/update/1'];
         yield ['/event/delete/1'];
         yield ['/admin/villes'];

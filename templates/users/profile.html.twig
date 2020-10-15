@@ -2,10 +2,10 @@
 
 {% block mainSection %}
 
-    <h2>{{ currentUser.pseudo }}</h2>
+    <h2 class="displayPseudo">{{ currentUser.pseudo }}</h2>
 <div class="sidebyside">
     <div class="side">
-    <img src="https://via.placeholder.com/200x200"> {# //TODO {{ currentUser.url }} #}
+    <img src="{{ currentUser.urlPhoto }}">
     </div>
     <div class="side">
     <b>Prénom: </b>{{ currentUser.prenom }}<br>
