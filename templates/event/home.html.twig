@@ -1,27 +1,39 @@
 {% extends 'layout.html.twig' %}
 
+{% block titrePage %}
+{% endblock %}
+
+
 {% block mainSection %}
-    <div>
+    <div class="pageComplet">
         <div id="infos">
             Date du jour : {{ "now"|date("d/m/Y") }} <br>
             Participant : {{ app.user.Pseudo }}
         </div>
         {{ parent() }}
 
-        <div>
+        <div class="formComplet">
 
+            <div class="formGauche">
+
+            <div class="formTitre">
             <h3>Filtrer les sorties</h3>
-
+            </div>
             <form>
 
                 {# ------------------- Liste deroulante Campus  ----------------------- #}
 
-                <div class="form-group">  {# //TODO  les campus #}
-                    <label for="exampleFormControlSelect1">Campus : </label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
+                <div class="formListCampus">
+                        <label for="exampleFormControlSelect1">Campus : </label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            {% for c in campus %}
+                                <option>
+                                    {{ c.nomCampus }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
 
-                    </select>
                 </div>
 
                 {# -------------------  Barre de recherche ----------------------- #}
@@ -42,6 +54,10 @@
                     <label for="exampleFormControlInput1"> Et :</label>
                     <input type="date" class="form-control" id="exampleFormControlInput1">
                 </div>
+
+
+
+            <div class="formDroit">
 
                 {# -------------------  Checkbox-Group ----------------------- #}
 
@@ -71,13 +87,14 @@
 
                 <button type="submit" class="btn btn-primary mb-2">Rechercher</button>
 
-            </form>
+            </div>
 
+            </form>
 
         </div>
         {# -------------------  Liste Déroulante des Sorties ----------------------- #}
 
-        <div>
+        <div class="listSortie">
             <table>
                 <tr>
                     <th>Nom de la sortie</th>
