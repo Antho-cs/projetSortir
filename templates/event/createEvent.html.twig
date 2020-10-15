@@ -12,7 +12,6 @@
                 <section class="event-creation-form-first-cl">
                     {{ form_row(eventForm.nom) }}
                     {{ form_row(eventForm.descriptionsInfos) }}
-                    {{ form_row(eventForm.etat) }}
                     {{ form_widget(eventForm.lieu) }}
                     <div class="dates">
                         {{ form_row(eventForm.dateDebut) }}
@@ -20,19 +19,11 @@
                     </div>
                     {{ form_row(eventForm.duree) }}
                     {{ form_row(eventForm.nbInscriptionsmax) }}
+                    {{ form_row(eventForm.campus) }}
+                    {{ form_row(eventForm.enregistrer) }}
+                    {{ form_row(eventForm.publier) }}
+                    {{ form_row(eventForm.annuler) }}
 
-                </section>
-                <section class="event-creation-form-second-cl">
-
-
-                </section>
-                <section id="event-creation-btn-save-container">
-                    <div id="event-creation-btn">
-                        {{ form_row(eventForm.urlPhoto) }}
-                    </div>
-                    <div id="event-creation-btn">
-                        {{ form_row(eventForm.save) }}
-                    </div>
                 </section>
                 {{ form_end(eventForm) }}
         </main>

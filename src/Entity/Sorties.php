@@ -51,11 +51,6 @@ class Sorties
     private $descriptionsInfos;
 
     /**
-     * @ORM\Column(type="string", length=250, nullable=true)
-     */
-    private $urlPhoto;
-
-    /**
      * @ORM\OneToMany(targetEntity=Inscriptions::class, mappedBy="sortie")
      */
     private $inscriptions;
@@ -77,6 +72,12 @@ class Sorties
      * @ORM\JoinColumn(nullable=false)
      */
     private $campus;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Participants::class, inversedBy="sortiesCreated")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $organisateur;
 
     public function __construct()
     {
@@ -236,6 +237,18 @@ class Sorties
     public function setCampus(?Campus $campus): self
     {
         $this->campus = $campus;
+
+        return $this;
+    }
+
+    public function getOrganisateur(): ?Participants
+    {
+        return $this->organisateur;
+    }
+
+    public function setOrganisateur(?Participants $organisateur): self
+    {
+        $this->organisateur = $organisateur;
 
         return $this;
     }

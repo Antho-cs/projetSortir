@@ -32,24 +32,13 @@ class EventType extends AbstractType
                 'label' => 'Nombre maximale des participants : '])
             ->add('descriptionsInfos', TextType::class, [
                 'label' => 'Description : '])
-            ->add('etat')
-            ->add('urlPhoto',ButtonType::class, [
-                'label' => 'Ajouter une photo',
-                'attr' =>[
-                    'action'=> '#',
-                    'class' => 'imgLoader'
-                ]])
-            ->add('etat', EntityType::class, [
-                'class' => Etats::class,
-                'choice_label' => 'libelle'])
-            ->add('lieu', LieuType::class)
-            ->add('save', SubmitType::class, [
-                'attr' => ['class' => 'save'],
-            ])
             ->add('campus', EntityType::class, [
                 'class' => Campus::class,
-                'choice_label' => 'nomCampus']);
-
+                'choice_label' => 'nomCampus'])
+            ->add('lieu', LieuType::class)
+            ->add('enregistrer', SubmitType::class, ['label' => 'Enregistrer'])
+            ->add('publier', SubmitType::class, ['label' => 'Publier'])
+            ->add('annuler', SubmitType::class, ['label' => 'Annuler'])
         ;
     }
 

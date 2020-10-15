@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Etats;
 use App\Entity\Lieux;
 use App\Entity\Sorties;
 use App\Form\EventType;
@@ -35,7 +36,6 @@ class EventController extends AbstractController
     public function createEvent(Request $request, EntityManagerInterface $em)
     {
         //créer une entité vide
-        $newLieu = new Lieux();
         $newEvent = new Sorties();
 
         //créer des formulaire
@@ -47,13 +47,51 @@ class EventController extends AbstractController
 
         if($eventForm->isSubmitted() && $eventForm->isValid()){
 
-            //todo manage the photo upload
+            /*
+             * btn enregistrer
+             * set event's state as created
+             * redirect to 'home'
+             * stock the event into a bdd
+             * */
+            if ($eventForm->getClickedButton() === $eventForm->get('enregistrer')){
+                //set created state
+                $newEvent->setEtat($this->getDoctrine()->getRepository(Etats::class)->find(1));
+                $newEvent->setOrganisateur($this->getUser());
 
-            $em->persist($newEvent);
-            $em->flush();
-            $this->addFlash('success', 'La sortie est bien créée!');
+                $em->persist($newEvent);
+                $em->flush();
+                $this->addFlash('success', 'La sortie est bien créée!');
 
-            return $this->render('event/home.html.twig');
+                return $this->render('event/home.html.twig');
+            }
+
+            /*  btn publier
+             * set event's state as open
+             * redirect to 'home'
+             * stock the event into a bdd
+             * */
+            if ($eventForm->getClickedButton() === $eventForm->get('publier')){
+                //set created state
+                $newEvent->setEtat($this->getDoctrine()->getRepository(Etats::class)->find(2));
+                $newEvent->setOrganisateur($this->getUser());
+
+                $em->persist($newEvent);
+                $em->flush();
+                $this->addFlash('success', 'La sortie est bien publiéée!');
+
+                return $this->render('event/home.html.twig');
+            }
+
+            /*
+             * btn annuler
+             * redirect to 'home'
+             * */
+            if ($eventForm->getClickedButton() === $eventForm->get('annuler')){
+
+                $this->addFlash('alert ', 'La sortie est annulée!');
+                return $this->render('event/home.html.twig');
+
+            }
 
         }
         return $this->render('event/createEvent.html.twig', [
