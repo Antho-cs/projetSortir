@@ -7,25 +7,25 @@
             <h1>Créer une sortie</h1>
         </header>
         <main>
-
-                {{ form_start(eventForm) }}
-                <section class="event-creation-form-first-cl">
-                    {{ form_row(eventForm.nom) }}
-                    {{ form_row(eventForm.descriptionsInfos) }}
-                    {{ form_widget(eventForm.lieu) }}
-                    <div class="dates">
-                        {{ form_row(eventForm.dateDebut) }}
-                        {{ form_row(eventForm.dateCloture) }}
-                    </div>
-                    {{ form_row(eventForm.duree) }}
-                    {{ form_row(eventForm.nbInscriptionsmax) }}
-                    {{ form_row(eventForm.campus) }}
+            {{ form_start(eventForm) }}
+            <section class="event-creation-form-first-cl">
+                {{ form_row(eventForm.nom) }}
+                {{ form_row(eventForm.descriptionsInfos) }}
+                {{ form_widget(eventForm.lieu) }}
+                <div class="dates">
+                    {{ form_row(eventForm.dateDebut) }}
+                    {{ form_row(eventForm.dateCloture) }}
+                </div>
+                {{ form_row(eventForm.duree) }}
+                {{ form_row(eventForm.nbInscriptionsmax) }}
+                {{ form_row(eventForm.campus) }}
+                <div class="event-creation-btns-wrapper">
                     {{ form_row(eventForm.enregistrer) }}
                     {{ form_row(eventForm.publier) }}
                     {{ form_row(eventForm.annuler) }}
-
-                </section>
-                {{ form_end(eventForm) }}
+                </div>
+            </section>
+            {{ form_end(eventForm) }}
         </main>
     </div>
 {% endblock %}
