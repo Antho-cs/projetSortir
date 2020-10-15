@@ -2,6 +2,7 @@
 
 {% block mainSection %}
 <div>
+    {{ parent() }}
     <div>
         <p> Date du jour : {{ "now"|date("d/m/Y") }}</p> {# //TODO  Date du jour   #}
         <p> Participant : {{ app.user.Pseudo }}</p>  {# //TODO  Nom du participant  #}

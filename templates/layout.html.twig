@@ -72,6 +72,15 @@
     <div class="hero-container" data-aos="fade-up">
         {% block mainSection %}
         <h1>Bienvenue à Sortir.com</h1>
+
+            {# Affiche flash messages #}
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
         {% endblock %}
     </div>
 </section><!-- End Hero -->
