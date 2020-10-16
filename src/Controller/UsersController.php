@@ -9,6 +9,7 @@ use App\Repository\ParticipantsRepository;
 use Doctrine\ORM\EntityManager;
 use http\Client\Curl\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -41,15 +42,15 @@ class UsersController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $campus = $campusRepository->findAll();
 
-
-        $form = $this->createForm(UpProfileUserFormType::class);
+        $form = $this->createForm(UpProfileUserFormType::class, $participant);
 
         $form ->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $participant = $form->getData();
 
-            if($form->getClikedButton() === $form->get('enregistrer'))
+
+
 
             $em->persist($participant);
             $em->flush();

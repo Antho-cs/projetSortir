@@ -39,6 +39,7 @@ class UpProfileUserFormType extends AbstractType
                     ])
                 ],
             ])
+            ->add
         ;
     }
 
@@ -49,6 +50,7 @@ class UpProfileUserFormType extends AbstractType
             'data_class' => Participants::class,
         ]);
     }
+
 
 
 }

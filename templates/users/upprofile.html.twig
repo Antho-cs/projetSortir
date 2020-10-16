@@ -81,8 +81,8 @@
     </div>
 
     <div class="upProfileUser-btn">
-        <button class="recordBtn" type="submit" class="btn">Enregistrer</button>
-        <button class="cancelBtn" type="reset" class="btn">Annuler</button>
+        <button class="btn recordBtn" type="submit" ><a href={{ path('update_user') }}>Enregistrer</a></button>
+        <button class="btn cancelBtn" type="reset" ><a href={{ path('home')>Annuler</a></button>
     </div>
 
     {{ form_end(upProfilUserFormType) }}
