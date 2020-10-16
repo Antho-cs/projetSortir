@@ -69,8 +69,12 @@
 
 <section id="hero">
     <div class="hero-container" data-aos="fade-up">
+        {% block titrePage %}
+            <h1>Bienvenue à Sortir.com</h1>
+        {%  endblock %}
+
         {% block mainSection %}
-        <h1>Bienvenue à Sortir.com</h1>
+
 
             {# Affiche flash messages #}
             {% for label, messages in app.flashes %}
