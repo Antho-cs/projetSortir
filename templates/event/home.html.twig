@@ -113,17 +113,17 @@
                 </tr>
 
 
-                {# //TODO  Afficher les sorties avec des for #}
+                {# //TODO  Voir les objet/attributs à call #}
                 {% for sortie in sorties %}
                 <tr>
                     <td> {{ sortie.nom}} </td>
                     <td> {{ sortie.getDateDebut() | date ('d-m-Y')}} </td>
                     <td> {{ sortie.getDateCloture() | date ('d-m-Y')}} </td>
-                    <td> {{ sortie.inscriptions.getparticipants.}} / {{ sortie.nbInscriptionsmax}} </td>
-                    <td> {{ sortie.etat}} </td>
-                    <td> {#  TODO Récupérer si l'utilisateur est inscrits ou non #} </td>
-                    <td> {{ sortie.organisateur}} </td>
-                    <td> {# TODO Action à voir #} </td>
+                    <td> {# {{ sortie.inscriptions.getparticipants.}} #}    0  / {{ sortie.nbInscriptionsmax}} </td>
+                    <td> {# {{ sortie.Etats.getLibelle}}  #}</td>
+                    <td>  </td>
+                    <td> {#       {{ sortie.getOrganisateur}}   #} </td>
+                    <td>  </td>
                     {% endfor %}
 
                 </tr>
