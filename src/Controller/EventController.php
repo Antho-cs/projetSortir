@@ -40,7 +40,6 @@ class EventController extends AbstractController
         $sorties = $sortiesRepository->findAll();
 
 
-
         //TODO Ecrire la fonction
 
         return $this->render('event/home.html.twig', ['controller_name' => 'EventController',
@@ -56,14 +55,13 @@ class EventController extends AbstractController
         //créer une entité vide
         $newEvent = new Sorties();
 
-        //créer des formulaire
-       // $lieuForm = $this->createForm(LieuType::class,$newLieu);
+        //créer le formulaire
         $eventForm = $this->createForm(EventType::class, $newEvent);
 
-       // $lieuForm->handleRequest($request);
+        // $lieuForm->handleRequest($request);
         $eventForm->handleRequest($request);
 
-        if($eventForm->isSubmitted() && $eventForm->isValid()){
+        if ($eventForm->isSubmitted() && $eventForm->isValid()) {
 
             /*
              * btn enregistrer
@@ -71,14 +69,14 @@ class EventController extends AbstractController
              * redirect to 'home'
              * stock the event into a bdd
              * */
-            if ($eventForm->getClickedButton() === $eventForm->get('enregistrer')){
+            if ($eventForm->getClickedButton() === $eventForm->get('enregistrer')) {
                 //set created state
                 $newEvent->setEtat($this->getDoctrine()->getRepository(Etats::class)->find(1));
                 $newEvent->setOrganisateur($this->getUser());
 
                 $em->persist($newEvent);
                 $em->flush();
-                $this->addFlash('success', 'La sortie est bien créée!');
+                $this->addFlash('success', 'La sortie est bien crée!');
 
                 return $this->redirectToRoute('home');
             }
@@ -88,14 +86,14 @@ class EventController extends AbstractController
              * redirect to 'home'
              * stock the event into a bdd
              * */
-            if ($eventForm->getClickedButton() === $eventForm->get('publier')){
+            if ($eventForm->getClickedButton() === $eventForm->get('publier')) {
                 //set created state
                 $newEvent->setEtat($this->getDoctrine()->getRepository(Etats::class)->find(2));
                 $newEvent->setOrganisateur($this->getUser());
 
                 $em->persist($newEvent);
                 $em->flush();
-                $this->addFlash('success', 'La sortie est bien publiéée!');
+                $this->addFlash('success', 'La sortie est bien publiée!');
 
                 return $this->redirectToRoute('home');
             }
@@ -104,7 +102,7 @@ class EventController extends AbstractController
              * btn annuler
              * redirect to 'home'
              * */
-            if ($eventForm->getClickedButton() === $eventForm->get('annuler')){
+            if ($eventForm->getClickedButton() === $eventForm->get('annuler')) {
 
                 $this->addFlash('alert ', 'La sortie est annulée!');
                 return $this->render('user/profile.html.twig');
@@ -140,14 +138,14 @@ class EventController extends AbstractController
         // $lieuForm->handleRequest($request);
         $updateEventForm->handleRequest($request);
 
-        if($updateEventForm->isSubmitted() && $updateEventForm->isValid()){
+        if ($updateEventForm->isSubmitted() && $updateEventForm->isValid()) {
 
             /*
              * btn enregistrer
              * update an event
              * redirect to 'home'
              * */
-            if ($updateEventForm->getClickedButton() === $updateEventForm->get('enregistrer')){
+            if ($updateEventForm->getClickedButton() === $updateEventForm->get('enregistrer')) {
                 //set created state
 
                 $em->persist($sortie);
@@ -161,7 +159,7 @@ class EventController extends AbstractController
              * set event's state as open and changed values
              * redirect to 'home'
              * */
-            if ($updateEventForm->getClickedButton() === $updateEventForm->get('publier')){
+            if ($updateEventForm->getClickedButton() === $updateEventForm->get('publier')) {
                 //set created state
                 $sortie->setEtat($this->getDoctrine()->getRepository(Etats::class)->find(2));
                 $em->persist($sortie);
@@ -175,7 +173,7 @@ class EventController extends AbstractController
              * btn supprimer
              * redirect to 'home'
              * */
-            if ($updateEventForm->getClickedButton() === $updateEventForm->get('supprimer')){
+            if ($updateEventForm->getClickedButton() === $updateEventForm->get('supprimer')) {
                 $em->remove($sortie);
                 $em->flush();
                 $this->addFlash('success ', 'La sortie est supprimée!');
@@ -186,7 +184,7 @@ class EventController extends AbstractController
              * btn annuler
              * redirect to 'home'
              * */
-            if ($updateEventForm->getClickedButton() === $updateEventForm->get('retourner')){
+            if ($updateEventForm->getClickedButton() === $updateEventForm->get('retourner')) {
 
                 $this->addFlash('alert ', 'Les modifications de la sortie ne sont pas prises en compte!');
                 return $this->redirectToRoute('home');
@@ -199,16 +197,16 @@ class EventController extends AbstractController
             'idEtatSortie' => $etatSortie
         ]);
     }
+    /*
+     * set event's state to annulée
+     */
 
     /**
-     * @Route("/delete/{id}", name="delete_event")
+     * @Route("/annuler/{id}", name="cancel_event")
      */
-    public function deleteEvent(int $id, SortiesRepository $sortiesRepository)
+
+    public function disableEvent(Sorties $sortie, Request $request, EntityManagerInterface $entity)
     {
-        $sortie = $sortiesRepository->find($id);
-        return $this->render('event/delevent.html.twig', [
-            'controller_name' => 'EventController',
-            'sortie' => $sortie
-        ]);
+
     }
 }
