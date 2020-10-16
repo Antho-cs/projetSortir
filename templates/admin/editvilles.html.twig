@@ -1,1 +1,32 @@
 {% extends 'layout.html.twig' %}
+{% block titrePage %}
+{% endblock %}
+
+{% block mainSection %}
+    {{ form(villesForm) }}
+    {# TODO affichage #}
+    <table class="scroll">
+        <thead>
+        <tr>
+            <th>Ville</th>
+            <th>Code postal</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for v in listeVilles %}
+            <tr>
+                <td>{{ v.nomVille }}</td>
+                <td>{{ v.codePostal }}</td>
+                <td><a href="#">Modifier</a> - {# TODO Rendre fonctionnel #}
+                    <a href="#">Supprimer</a></td> {# TODO Rendre fonctionnel #}
+            </tr>
+        {% endfor %}
+        <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><a href="#">Ajouter</a></td> {# TODO Rendre fonctionnel #}
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -19,6 +19,17 @@ class CampusRepository extends ServiceEntityRepository
         parent::__construct($registry, Campus::class);
     }
 
+    // Vérifier si le nom de la ville contient la string passée en argument
+    public function contains($recherche)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.nomCampus LIKE :r')
+            ->setParameter('r', '%'.$recherche.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Campus[] Returns an array of Campus objects
     //  */

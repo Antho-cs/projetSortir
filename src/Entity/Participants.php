@@ -95,7 +95,7 @@ class Participants implements UserInterface
      * @ORM\OneToMany(targetEntity=Sorties::class, mappedBy="organisateur")
      */
     private $sortiesCreated;
-    
+
     /**
      * @ORM\Column(type="string", length=250, nullable=true)
      */

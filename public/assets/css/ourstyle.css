@@ -1,173 +1,18 @@
-/*Variables*/
-/*classes to extend*/
-.upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+/* Error: Expected identifier.
+ *    ,
+ * 15 | =======
+ *    |  ^
+ *    '
+ *   _homeview.sass 15:2  @use
+ *   ourstyle.sass 3:1    root stylesheet */
 
-#event-creation-btn-save-container, .event-creation-btns-wrapper, .dates {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Expected identifier.\a    \2577 \a 15 \2502  =======\d\a    \2502   ^\a    \2575 \a   _homeview.sass 15:2  @use\a   ourstyle.sass 3:1    root stylesheet";
 }
-
-.wrapper-event-creation, .wrapper-event-creation header, main, form {
-  width: 100%;
-}
-
-.recordBtn, .cancelBtn, .imgLoader {
-  border-radius: 20px;
-  box-shadow: 2px 2px #6c757d;
-  font-family: "Mako", sans-serif;
-  font-weight: bold;
-}
-
-.sidebyside {
-  display: flex;
-}
-
-.side {
-  text-align: left;
-  margin: 3rem;
-}
-
-.side p {
-  margin: 1rem;
-}
-
-.displayPseudo {
-  color: red !important;
-}
-
-#mainBg {
-  background: url("../img/background.jpg") top center;
-  width: 100%;
-  height: 100vh;
-  background-size: cover;
-  position: relative;
-  margin-bottom: -90px;
-}
-
-label, legend {
-  color: #030509;
-  font-weight: bold;
-  font-family: "Mako", sans-serif;
-  text-shadow: 1px 1px white;
-}
-
-h1 {
-  margin: 2rem 0;
-  font-family: "Mako", sans-serif;
-}
-
-.nav-menu a {
-  display: inline-block;
-}
-
-.btn-group-lg > .btn, .btn-lg {
-  margin: 1rem;
-}
-
-.alert {
-  margin-top: 1rem;
-}
-
-#infos {
-  display: flex;
-  justify-content: flex-end;
-  text-align: left;
-}
-
-footer {
-  width: 100%;
-  height: 2.5rem;
-  text-align: center;
-  background-color: #C56183;
-  position: relative;
-  margin: 0;
-  bottom: 0;
-}
-
-button {
-  padding: 10px 15px;
-  font-family: "Mako", sans-serif;
-  font-weight: bolder;
-  letter-spacing: 1px;
-  font-size: 1.5rem;
-}
-
-.event-creation-form-first-cl {
-  width: 50%;
-  padding: 20px 60px;
-  align-items: flex-start;
-}
-
-.event-creation-form-second-cl {
-  width: 50%;
-  padding: 20px 60px;
-  align-items: flex-start;
-}
-
-#event-creation-btn-save-container {
-  width: 100%;
-}
-
-.dates {
-  width: 100%;
-}
-
-.dates fieldset {
-  width: 50%;
-}
-
-/*Btns*/
-.imgLoader {
-  background: #C56183;
-  color: #030509;
-  padding: 7px 20px;
-}
-
-.event-creation-btns-wrapper {
-  padding: 20px 25px;
-}
-
-> .event-creation-btns-wrapper {
-  width: 30%;
-}
-
-.dates {
-  padding: 15px 10px;
-}
-
-> .dates {
-  width: 40%;
-}
-
-/* Nav */
-#event-creation-nav-wrapper {
-  background-color: rgba(197, 97, 131, 0.4) !important;
-}
-
-.form-control {
-  margin: 2px 3px;
-}
-
-.upProfileUser {
-  width: 50%;
-  padding: 20px 60px;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.pageComplet {
-  width: 100%;
-}
-
-.formComplet {
-  width: 100%;
-}
-
-/*# sourceMappingURL=ourstyle.css.map */

@@ -19,6 +19,17 @@ class VillesRepository extends ServiceEntityRepository
         parent::__construct($registry, Villes::class);
     }
 
+    // Vérifier si le nom de la ville contient la string passée en argument
+    public function contains($recherche)
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.nomVille LIKE :r')
+            ->setParameter('r', '%'.$recherche.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Villes[] Returns an array of Villes objects
     //  */

@@ -1,1 +1,30 @@
 {% extends 'layout.html.twig' %}
+{% block titrePage %}
+{% endblock %}
+
+{% block mainSection %}
+    {{ form(campusForm) }}
+    {# TODO affichage #}
+    <table class="scroll">
+        <thead>
+        <tr>
+            <th>Campus</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for c in listeCampus %}
+            <tr>
+                <td>{{ c.nomCampus }}</td>
+                <td><a href="#">Modifier</a> - {# TODO Rendre fonctionnel #}
+                    <a href="#">Supprimer</a></td> {# TODO Rendre fonctionnel #}
+            </tr>
+        {% endfor %}
+        <tr>
+            <td><input type="text"></td>
+            <td><input type="text"></td>
+            <td><a href="#">Ajouter</a></td> {# TODO Rendre fonctionnel #}
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
