@@ -15,7 +15,7 @@
                 {{ form_row(eventForm.descriptionsInfos) }}
                 {{ form_widget(eventForm.lieu) }}
                 <div class="dates">
-                    {{ form_row(eventForm.dateDebut) }}
+                    {{ form_row(eventForm.dateDebut, {'attr': {'type': 'datetime-local'}}) }}
                     {{ form_row(eventForm.dateCloture) }}
                 </div>
                 {{ form_row(eventForm.duree) }}
