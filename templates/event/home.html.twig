@@ -6,11 +6,11 @@
 
 {% block mainSection %}
     <div class="pageComplet">
-        <div id="infos">
+        <div class="infos">
             Date du jour : {{ "now"|date("d/m/Y") }} <br>
             Participant : {{ app.user.Pseudo }}
         </div>
-        {{ parent() }}
+        {#  {{ parent() }}     #}
 
         <div class="formComplet">
 
@@ -21,7 +21,7 @@
                 </div>
 
 
-                <form>
+
 
                     {# ------------------- Liste deroulante Campus  ----------------------- #}
 
@@ -38,26 +38,29 @@
 
 
 
-            {# -------------------  Barre de recherche ----------------------- #}
+                    {# -------------------  Barre de recherche ----------------------- #}
 
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Le nom de la sortie contient :</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1">
+                    <div class="formSearch">
+                        <label for="exampleFormControlInput1">Le nom de la sortie contient :</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1">
+                    </div>
+
+                    {# -------------------  Date ----------------------- #}
+                    <div class="formDate">
+                        <div class="formDate1">
+                            <label for="exampleFormControlInput1">Entre :</label>
+                            <input type="date" class="form-control" id="exampleFormControlInput1">
+                        </div>
+
+                        <div class="formDate2">
+                            <label for="exampleFormControlInput1"> Et :</label>
+                            <input type="date" class="form-control" id="exampleFormControlInput1">
+                        </div>
+
+                    </div>
+
+
             </div>
-
-            {# -------------------  Date ----------------------- #}
-
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Entre :</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlInput1"> Et :</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1">
-            </div>
-
-
 
             <div class="formDroit">
 
@@ -109,10 +112,18 @@
                     <th>Actions</th>
                 </tr>
 
-                <tr>
-                    {# //TODO  Afficher les sorties avec des for #}
-                    <td> {# Contenu des sorties #} </td>
 
+                    {# //TODO  Afficher les sorties avec des for #}
+                     {% for sortie in sorties %}
+                <tr>
+                    <td> {{ sortie.nom}} </td>
+                    <td> {{ sortie.dateDebut}} </td>
+                    <td> {{ sortie.dateCloture}} </td>
+                    <td> {{ sortie.inscriptions.participants}} / {{ sortie.nbInscriptionsmax}} </td>
+                    <td> {{ sortie.etat}} </td>
+                    <td> {#  TODO Récupérer si l'utilisateur est inscrits ou non #} </td>
+                    <td> {{ sortie.organisateur}} </td>
+                    <td> {# TODO Action à voir #} </td>
 
                 </tr>
 

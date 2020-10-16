@@ -1,13 +1,14 @@
+@charset "UTF-8";
 /*Variables*/
 /*classes to extend*/
-.upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
+.formComplet, .upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-#event-creation-btn-save-container, .event-creation-btns-wrapper, .dates {
+.formDate, #event-creation-btn-save-container, .event-creation-btns-wrapper, .dates {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -23,6 +24,10 @@
   box-shadow: 2px 2px #6c757d;
   font-family: "Mako", sans-serif;
   font-weight: bold;
+}
+
+.pageComplet {
+  padding-bottom: 10%;
 }
 
 .sidebyside {
@@ -167,8 +172,46 @@ button {
   width: 100%;
 }
 
+.infos {
+  text-align: center;
+}
+
 .formComplet {
   width: 100%;
+}
+
+/***** Form à Gauche *****/
+.formGauche {
+  width: 40%;
+}
+
+.formTitre {
+  width: 100%;
+}
+
+.formListCampus {
+  width: 100%;
+}
+
+.formSearch {
+  width: 100%;
+}
+
+.formDate {
+  width: 100%;
+}
+
+.formDate1 {
+  width: 50%;
+}
+
+.formDate2 {
+  width: 50%;
+}
+
+/***** Form à Droite *****/
+.formDroit {
+  width: 50%;
 }
 
 /*# sourceMappingURL=ourstyle.css.map */
