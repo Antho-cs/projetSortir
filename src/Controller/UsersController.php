@@ -41,12 +41,15 @@ class UsersController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $campus = $campusRepository->findAll();
 
+
         $form = $this->createForm(UpProfileUserFormType::class);
 
         $form ->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $participant = $form->getData();
+
+            if($form->getClikedButton() === $form->get('enregistrer'))
 
             $em->persist($participant);
             $em->flush();
@@ -60,4 +63,7 @@ class UsersController extends AbstractController
             'upProfilUserFormType' => $form->createView(), 'campus' => $campus
         ]);
     }
+
+
+
 }
