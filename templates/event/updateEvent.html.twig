@@ -1,0 +1,40 @@
+{% extends 'layoutDisplay.html.twig' %}
+
+{% block title %}
+        Modifier une sortie
+{% endblock %}
+{% block main %}
+    <div class="wrapper-event-creation">
+        <header>
+            <h1>Modifier la sortie</h1>
+        </header>
+        <main>
+            {{ form_start(updateSortieForm) }}
+            <section class="event-creation-form-first-cl">
+                {{ form_row(updateSortieForm.nom) }}
+                {{ form_row(updateSortieForm.descriptionsInfos) }}
+                {{ form_widget(updateSortieForm.lieu) }}
+                <div class="dates">
+                    {{ form_row(updateSortieForm.dateDebut) }}
+                    {{ form_row(updateSortieForm.dateCloture) }}
+                </div>
+                {{ form_row(updateSortieForm.duree) }}
+                {{ form_row(updateSortieForm.nbInscriptionsmax) }}
+                {{ form_row(updateSortieForm.campus) }}
+                <div class="event-creation-btns-wrapper">
+                    {{ form_row(updateSortieForm.enregistrer) }}
+                      {# to display if the event isn't published #}
+                    {% if idEtatSortie == 1 %}
+                        {{ form_row(updateSortieForm.publier) }}
+                    {% else %}
+                        {{ form_row(updateSortieForm.publier, {'attr': {'style': 'display:hidden'}}) }}
+                    {% endif %}
+                    {{ form_row(updateSortieForm.supprimer) }}
+                    {{ form_row(updateSortieForm.retourner) }}
+                </div>
+            </section>
+            {{ form_end(updateSortieForm) }}
+        </main>
+    </div>
+
+{% endblock %}

@@ -25,31 +25,32 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" id="event-creation-nav-wrapper">
             <a class="navbar-brand" href="#">Sortir.com</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    {# pages accessible to admin #}
-                    {% if is_granted("ROLE_ADMIN") %}
+            <div class="nav-item-wrapper">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        {# pages accessible to admin #}
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('edit_villes') }}">Ville</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('edit_campus') }}">Campus</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('edit_villes') }}">Ville</a>
+                            <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('edit_campus') }}">Campus</a>
+                            <a class="nav-link" href="#">Mon profile</a>
                         </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('home') }}">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Mon profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
-                    </li>
-
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav> <!-- End Nav -->
     </header><!-- End Header -->

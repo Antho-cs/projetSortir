@@ -18,7 +18,7 @@
   width: 100%;
 }
 
-.recordBtn, .cancelBtn, .save, .imgLoader {
+.recordBtn, .cancelBtn, .imgLoader {
   border-radius: 20px;
   box-shadow: 2px 2px #6c757d;
   font-family: "Mako", sans-serif;
@@ -59,7 +59,7 @@ label, legend {
 }
 
 h1 {
-  margin: 20px 0;
+  margin: 2rem 0;
   font-family: "Mako", sans-serif;
 }
 
@@ -83,6 +83,7 @@ h1 {
 
 footer {
   width: 100%;
+  height: 2.5rem;
   text-align: center;
   background-color: #C56183;
   position: relative;
@@ -123,12 +124,6 @@ button {
 }
 
 /*Btns*/
-.save {
-  padding: 7px 65px;
-  color: #030509;
-  background: #D7EAFB;
-}
-
 .imgLoader {
   background: #C56183;
   color: #030509;
@@ -154,6 +149,10 @@ button {
 /* Nav */
 #event-creation-nav-wrapper {
   background-color: rgba(197, 97, 131, 0.4) !important;
+}
+
+.form-control {
+  margin: 2px 3px;
 }
 
 .upProfileUser {

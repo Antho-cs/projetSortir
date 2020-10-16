@@ -7,6 +7,7 @@ use App\Entity\Lieux;
 use App\Entity\Sorties;
 use App\Form\EventType;
 use App\Form\LieuType;
+use App\Form\UpdateEventType;
 use App\Repository\CampusRepository;
 use App\Repository\SortiesRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -93,13 +94,14 @@ class EventController extends AbstractController
             if ($eventForm->getClickedButton() === $eventForm->get('annuler')){
 
                 $this->addFlash('alert ', 'La sortie est annulée!');
-                return $this->redirectToRoute('home');
+                return $this->render('user/profile.html.twig');
             }
         }
         return $this->render('event/createEvent.html.twig', [
             'eventForm' => $eventForm->createView(),
         ]);
     }
+
 
     /**
      * @Route("/{id}", name="event")
@@ -116,12 +118,72 @@ class EventController extends AbstractController
     /**
      * @Route("/update/{id}", name="update_event")
      */
-    public function updateEvent(int $id, SortiesRepository $sortiesRepository)
+    public function updateEvent(Sorties $sortie, SortiesRepository $sortiesRepository, Request $request, EntityManagerInterface $em)
     {
-        $sortie = $sortiesRepository->find($id);
-        return $this->render('event/upevent.html.twig', [
-            'controller_name' => 'EventController',
-            'sortie' => $sortie
+        //get state's id and put it into the twig for display or nor the btn publier
+        $etatSortie = $sortie->getEtat()->getId();
+        $updateEventForm = $this->createForm(UpdateEventType::class, $sortie);
+
+        // $lieuForm->handleRequest($request);
+        $updateEventForm->handleRequest($request);
+
+        if($updateEventForm->isSubmitted() && $updateEventForm->isValid()){
+
+            /*
+             * btn enregistrer
+             * update an event
+             * redirect to 'home'
+             * */
+            if ($updateEventForm->getClickedButton() === $updateEventForm->get('enregistrer')){
+                //set created state
+
+                $em->persist($sortie);
+                $em->flush();
+                $this->addFlash('success', 'Les modifications sont bien enregistrées!');
+
+                return $this->redirectToRoute('home');
+            }
+
+            /*  btn publier just for non-published events
+             * set event's state as open and changed values
+             * redirect to 'home'
+             * */
+            if ($updateEventForm->getClickedButton() === $updateEventForm->get('publier')){
+                //set created state
+                $sortie->setEtat($this->getDoctrine()->getRepository(Etats::class)->find(2));
+                $em->persist($sortie);
+                $em->flush();
+                $this->addFlash('success', 'La sortie est bien publiée!');
+
+                return $this->redirectToRoute('home');
+            }
+
+            /*
+             * btn supprimer
+             * redirect to 'home'
+             * */
+            if ($updateEventForm->getClickedButton() === $updateEventForm->get('supprimer')){
+                $em->remove($sortie);
+                $em->flush();
+                $this->addFlash('success ', 'La sortie est supprimée!');
+                return $this->redirectToRoute('home');
+            }
+
+            /*
+             * btn annuler
+             * redirect to 'home'
+             * */
+            if ($updateEventForm->getClickedButton() === $updateEventForm->get('retourner')){
+
+                $this->addFlash('alert ', 'Les modifications de la sortie ne sont pas prises en compte!');
+                return $this->redirectToRoute('home');
+            }
+
+        }
+
+        return $this->render('event/updateEvent.html.twig', [
+            'updateSortieForm' => $updateEventForm->createView(),
+            'idEtatSortie' => $etatSortie
         ]);
     }
 
