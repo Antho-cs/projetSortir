@@ -66,7 +66,7 @@ class EventController extends AbstractController
                 $em->flush();
                 $this->addFlash('success', 'La sortie est bien créée!');
 
-                return $this->render('event/home.html.twig');
+                return $this->redirectToRoute('home');
             }
 
             /*  btn publier
@@ -83,7 +83,7 @@ class EventController extends AbstractController
                 $em->flush();
                 $this->addFlash('success', 'La sortie est bien publiéée!');
 
-                return $this->render('event/home.html.twig');
+                return $this->redirectToRoute('home');
             }
 
             /*
@@ -93,7 +93,7 @@ class EventController extends AbstractController
             if ($eventForm->getClickedButton() === $eventForm->get('annuler')){
 
                 $this->addFlash('alert ', 'La sortie est annulée!');
-                return $this->render('event/home.html.twig');
+                return $this->redirectToRoute('home');
             }
         }
         return $this->render('event/createEvent.html.twig', [
