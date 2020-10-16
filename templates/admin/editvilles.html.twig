@@ -4,7 +4,7 @@
 
 {% block mainSection %}
     {{ form(villesForm) }}
-    {# TODO affichage #}
+    {{ form_start(addVillesForm) }}
     <table class="scroll">
         <thead>
         <tr>
@@ -23,10 +23,11 @@
             </tr>
         {% endfor %}
         <tr>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><a href="#">Ajouter</a></td> {# TODO Rendre fonctionnel #}
+            <td>{{ form_widget(addVillesForm.nomVille) }}</td>
+            <td>{{ form_widget(addVillesForm.codePostal) }}</td>
+            <td>{{ form_rest(addVillesForm) }}</td>
         </tr>
         </tbody>
     </table>
+    {{ form_end(addVillesForm) }}
 {% endblock %}

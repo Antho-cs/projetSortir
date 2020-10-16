@@ -4,7 +4,7 @@
 
 {% block mainSection %}
     {{ form(campusForm) }}
-    {# TODO affichage #}
+    {{ form_start(addCampusForm) }}
     <table class="scroll">
         <thead>
         <tr>
@@ -21,10 +21,10 @@
             </tr>
         {% endfor %}
         <tr>
-            <td><input type="text"></td>
-            <td><input type="text"></td>
-            <td><a href="#">Ajouter</a></td> {# TODO Rendre fonctionnel #}
+                <td>{{ form_widget(addCampusForm.nomCampus) }}</td>
+                <td>{{ form_rest(addCampusForm) }}</td>
         </tr>
         </tbody>
     </table>
+    {{ form_end(addCampusForm) }}
 {% endblock %}
