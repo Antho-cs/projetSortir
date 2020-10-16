@@ -10,7 +10,7 @@
             Date du jour : {{ "now"|date("d/m/Y") }} <br>
             Participant : {{ app.user.Pseudo }}
         </div>
-        {#  {{ parent() }}     #}
+        {{ parent() }}
 
         <div class="formComplet">
 
@@ -23,41 +23,41 @@
 
 
 
-                    {# ------------------- Liste deroulante Campus  ----------------------- #}
+                {# ------------------- Liste deroulante Campus  ----------------------- #}
 
-                    <div class="formListCampus">
-                        <label for="exampleFormControlSelect1">Campus : </label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            {% for c in campus %}
-                                <option>
-                                    {{ c.nomCampus }}
-                                </option>
-                            {% endfor %}
-                        </select>
+                <div class="formListCampus">
+                    <label for="exampleFormControlSelect1">Campus : </label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        {% for c in campus %}
+                            <option>
+                                {{ c.nomCampus }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+
+                {# -------------------  Barre de recherche ----------------------- #}
+
+                <div class="formSearch">
+                    <label for="exampleFormControlInput1">Le nom de la sortie contient :</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1">
+                </div>
+
+                {# -------------------  Date ----------------------- #}
+                <div class="formDate">
+                    <div class="formDate1">
+                        <label for="exampleFormControlInput1">Entre :</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1">
                     </div>
 
-
-
-                    {# -------------------  Barre de recherche ----------------------- #}
-
-                    <div class="formSearch">
-                        <label for="exampleFormControlInput1">Le nom de la sortie contient :</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1">
+                    <div class="formDate2">
+                        <label for="exampleFormControlInput1"> Et :</label>
+                        <input type="date" class="form-control" id="exampleFormControlInput1">
                     </div>
 
-                    {# -------------------  Date ----------------------- #}
-                    <div class="formDate">
-                        <div class="formDate1">
-                            <label for="exampleFormControlInput1">Entre :</label>
-                            <input type="date" class="form-control" id="exampleFormControlInput1">
-                        </div>
-
-                        <div class="formDate2">
-                            <label for="exampleFormControlInput1"> Et :</label>
-                            <input type="date" class="form-control" id="exampleFormControlInput1">
-                        </div>
-
-                    </div>
+                </div>
 
 
             </div>
@@ -113,26 +113,27 @@
                 </tr>
 
 
-                    {# //TODO  Afficher les sorties avec des for #}
-                     {% for sortie in sorties %}
+                {# //TODO  Afficher les sorties avec des for #}
+                {% for sortie in sorties %}
                 <tr>
                     <td> {{ sortie.nom}} </td>
-                    <td> {{ sortie.dateDebut}} </td>
-                    <td> {{ sortie.dateCloture}} </td>
-                    <td> {{ sortie.inscriptions.participants}} / {{ sortie.nbInscriptionsmax}} </td>
+                    <td> {{ sortie.getDateDebut() | date ('d-m-Y')}} </td>
+                    <td> {{ sortie.getDateCloture() | date ('d-m-Y')}} </td>
+                    <td> {{ sortie.inscriptions.getparticipants.}} / {{ sortie.nbInscriptionsmax}} </td>
                     <td> {{ sortie.etat}} </td>
                     <td> {#  TODO Récupérer si l'utilisateur est inscrits ou non #} </td>
                     <td> {{ sortie.organisateur}} </td>
                     <td> {# TODO Action à voir #} </td>
+                    {% endfor %}
 
                 </tr>
-{% endfor %}
+
             </table>
 
         </div>
         {# -------------------  Bouton Création d'une sortie ----------------------- #}
         <div>
-            <button type="submit" class="btn btn-primary mb-2"><a id="btn-event-creation" href="{{ path('create_event') }}">Créer une sortie</a></button>
+            <button type="submit" class="btn btn-primary mb-2"><a href="{{ path('create_event') }}">Créer une sortie</a></button>
 
         </div>
 

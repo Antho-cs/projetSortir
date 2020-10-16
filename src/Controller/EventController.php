@@ -25,13 +25,26 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home(CampusRepository $campusRepository)
+    public function home(CampusRepository $campusRepository, SortiesRepository $sortiesRepository)
     {
+
+        $sortie = new Sorties();
+
+        $dateDebut = $sortie->getDateDebut(new \DateTime());
+        $dateCloture = $sortie->setDateCloture(new \DateTime());
+
+
+        // Tout les campus //
         $campus = $campusRepository->findAll();
+        // Toutes les sorties //
+        $sorties = $sortiesRepository->findAll();
+
+
+
         //TODO Ecrire la fonction
 
         return $this->render('event/home.html.twig', ['controller_name' => 'EventController',
-            'campus' => $campus
+            'campus' => $campus, 'sorties' => $sorties
         ]);
     }
 
