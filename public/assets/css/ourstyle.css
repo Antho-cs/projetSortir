@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*Variables*/
 /*classes to extend*/
-#infos, .upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
+.formComplet, #infos, .listSortie, .upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -149,11 +149,13 @@ button {
 }
 
 .infos {
+  margin-top: 5%;
   text-align: center;
 }
 
 .formComplet {
   width: 100%;
+  margin-top: 3%;
 }
 
 #infos {
@@ -196,6 +198,41 @@ button {
 /***** Form à Droite *****/
 .formDroit {
   width: 50%;
+  padding-top: 4rem;
+}
+
+> .formDroit {
+  width: 100%;
+}
+
+/***** Liste des sorties *****/
+.listSortie {
+  overflow: auto;
+  margin-top: 5%;
+}
+
+.btnCreaEvent {
+  margin-top: 3%;
+}
+
+table, tr, td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #b0ced7;
+}
+
+table thead {
+  background-color: bisque;
+}
+
+table a {
+  color: black;
+}
+table a:hover {
+  color: #718C00;
 }
 
 .sidebyside {
