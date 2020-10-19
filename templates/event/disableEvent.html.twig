@@ -1,0 +1,39 @@
+{% extends 'layoutDisplay.html.twig' %}
+
+{% block title %}Annuler la sortie{% endblock %}
+{% block titrePage %}
+{% endblock %}
+{% block main %}
+    <div class="wrapper-event-creation">
+        <header>
+            <h1>Annuler la sortie</h1>
+        </header>
+        <main>
+            <section class="disable-event-wrapper">
+                <div class="disable-event-information">
+                    <article>
+                        <span class="disable-event-lbl">Nom de la sortie : </span><span class="disable-event-input">{{ sortie.nom }}</span>
+                    </article>
+                    <article>
+                        <span class="disable-event-lbl">Date de la sortie : </span><span class="disable-event-input">{{ sortie.dateDebut|date("m/d/Y") }}</span>
+                    </article>
+                    <article>
+                        <span class="disable-event-lbl">Campus : </span><span class="disable-event-input">{{ sortie.campus.nomCampus }}</span>
+                    </article>
+                    <article>
+                        <span class="disable-event-lbl">Lieu : </span><span class="disable-event-input">{{ sortie.lieu.nomLieu }}</span>
+                    </article>
+                </div>
+                {{ form_start(disableEventForm) }}
+                <div class="disable-event-motif">
+                    {{ form_row(disableEventForm.motifAnnulation) }}
+                </div>
+                <div class="disable-event-btns">
+                    {{ form_row(disableEventForm.valider) }}
+                    {{ form_row(disableEventForm.retour) }}
+                </div>
+                {{ form_end(disableEventForm) }}
+            </section>
+        </main>
+    </div>
+{% endblock %}

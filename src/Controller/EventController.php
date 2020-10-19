@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Etats;
 use App\Entity\Lieux;
 use App\Entity\Sorties;
+use App\Form\DisableEventType;
 use App\Form\EventType;
 use App\Form\LieuType;
 use App\Form\UpdateEventType;
@@ -117,12 +118,10 @@ class EventController extends AbstractController
     /**
      * @Route("/{id}", name="event")
      */
-    public function event(int $id, SortiesRepository $sortiesRepository)
+    public function event(Sorties $sortie, SortiesRepository $sortiesRepository)
     {
-        $sortie = $sortiesRepository->find($id);
         return $this->render('event/event.html.twig', [
             'controller_name' => 'EventController',
-            'sortie' => $sortie
         ]);
     }
 
@@ -135,7 +134,6 @@ class EventController extends AbstractController
         $etatSortie = $sortie->getEtat()->getId();
         $updateEventForm = $this->createForm(UpdateEventType::class, $sortie);
 
-        // $lieuForm->handleRequest($request);
         $updateEventForm->handleRequest($request);
 
         if ($updateEventForm->isSubmitted() && $updateEventForm->isValid()) {
@@ -194,7 +192,8 @@ class EventController extends AbstractController
 
         return $this->render('event/updateEvent.html.twig', [
             'updateSortieForm' => $updateEventForm->createView(),
-            'idEtatSortie' => $etatSortie
+            'idEtatSortie' => $etatSortie,
+            'sortie' => $sortie
         ]);
     }
     /*
@@ -204,9 +203,42 @@ class EventController extends AbstractController
     /**
      * @Route("/annuler/{id}", name="cancel_event")
      */
-
     public function disableEvent(Sorties $sortie, Request $request, EntityManagerInterface $entity)
     {
+        $disableEventForm = $this->createForm(DisableEventType::class, $sortie);
+
+        $disableEventForm->handleRequest($request);
+
+        /*
+         * btn valider
+         * set event's state to annulée
+         * redirect to home with message flash
+         * */
+        if ($disableEventForm->getClickedButton() === $disableEventForm->get('valider')) {
+            $sortie->setMotifAnnulation();
+
+            $entity->persist($sortie);
+            $entity->flush();
+
+            $this->addFlash('success ', 'La sortie est annulée!');
+
+            return $this->redirectToRoute('home');
+        }
+
+        /*
+        * btn Retour
+         * without updating
+        * redirect to home with message flash
+        * */
+        if ($disableEventForm->getClickedButton() === $disableEventForm->get('retour')) {
+            $this->addFlash('alert ', 'Les changements ne sont pas pris en compte!');
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('event/disableEvent.html.twig', [
+            'disableEventForm' => $disableEventForm->createView(),
+            'sortie' => $sortie
+        ]);
 
     }
 }
