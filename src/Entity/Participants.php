@@ -41,7 +41,7 @@ class Participants implements UserInterface
 
     /**
      *@Assert\NotBlank(message="SVP renseignez le mot de passe!")
-     *@Assert\Regex("/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*$/g")
+     *@Assert\Regex(pattern="/(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?=.*[A-Z])(?=.*[a-z]).*$/")
      * @var string The hashed password
      * @ORM\Column(type="string")
      */

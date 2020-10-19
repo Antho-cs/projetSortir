@@ -49,9 +49,7 @@ class UpProfileUserFormType extends AbstractType
             ->add('retour', SubmitType::class, [
                 'label'=> 'Retour'
             ]);
-
     }
-
 
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -59,7 +57,4 @@ class UpProfileUserFormType extends AbstractType
             'data_class' => Participants::class,
         ]);
     }
-
-
-
 }

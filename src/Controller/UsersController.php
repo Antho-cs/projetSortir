@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -38,10 +39,11 @@ class UsersController extends AbstractController
     /**
      * @Route("/update/{id}", priority="10", name="update_user")
      */
-    public function updateUser(Participants $participant, Request $request, CampusRepository $campusRepository)
+    public function updateUser(Participants $participant, Request $request, CampusRepository $campusRepository, UserPasswordEncoderInterface $encoder)
     {
         $em = $this->getDoctrine()->getManager();
         $campus = $campusRepository->findAll();
+
 
 
         $form = $this->createForm(UpProfileUserFormType::class, $participant);
@@ -51,7 +53,9 @@ class UsersController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
             //btn enregistrer
             if($form->getClickedButton() === $form->get('enregistrer')) {
-
+                $password =$form['password']->getData();;
+                $encoded = $encoder->encodePassword($participant, $password);
+                $participant->setPassword($encoded);
             $em->persist($participant);
             $em->flush();
             $this->addFlash('success', 'Votre profil a bien été mis à jour!');
@@ -68,7 +72,4 @@ class UsersController extends AbstractController
             'upProfilUserFormType' => $form->createView(), 'campus' => $campus
         ]);
     }
-
-
-
 }

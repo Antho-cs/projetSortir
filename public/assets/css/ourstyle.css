@@ -15,7 +15,7 @@
   justify-content: space-around;
 }
 
-.wrapper-event-creation, .wrapper-event-creation header, main, form {
+.wrapper-event-creation header, main, form {
   width: 100%;
 }
 
@@ -44,10 +44,6 @@
   background-size: cover;
   position: relative;
   margin-bottom: -90px;
-}
-
-main {
-  padding-bottom: 4.4rem;
 }
 
 label, legend {
@@ -102,7 +98,6 @@ button {
   display: flex;
   justify-content: space-between !important;
   background-color: #FFFFFF !important;
-  padding: 2rem 4rem;
 }
 
 .nav-item {
@@ -116,8 +111,16 @@ button {
 .point {
   font-weight: bold;
   color: #0069B9;
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: "Pacifico", cursive;
+}
+
+.point-logo {
+  color: #0069B9;
+}
+
+.wrapper-event-creation {
+  width: 50%;
 }
 
 .event-creation-form-first-cl {
@@ -199,10 +202,21 @@ button {
 
 .form-control {
   margin: 2px 3px;
+  /*Picture*/
+}
+
+.disable-event-asset {
+  height: 100vh;
+  width: 50%;
+}
+
+.disable-event-asset img {
+  height: 100%;
+  position: absolute;
 }
 
 .upProfileUser {
-  width: 50%;
+  width: 30%;
   padding: 20px 60px;
   align-items: flex-start;
   justify-content: center;
@@ -318,7 +332,7 @@ table a:hover {
 
 /*Infos*/
 .disable-event-information {
-  font-size: 2rem;
+  font-size: 1rem;
   font-family: "Mako", sans-serif;
 }
 

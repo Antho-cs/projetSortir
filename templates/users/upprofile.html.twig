@@ -1,61 +1,27 @@
 {% extends 'layout.html.twig' %}
+
 {% block titrePage %}
 {% endblock %}
+
 {% block mainSection %}
-    <link rel="photo" href="{{ asset('https://via.placeholder.com/150') }}">
+
+
     <h1>Mon profil</h1>
 
     <div class="upProfileUser">
 
         {{ form_start(upProfilUserFormType) }}
 
-        <div class="upProfileUser-pseudo">
-            {{ form_label(upProfilUserFormType.Pseudo) }}
-            {{ form_widget(upProfilUserFormType.Pseudo, {'attr' : {'placeholder': app.user.Pseudo }}) }}
-            {{ form_errors(upProfilUserFormType.Pseudo) }}
-        </div>
+        <div>
+            {{ form_row(upProfilUserFormType.Pseudo, {'attr' : {'placeholder': app.user.Pseudo }}) }}
+            {{ form_row(upProfilUserFormType.prenom, {'attr' : {'placeholder': app.user.prenom }}) }}
+            {{ form_row(upProfilUserFormType.nom, {'attr' : {'placeholder': app.user.nom }}) }}
+            {{ form_row(upProfilUserFormType.telephone, {'attr' : {'placeholder': app.user.telephone }}) }}
+            {{ form_row(upProfilUserFormType.mail, {'attr' : {'placeholder': app.user.mail }}) }}
+            {{ form_row(upProfilUserFormType.password.first) }}
+            {{ form_row(upProfilUserFormType.password.second) }}
 
-        <div class="upProfileUser-prenom">
-            {{ form_label(upProfilUserFormType.prenom) }}
-            {{ form_widget(upProfilUserFormType.prenom, {'attr' : {'placeholder': app.user.prenom }}) }}
-            {{ form_errors(upProfilUserFormType.prenom) }}
-        </div>
-
-        <div class="upProfileUser-nom">
-            {{ form_label(upProfilUserFormType.nom) }}
-            {{ form_widget(upProfilUserFormType.nom, {'attr' : {'placeholder': app.user.nom }}) }}
-            {{ form_errors(upProfilUserFormType.nom) }}
-        </div>
-
-        <div class="upProfileUser-tel">
-            {{ form_label(upProfilUserFormType.telephone) }}
-            {{ form_widget(upProfilUserFormType.telephone, {'attr' : {'placeholder': app.user.telephone }}) }}
-            {{ form_errors(upProfilUserFormType.telephone) }}
-        </div>
-
-        <div class="upProfileUser-mail">
-            {{ form_label(upProfilUserFormType.mail) }}
-            {{ form_widget(upProfilUserFormType.mail, {'attr' : {'placeholder': app.user.mail }}) }}
-            {{ form_errors(upProfilUserFormType.mail) }}
-        </div>
-
-        <div class="upProfileUser-password">
-            {{ form_label(upProfilUserFormType.password.first) }}
-            {{ form_widget(upProfilUserFormType.password.first) }}
-            {{ form_errors(upProfilUserFormType.password.first) }}
-        </div><br>
-
-        <div class="upProfileUser-confPassword">
-            {{ form_label(upProfilUserFormType.password.second) }}
-            {{ form_widget(upProfilUserFormType.password.second) }}
-            {{ form_errors(upProfilUserFormType.password.second) }}
-        </div>
-
-
-
-
-
-        <div class="upProfileUser-campus">
+            <div class="upProfileUser_campus">
             <label for="exampleFormControlSelect1">Campus</label>
             <select class="form-control" id="exampleFormControlSelect1">
                 {% for c in campus %}
@@ -64,25 +30,21 @@
                     </option>
                 {% endfor %}
             </select>
+            </div>
+
         </div>
 
-        <div class="upProfileUser-photo">
-            {{ form_label(upProfilUserFormType.photo) }}
-            {{ form_widget(upProfilUserFormType.photo, ) }}
-            {#  {% if form.vars.value.image is not null %}
-                        <img src="{{ asset('upload/dir/' ~ form.vars.value.image) }}" />
-                     {% endif %}#}
-            {{ form_errors(upProfilUserFormType.photo) }}
+        <div class="side">
+            {{ form_label(upProfilUserFormType.photo)}}
+            <link rel="photo" href="{{ asset('https://via.placeholder.com/150') }}">
+            {{ form_widget(upProfilUserFormType.photo) }}
         </div>
 
+        <div class="upProfileUser-btn">
+            {{ form_row(upProfilUserFormType.enregistrer) }}
+            {{ form_row(upProfilUserFormType.retour) }}
+        </div>
 
-
-
-    </div>
-
-    <div class="upProfileUser-btn">
-        {{ form_row(upProfilUserFormType.enregistrer) }}
-        {{ form_row(upProfilUserFormType.retour) }}
     </div>
 
     {{ form_end(upProfilUserFormType) }}
