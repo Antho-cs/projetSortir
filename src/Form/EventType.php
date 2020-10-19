@@ -37,7 +37,9 @@ class EventType extends AbstractType
                 'class' => Campus::class,
                 'choice_label' => 'nomCampus'])
             ->add('lieu', LieuType::class)
-            ->add('enregistrer', SubmitType::class, ['label' => 'Enregistrer'])
+            ->add('enregistrer', SubmitType::class, [
+                'label' => 'Enregistrer'
+            ])
             ->add('publier', SubmitType::class, ['label' => 'Publier'])
             ->add('annuler', SubmitType::class, ['label' => 'Annuler'])
         ;

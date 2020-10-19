@@ -1,12 +1,16 @@
 {% extends 'layoutDisplay.html.twig' %}
 
+{% block timePickerCDN %}
+    {% endblock %}
+
 {% block title %}Creation de sortie{% endblock %}
 {% block titrePage %}
 {% endblock %}
 {% block main %}
+
     <div class="wrapper-event-creation">
         <header>
-            <h1>Créer une sortie</h1>
+            <h1>Créer une sortie <span class="point">.</span></h1>
         </header>
         <main>
             {{ form_start(eventForm) }}
@@ -29,5 +33,6 @@
             </section>
             {{ form_end(eventForm) }}
         </main>
+
     </div>
 {% endblock %}

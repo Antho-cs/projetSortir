@@ -31,17 +31,13 @@
 
 /*Btns*/
 
-.imgLoader
-  background: config.$roseColor
-  color: config.$textColor
-  padding: 7px 20px
-  @extend %btn-pd-br-bsh
 
 .event-creation-btns-wrapper
   @extend %flex-container-spaceArd
-  padding: 20px 25px
+  padding: 40px 25px
 
 >.event-creation-btns-wrapper
+
   width: 30%
 
 .dates
@@ -51,14 +47,49 @@
 >.dates
   width: 40%
 
-/* Nav */
+/*Static*/
+#event_enregistrer
+  @extend %btn-configuration
+  background-color: config.$blueSea
 
-#event-creation-nav-wrapper
-  background-color: transparentize(config.$roseColor, 0.6)!important
+#event_publier
+  @extend %btn-configuration
+  background-color: config.$roseColor
+
+#event_annuler
+  @extend %btn-configuration
+  background-color: config.$textColor
+  color: #FFFFFF
+
+/*Hovered*/
+
+#event_enregistrer:hover
+  background-color: #FFFFFF
+  border: 2px solid config.$blueSea
+  color: config.$blueSea
+  transition: color,background-color,border .12s
+
+#event_publier:hover
+  background-color: #FFFFFF
+  border: 2px solid config.$roseColor
+  color: config.$roseColor
+  transition: color,background-color,border .12s
+
+#event_annuler:hover
+  background-color: #FFFFFF
+  border: 2px solid config.$textColor
+  color: config.$textColor
+  transition: color,background-color,border .12s
+
 
 
 .form-control
   margin: 2px 3px
+
+
+
+
+
 
 
 

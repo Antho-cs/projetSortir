@@ -454,6 +454,7 @@ section {
 }
 
 footer{
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -465,6 +466,12 @@ footer{
 
 footer p{
   color: #030509;
+}
+
+.welcome{
+  font-family: "Mako", sans-serif;
+  letter-spacing: 2px;
+  padding-bottom: 4rem;
 }
 
 

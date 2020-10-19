@@ -9,10 +9,9 @@
         {% endif %}
     {% endblock %}
     {% block mainSection %}
-
         {{ parent() }}
+        <h1 class="welcome">Bienvenue<span class="point">.</span></h1>
         <form method="post">
-            <h1 class="h3 mb-3 font-weight-normal">Connecte toi !</h1>
             <div>
                 <label for="inputPseudo">Pseudo</label>
                 <input type="text" value="{{ last_username }}" name="Pseudo" id="inputPseudo" class="form-control"
@@ -24,11 +23,10 @@
                 <input type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}"
                 >
-
                 
                 <div class="checkbox mb-3">
                     <label>
-                        <input type="checkbox" name="_remember_me"> Remember me
+                        <input type="checkbox" name="_remember_me"> Se souvenir de moi
                     </label>
                 </div>
                 
@@ -38,10 +36,11 @@
                 {% endif %}
 
                 <button class="btn btn-lg btn-primary" type="submit">
-                    Sign in
+                    Se connecter
                 </button>
             </div>
         </form>
 
     {% endblock %}
 
+{% block footer %} {% endblock %}

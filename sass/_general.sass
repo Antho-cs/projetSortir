@@ -8,6 +8,10 @@
   position: relative
   margin-bottom: -90px
 
+main
+  padding-bottom: 4.4rem
+
+
 label, legend
   color: config.$textColor
   font-weight: bold
@@ -29,14 +33,18 @@ h1
   margin-top: 1rem
 
 footer
-
   width: 100%
-  height: 2.5rem
-  text-align: center
-  background-color: config.$roseColor
-  position: relative
+  height: 3rem
+  position: fixed
   margin: 0
   bottom: 0
+
+  text-align: center
+  background-color: #010207
+
+footer p
+  color: #FFFFFF
+  letter-spacing: 2px
 
 button
   padding: 10px 15px
@@ -45,3 +53,23 @@ button
   font-weight: bolder
   letter-spacing: 1px
   font-size: 1.5rem
+
+  /*Nav*/
+
+#event-creation-nav-wrapper
+  display: flex
+  justify-content: space-between !important
+  background-color: #FFFFFF !important
+  padding: 2rem 4rem
+
+.nav-item
+  padding: 0 10px
+
+.navbar-brand h1
+  font-family: config.$logoFont
+
+.point
+  font-weight: bold
+  color: config.$blueSea
+  font-size: 4rem
+  font-family: config.$logoFont
