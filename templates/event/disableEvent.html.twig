@@ -3,10 +3,45 @@
 {% block title %}Annuler la sortie{% endblock %}
 {% block titrePage %}
 {% endblock %}
+{% block navbar %} {% endblock %}
 {% block main %}
+    <div class="disable-event-asset" style="background-image: {{ asset('assets/img/asset.jpg') }}">
+        <img src="{{ asset('assets/img/asset.jpg') }}" alt="">
+    </div>
+
     <div class="wrapper-event-creation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="event-creation-nav-wrapper">
+            <a class="navbar-brand" href="#"><h1></h1></a>
+            <div class="nav-item-wrapper">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        {# pages accessible to admin #}
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('edit_villes') }}">Ville</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('edit_campus') }}">Campus</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('home') }}">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Mon profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <header>
-            <h1>Annuler la sortie</h1>
+            <h1>Annuler la sortie<span class="point">.</span></h1>
         </header>
         <main>
             <section class="disable-event-wrapper">
