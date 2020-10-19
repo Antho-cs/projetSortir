@@ -30,6 +30,18 @@ class VillesRepository extends ServiceEntityRepository
             ;
     }
 
+//    //Supprimer la ville
+//    public function delete($id)
+//    {
+//        return $this->createQueryBuilder('v')
+//            ->delete(v)
+//            ->andWhere('v.id = :i')
+//            ->setParameter('i', $id)
+//            ->getQuery()
+//            ->getResult()
+//            ;
+//    }
+
     // /**
     //  * @return Villes[] Returns an array of Villes objects
     //  */

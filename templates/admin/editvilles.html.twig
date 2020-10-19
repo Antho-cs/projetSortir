@@ -3,6 +3,7 @@
 {% endblock %}
 
 {% block mainSection %}
+    {{ parent() }}
     {{ form(villesForm) }}
     {{ form_start(addVillesForm) }}
     <table class="scroll">
@@ -18,8 +19,9 @@
             <tr>
                 <td>{{ v.nomVille }}</td>
                 <td>{{ v.codePostal }}</td>
-                <td><a href="#">Modifier</a> - {# TODO Rendre fonctionnel #}
-                    <a href="#">Supprimer</a></td> {# TODO Rendre fonctionnel #}
+                <td><a href="{{ path('up_villes', {'id': v.id}) }}">Modifier</a> -
+                        <a href="{{ path('del_villes', {'id': v.id}) }}">Supprimer</a>
+                </td>
             </tr>
         {% endfor %}
         <tr>

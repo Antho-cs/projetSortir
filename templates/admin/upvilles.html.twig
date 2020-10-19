@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block titrePage %}
+
+{% endblock %}
+
+{% block mainSection %}
+    <h3>Mettre à jour la ville</h3>
+{{ form_start(updateVillesForm) }}
+{{ form_widget(updateVillesForm.nomVille, {'attr' : {'value': ville.nomVille}}) }}
+{{ form_widget(updateVillesForm.codePostal, {'attr' : {'value': ville.codePostal}}) }}
+{{ form_end(updateVillesForm) }}
+{% endblock %}
+

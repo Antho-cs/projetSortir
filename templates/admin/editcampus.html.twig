@@ -3,6 +3,7 @@
 {% endblock %}
 
 {% block mainSection %}
+    {{ parent() }}
     {{ form(campusForm) }}
     {{ form_start(addCampusForm) }}
     <table class="scroll">
@@ -16,8 +17,8 @@
         {% for c in listeCampus %}
             <tr>
                 <td>{{ c.nomCampus }}</td>
-                <td><a href="#">Modifier</a> - {# TODO Rendre fonctionnel #}
-                    <a href="#">Supprimer</a></td> {# TODO Rendre fonctionnel #}
+                <td><a href="{{ path('up_campus', {'id': c.id}) }}">Modifier</a> -
+                    <a href="{{ path('del_campus', {'id': c.id}) }}">Supprimer</a>
             </tr>
         {% endfor %}
         <tr>

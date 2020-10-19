@@ -45,7 +45,7 @@ class Participants implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
-    private $password; //TODO Regex mdp
+    private $password;
 
     /**
      *@Assert\NotBlank(message="SVP renseignez le nom!")

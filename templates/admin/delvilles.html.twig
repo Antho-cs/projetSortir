@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block titrePage %}
+
+{% endblock %}
+
+{% block mainSection %}
+    <h3>Voulez-vous vraiment supprimer la ville ?</h3>
+{{ form_start(deleteVillesForm) }}
+{{ form_widget(deleteVillesForm.Supprimer, {'attr':{'class':'btn-danger'}}) }}
+{{ form_end(deleteVillesForm) }}
+{% endblock %}
+

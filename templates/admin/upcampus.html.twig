@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block titrePage %}
+
+{% endblock %}
+
+{% block mainSection %}
+    <h3>Mettre à jour le campus</h3>
+{{ form_start(updateCampusForm) }}
+{{ form_widget(updateCampusForm.nomCampus, {'attr' : {'value': campus.nomCampus}}) }}
+{{ form_end(updateCampusForm) }}
+{% endblock %}
+
