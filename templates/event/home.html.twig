@@ -66,27 +66,12 @@
 
                 {# -------------------  Checkbox-Group ----------------------- #}
 
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Sorties dont je suis
-                        l'organisateur/trice</label>
-                </div>
-
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Sorties auxquelles je suis inscrit/e</label>
-                </div>
-
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Sorties auxquelles je ne suis pas
-                        inscrit/e</label>
-                </div>
-
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Sorties passées</label>
-                </div>
+                <select name="cars">
+                    <option>Sorties dont je suis l'organisateur/trice</option>
+                    <option>Sorties auxquelles je suis inscrit/e</option>
+                    <option>Sorties auxquelles je ne suis pas inscrit/e</option>
+                    <option>Sorties passées</option>
+                </select>
 
                 {# -------------------  Boutton Submit Form ----------------------- #}
 
@@ -119,10 +104,10 @@
                     <td> {{ sortie.nom}} </td>
                     <td> {{ sortie.getDateDebut() | date ('d-m-Y')}} </td>
                     <td> {{ sortie.getDateCloture() | date ('d-m-Y')}} </td>
-                    <td> {# {{ sortie.inscriptions.getparticipants.}} #}    0  / {{ sortie.nbInscriptionsmax}} </td>
+                    <td> {# {{ sortie.inscriptions.getparticipants()}} #}    0  / {{ sortie.nbInscriptionsmax}} </td>
                     <td> {# {{ sortie.Etats.getLibelle}}  #}</td>
-                    <td>  </td>
-                    <td> {#       {{ sortie.getOrganisateur}}   #} </td>
+                    <td> {# INSCRIT ???????????   #} </td>
+                    <td> {{ sortie.getOrganisateur().pseudo }}  </td>
                     <td>  </td>
                     {% endfor %}
 
@@ -132,7 +117,7 @@
 
         </div>
         {# -------------------  Bouton Création d'une sortie ----------------------- #}
-        <div>
+        <div class="btnCreaEvent">
             <button type="submit" class="btn btn-primary mb-2"><a href="{{ path('create_event') }}">Créer une sortie</a></button>
 
         </div>

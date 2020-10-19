@@ -5,12 +5,17 @@
   width: 100%
   @extend %paddingContenuPage
 
+
+
 .infos
+  margin-top: 5%
   text-align: center
 
 
 .formComplet
   width: 100%
+  @extend %flex-container-centered
+  margin-top: 3%
 
 
 #infos
@@ -48,4 +53,18 @@
 /***** Form à Droite *****/
 .formDroit
   width: 50%
+  padding-top: 4rem
 
+>.formDroit
+ width : 100%
+
+
+/***** Liste des sorties *****/
+
+.listSortie
+  overflow: auto
+  @extend %flex-container-centered
+  margin-top: 5%
+
+.btnCreaEvent
+  margin-top: 3%
