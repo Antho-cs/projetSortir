@@ -103,15 +103,45 @@
                 <tr>
                     <td> {{ sortie.nom}} </td>
                     <td> {{ sortie.getDateDebut() | date ('d-m-Y')}} </td>
-                    <td> {{ sortie.getDateCloture() | date ('d-m-Y')}} </td>
-                    <td> {# {{ sortie.inscriptions.getparticipants()}} #}    0  / {{ sortie.nbInscriptionsmax}} </td>
-                    <td> {# {{ sortie.Etats.getLibelle}}  #}</td>
+                    <td> {{ sortie.dateCloture() | date ('d-m-Y')}} </td>
+                    <td> {{ sortie.inscriptions|length}} / {{ sortie.nbInscriptionsmax}} </td>
+                    <td> {{ sortie.getEtat().getLibelle()}} </td>
                     <td> {# INSCRIT ???????????   #} </td>
                     <td> {{ sortie.getOrganisateur().pseudo }}  </td>
-                    <td>  </td>
-                    {% endfor %}
+
+                    <td>
+{#                        #}
+{#                        #}{# Afficher #}
+{#                        {% if sortie.canRead() %}#}
+{#                            <a href="#">Afficher</a>#}
+{#                        {% endif %}#}
+
+{#                        #}{# Modifié - Publier #}
+{#                        {% if sortie.canModify(app.user) and sortie.canPublish(app.user) %}#}
+{#                            <a href="#">Modifier</a> - <a href="#">Publier</a>#}
+{#                        {% endif %}#}
+
+{#                        #}{# Afficher - Annuler #}
+{#                        {% if sortie.canRead and sortie.canCancel(app.user) %}#}
+{#                            <a href="#">Afficher</a> - <a href="#">Annuler</a>#}
+{#                        {% endif %}#}
+
+{#                         #}{# TODO Méthode pour se désister et d'incrire #}
+{#                        #}{# Afficher - Se desister #}
+{#                        {% if sortie.canRead()  %}#}
+{#                            <a href="#">Afficher</a> - <a href="#">Se désister</a>#}
+{#                        {% endif %}#}
+
+{#                        #}{# Afficher - S'inscrire #}
+{#                        {% if sortie.canRead() %}#}
+{#                            <a href="#">Afficher</a> - <a href="#">S'inscrire</a>#}
+{#                        {% endif %}#}
+
+
+                    </td>
 
                 </tr>
+                {% endfor %}
 
             </table>
 

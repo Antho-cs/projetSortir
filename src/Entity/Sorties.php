@@ -13,6 +13,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Sorties
 {
+    public const CREATE = 'Créée';
+    public const OPEN = 'Ouverte';
+    public const FENCE = 'Clôturé';
+    public const ONGOING = 'Activité en cours';
+    public const PAST = 'Passéé';
+    public const CANCEL = 'Annulée';
+
 
     /**
      * @ORM\Id()
@@ -60,7 +67,7 @@ class Sorties
      * @ORM\ManyToOne(targetEntity=Etats::class, inversedBy="sorties")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $etat;
+    private ?Etats $etat;
 
     /**
      * @ORM\ManyToOne(targetEntity=Lieux::class, inversedBy="sorties", cascade={"persist"})
@@ -247,6 +254,7 @@ class Sorties
         return $this;
     }
 
+
     public function getMotifAnnulation(): ?string
     {
         return $this->motifAnnulation;
@@ -259,4 +267,30 @@ class Sorties
         return $this;
     }
 
-}
+        public
+        function canPublish(Participants $participant): bool
+        {
+            return $this->organisateur === $participant && self::OPEN == $this->etat->getLibelle();
+        }
+
+        public
+        function canModify(Participants $participant): bool
+        {
+            return $this->organisateur === $participant && self::CREATE == $this->etat->getLibelle();
+        }
+
+        public
+        function canRead(): bool
+        {
+            return self::PAST === $this->etat->getLibelle() || self::ONGOING === $this->etat->getLibelle() || self::OPEN === $this->etat->getLibelle();
+        }
+
+        public
+        function canCancel(Participants $participant): bool
+        {
+            return $this->organisateur === $participant && self::OPEN == $this->etat->getLibelle();
+
+        }
+
+    }
+
