@@ -1,14 +1,14 @@
 @charset "UTF-8";
 /*Variables*/
 /*classes to extend*/
-.formComplet, #infos, .listSortie, .upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
+.disable-event-wrapper, .formComplet, #infos, .listSortie, .upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.formDate, #event-creation-btn-save-container, .event-creation-btns-wrapper, .dates {
+.disable-event-btns, .formDate, #event-creation-btn-save-container, .event-creation-btns-wrapper, .dates {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -250,6 +250,32 @@ table a:hover {
 
 .displayPseudo {
   color: red !important;
+}
+
+/*Infos*/
+.disable-event-information {
+  font-size: 2rem;
+  font-family: "Mako", sans-serif;
+}
+
+.disable-event-lbl {
+  font-weight: bold;
+}
+
+/*Motif*/
+.disable-event-motif {
+  width: 20%;
+  margin-top: 3rem;
+}
+
+/*Btn*/
+.disable-event-wrapper {
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.disable-event-btns {
+  width: 30%;
 }
 
 /*# sourceMappingURL=ourstyle.css.map */

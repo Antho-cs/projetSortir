@@ -18,20 +18,23 @@
                         <span class="disable-event-lbl">Date de la sortie : </span><span class="disable-event-input">{{ sortie.dateDebut|date("m/d/Y") }}</span>
                     </article>
                     <article>
-                        <span class="disable-event-lbl">Campus : </span><span class="disable-event-input">{{ sortie.campus.nomCampus }}</span>
+                        <span class="disable-event-lbl">Campus : </span><span class="disable-event-input">  {{ sortie.campus.nomCampus }}</span>
                     </article>
                     <article>
-                        <span class="disable-event-lbl">Lieu : </span><span class="disable-event-input">{{ sortie.lieu.nomLieu }}</span>
+                        <span class="disable-event-lbl">Lieu :  </span><span class="disable-event-input">  {{ sortie.lieu.nomLieu }}</span>
                     </article>
                 </div>
                 {{ form_start(disableEventForm) }}
                 <div class="disable-event-motif">
                     {{ form_row(disableEventForm.motifAnnulation) }}
                 </div>
-                <div class="disable-event-btns">
-                    {{ form_row(disableEventForm.valider) }}
-                    {{ form_row(disableEventForm.retour) }}
+                <div class="disable-event-wrapper">
+                    <div class="disable-event-btns">
+                        {{ form_row(disableEventForm.valider) }}
+                        {{ form_row(disableEventForm.retour) }}
+                    </div>
                 </div>
+
                 {{ form_end(disableEventForm) }}
             </section>
         </main>

@@ -215,7 +215,6 @@ class EventController extends AbstractController
          * redirect to home with message flash
          * */
         if ($disableEventForm->getClickedButton() === $disableEventForm->get('valider')) {
-            $sortie->setMotifAnnulation();
 
             $entity->persist($sortie);
             $entity->flush();

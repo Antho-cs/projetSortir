@@ -15,7 +15,7 @@ class DisableEventType extends AbstractType
     {
         $builder
 
-            ->add('motifAnnulation', TextType::class, [
+            ->add('motifAnnulation', null, [
                 'label' => 'Motif d\'annulation',
             ])
             ->add('valider', SubmitType::class, ['label' => 'Valider'])
