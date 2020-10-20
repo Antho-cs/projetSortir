@@ -17,7 +17,6 @@ class InscriptionToEventController extends AbstractController
      */
     public function suscribe(Sorties $sortie, EntityManagerInterface $entityManager)
     {
-        //todo ne pas oublier de passer id de l'evenement dans le lien (dans le path)!
         $inscription = new Inscriptions();
 
         //set inscription instance
