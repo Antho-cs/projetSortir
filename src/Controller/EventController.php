@@ -11,6 +11,7 @@ use App\Form\HomeType;
 use App\Form\LieuType;
 use App\Form\UpdateEventType;
 use App\Repository\CampusRepository;
+use App\Repository\EtatsRepository;
 use App\Repository\SortiesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -219,7 +220,7 @@ class EventController extends AbstractController
     /**
      * @Route("/annuler/{id}", name="cancel_event")
      */
-    public function disableEvent(Sorties $sortie, Request $request, EntityManagerInterface $entity)
+    public function disableEvent(Sorties $sortie, Request $request, EntityManagerInterface $entity, EtatsRepository $etatsRepository)
     {
         $disableEventForm = $this->createForm(DisableEventType::class, $sortie);
 
@@ -231,7 +232,7 @@ class EventController extends AbstractController
          * redirect to home with message flash
          * */
         if ($disableEventForm->getClickedButton() === $disableEventForm->get('valider')) {
-
+            $sortie->setEtat($etatsRepository->find(6));
             $entity->persist($sortie);
             $entity->flush();
 
