@@ -45,15 +45,39 @@
                 {# //TODO  Voir les objet/attributs à call #}
                 {% for sortie in sorties %}
                     <tr>
+                        {# Nom de la sortie #}
+                        <td> {{ sortie.nom }}</td>
 
-                        <td> {{ sortie.nom}} </td>
+                        {# Date de Début #}
                         <td> {{ sortie.getDateDebut() | date ('d-m-Y')}} </td>
-                        <td> {{ sortie.dateCloture() | date ('d-m-Y')}} </td>
-                        <td> {{ sortie.inscriptions|length}} / {{ sortie.nbInscriptionsmax}} </td>
-                        <td> {{ sortie.getEtat().getLibelle()}} </td>
-                        <td> {# INSCRIT ???????????   #} </td>
-                        <td> {{ sortie.getOrganisateur().pseudo }}  </td>
 
+                        {# Date de Cloture #}
+                        <td> {{ sortie.dateCloture() | date ('d-m-Y')}} </td>
+
+                        {# Nombre d'inscrit  #}
+                        <td> {{ sortie.inscriptions|length}} / {{ sortie.nbInscriptionsmax}} </td>
+
+                        {# Libelle de l'Etat #}
+                        <td> {{ sortie.getEtat().getLibelle()}} </td>
+
+                        {# Inscrit #}
+                        <td> {% if sortie.canInscrit(app.user) is same as (true)%}
+                                'Oui'
+                            {% else %}
+                                'Non'
+                                {% endif %}
+                        </td>
+                        {# Nom de l'organisateur avec lien du profil #}
+                        <td>{%  if sortie.getOrganisateur().pseudo is same as (app.user.pseudo) %}
+                                {{ sortie.getOrganisateur().pseudo}}
+
+                            {% else %}
+                                <a href="{{ path('user',{'id' : sortie.getOrganisateur().id }) }}">{{ sortie.getOrganisateur().pseudo}}</a>
+
+                            {% endif %}
+                        </td>
+
+                        {# Action  #}
                         <td>
                             {#  Afficher - Annuler  #}
                             {% if sortie.canRead and sortie.canCancel(app.user) %}
