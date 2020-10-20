@@ -54,7 +54,7 @@ class Sorties
     private $nbInscriptionsmax;
 
     /**
-     * @ORM\Column(type="string", length=500, nullable=true)
+     * @ORM\Column(type="text", length=500, nullable=true)
      */
     private $descriptionsInfos;
 

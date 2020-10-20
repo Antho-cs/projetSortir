@@ -30,6 +30,7 @@ class Participants implements UserInterface
      *     minMessage="trop court",
      *     maxMessage="trop long"
      * )
+     * @Assert\Unique
      * @ORM\Column(type="string", length=30, unique=true)
      */
     private $Pseudo;

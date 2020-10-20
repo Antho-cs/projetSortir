@@ -23,15 +23,15 @@ class EventType extends AbstractType
             ->add('nom', null, [
                 'label' => 'Nom de la sortie :'])
             ->add('dateDebut', DateTimeType::class, [
-                'label' => 'Date de début :'
+                'label' => 'Date de la sortie :'
                 ])
             ->add('duree', null, [
                 'label' => 'Durée en minutes: '])
             ->add('dateCloture', DateTimeType::class, [
-                'label' => 'Date de fin : '])
+                'label' => 'Date de fin d\'inscriptions : '])
             ->add('nbInscriptionsmax', null, [
                 'label' => 'Nombre maximale des participants : '])
-            ->add('descriptionsInfos', TextType::class, [
+            ->add('descriptionsInfos', null, [
                 'label' => 'Description : '])
             ->add('campus', EntityType::class, [
                 'class' => Campus::class,

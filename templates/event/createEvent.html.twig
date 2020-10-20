@@ -16,8 +16,6 @@
             {{ form_start(eventForm) }}
             <section class="event-creation-form-first-cl">
                 {{ form_row(eventForm.nom) }}
-                {{ form_row(eventForm.descriptionsInfos) }}
-                {{ form_widget(eventForm.lieu) }}
                 <div class="dates">
                     {{ form_row(eventForm.dateDebut, {'attr': {'type': 'datetime-local'}}) }}
                     {{ form_row(eventForm.dateCloture) }}
@@ -25,6 +23,8 @@
                 {{ form_row(eventForm.duree) }}
                 {{ form_row(eventForm.nbInscriptionsmax) }}
                 {{ form_row(eventForm.campus) }}
+                {{ form_widget(eventForm.lieu) }}
+                {{ form_row(eventForm.descriptionsInfos) }}
                 <div class="event-creation-btns-wrapper">
                     {{ form_row(eventForm.enregistrer) }}
                     {{ form_row(eventForm.publier) }}
