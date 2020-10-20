@@ -15,9 +15,9 @@ class Sorties
 {
     public const CREATE = 'Créée';
     public const OPEN = 'Ouverte';
-    public const FENCE = 'Clôturé';
+    public const FENCE = 'Clôturée';
     public const ONGOING = 'Activité en cours';
-    public const PAST = 'Passéé';
+    public const PAST = 'Passée';
     public const CANCEL = 'Annulée';
 
 

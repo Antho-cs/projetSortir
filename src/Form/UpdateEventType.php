@@ -28,7 +28,7 @@ class UpdateEventType extends AbstractType
             ->add('dateCloture', DateTimeType::class, [
                 'label' => 'Date de fin : '])
             ->add('nbInscriptionsmax', null, [
-                'label' => 'Nombre maximale des participants : '])
+                'label' => 'Nombre maximal des participants : '])
             ->add('descriptionsInfos', TextType::class, [
                 'label' => 'Description : '])
             ->add('campus', EntityType::class, [

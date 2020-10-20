@@ -77,7 +77,7 @@ class EventController extends AbstractController
 
                 $em->persist($newEvent);
                 $em->flush();
-                $this->addFlash('success', 'La sortie est bien crée!');
+                $this->addFlash('success', 'La sortie est bien créée!');
 
                 return $this->redirectToRoute('home');
             }
