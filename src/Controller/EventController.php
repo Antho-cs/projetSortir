@@ -7,6 +7,7 @@ use App\Entity\Lieux;
 use App\Entity\Sorties;
 use App\Form\DisableEventType;
 use App\Form\EventType;
+use App\Form\HomeType;
 use App\Form\LieuType;
 use App\Form\UpdateEventType;
 use App\Repository\CampusRepository;
@@ -26,25 +27,40 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home(CampusRepository $campusRepository, SortiesRepository $sortiesRepository)
+    public function home(Request $request, CampusRepository $campusRepository, SortiesRepository $sortiesRepository)
     {
-
+        $homeForm = $this->createForm(HomeType::class);
+        $homeForm->handleRequest($request);
         $sortie = new Sorties();
-
-        $dateDebut = $sortie->getDateDebut(new \DateTime());
-        $dateCloture = $sortie->setDateCloture(new \DateTime());
-
+        $rechercheNom = null;
 
         // Tout les campus //
         $campus = $campusRepository->findAll();
         // Toutes les sorties //
         $sorties = $sortiesRepository->findAll();
 
+        if ($homeForm->isSubmitted() && $homeForm->isValid()) {
+            $rechercheNom = $homeForm['nomSortie']->getData();
+            $rechercheCampus = $homeForm['campus']->getData();
+            $dateDebut = $homeForm['datedebut']->getData();
+            $dateCloture = $homeForm['datecloture']->getData();
+            if ($rechercheNom != null) {
+                $sorties = $sortiesRepository->contains($rechercheNom);
+            }
+            if ($rechercheCampus != null) {
+                $sorties = $sortiesRepository->findBy(['campus'=>$rechercheCampus]);
+            }
+            if ($dateDebut != null || $dateCloture != null) {
+                $sorties = $sortiesRepository->findByDate($dateDebut,$dateCloture);
+            }
+        }
 
         //TODO Ecrire la fonction
 
         return $this->render('event/home.html.twig', ['controller_name' => 'EventController',
-            'campus' => $campus, 'sorties' => $sorties
+            'campus' => $campus,
+            'sorties' => $sorties,
+            'homeform' => $homeForm->createView()
         ]);
     }
 

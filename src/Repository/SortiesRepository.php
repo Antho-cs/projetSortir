@@ -19,6 +19,26 @@ class SortiesRepository extends ServiceEntityRepository
         parent::__construct($registry, Sorties::class);
     }
 
+    // Vérifier si le nom de la ville contient la string passée en argument
+    public function contains($recherche)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.nom LIKE :r')
+            ->setParameter('r', '%'.$recherche.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByDate($dateDebut, $dateFin)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.dateDebut BETWEEN :dd AND :df')
+            ->setParameter('dd', $dateDebut)
+            ->setParameter('df', $dateFin)
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Sorties[] Returns an array of Sorties objects
     //  */
