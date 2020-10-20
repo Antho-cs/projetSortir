@@ -137,7 +137,7 @@ class EventController extends AbstractController
     public function event(Sorties $sortie, SortiesRepository $sortiesRepository)
     {
         return $this->render('event/event.html.twig', [
-            'controller_name' => 'EventController',
+            'controller_name' => 'EventController', 'sortie' => $sortie
         ]);
     }
 

@@ -45,41 +45,40 @@
                 {# //TODO  Voir les objet/attributs à call #}
                 {% for sortie in sorties %}
                     <tr>
-                        <td> {{ sortie.nom }} </td>
-                        <td> {{ sortie.getDateDebut() | date ('d-m-Y') }} </td>
-                        <td> {{ sortie.dateCloture() | date ('d-m-Y') }} </td>
-                        <td> {{ sortie.inscriptions|length }} / {{ sortie.nbInscriptionsmax }} </td>
-                        <td> {{ sortie.getEtat().getLibelle() }} </td>
-                        <td> {# INSCRIT ??????????? #} </td>
+
+                        <td> {{ sortie.nom}} </td>
+                        <td> {{ sortie.getDateDebut() | date ('d-m-Y')}} </td>
+                        <td> {{ sortie.dateCloture() | date ('d-m-Y')}} </td>
+                        <td> {{ sortie.inscriptions|length}} / {{ sortie.nbInscriptionsmax}} </td>
+                        <td> {{ sortie.getEtat().getLibelle()}} </td>
+                        <td> {# INSCRIT ???????????   #} </td>
                         <td> {{ sortie.getOrganisateur().pseudo }}  </td>
 
                         <td>
-                            {# #}
-                            {# #}{# Afficher #}
-                            {# {% if sortie.canRead() %} #}
-                            {# <a href="#">Afficher</a> #}
-                            {# {% endif %} #}
+                            {#  Afficher - Annuler  #}
+                            {% if sortie.canRead and sortie.canCancel(app.user) %}
+                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a href="#">Annuler</a>
 
-                            {# #}{# Modifié - Publier #}
-                            {# {% if sortie.canModify(app.user) and sortie.canPublish(app.user) %} #}
-                            {# <a href="#">Modifier</a> - <a href="#">Publier</a> #}
-                            {# {% endif %} #}
+                                {# Modifié - Publier #}
+                            {% elseif sortie.canModify(app.user)   %}
+                                <a href="{{ path('update_event',{'id' : sortie.id }) }}">Modifier</a> - <a href="#">Publier</a>
 
-                            {# #}{# Afficher - Annuler #}
-                            {# {% if sortie.canRead and sortie.canCancel(app.user) %} #}
-                            {# <a href="#">Afficher</a> - <a href="#">Annuler</a> #}
-                            {# {% endif %} #}
 
-                            {# #}{# TODO Méthode pour se désister et d'incrire #}
-                            {# #}{# Afficher - Se desister #}
-                            {# {% if sortie.canRead()  %} #}
-                            {# <a href="#">Afficher</a> - <a href="#">Se désister</a> #}
-                            {# {% endif %} #}
+                                {# Afficher - Se desister #}
+                            {% elseif sortie.canRead() and sortie.inscriptions.contains(app.user)  %}
+                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a href="{{ path('reject_inscription',{'id' : sortie.id }) }}">Se désister</a>
 
-                            {# #}{# Afficher - S'inscrire #}
-                            {# {% if sortie.canRead() %} #}
-                            {# <a href="#">Afficher</a> - <a href="#">S'inscrire</a> #}
-                            {# {% endif %} #}
+                                {# Afficher - S'inscrire #}
+                            {% elseif sortie.canRead() and sortie.inscriptions.contains(app.user) %}
+                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a href="{{ path('inscription_to_event',{'id' : sortie.id }) }}">S'inscrire</a>
+
+
+                                {# Afficher #}
+                            {% else %}
+                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a>
+                                {{ dump(sortie.inscriptions.contains(app.user.nom)) }}
+
+                            {% endif %}
 
 
                         </td>

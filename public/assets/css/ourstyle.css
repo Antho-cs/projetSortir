@@ -292,7 +292,8 @@ button {
 
 /***** Liste des sorties *****/
 .listSortie {
-  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: unset;
   margin-top: 5%;
 }
 

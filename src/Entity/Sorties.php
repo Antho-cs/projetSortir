@@ -268,12 +268,6 @@ class Sorties
     }
 
         public
-        function canPublish(Participants $participant): bool
-        {
-            return $this->organisateur === $participant && self::OPEN == $this->etat->getLibelle();
-        }
-
-        public
         function canModify(Participants $participant): bool
         {
             return $this->organisateur === $participant && self::CREATE == $this->etat->getLibelle();
