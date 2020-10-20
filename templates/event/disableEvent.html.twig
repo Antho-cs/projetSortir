@@ -69,6 +69,7 @@
                     <div class="disable-event-btns">
                         {{ form_row(disableEventForm.valider) }}
                         {{ form_row(disableEventForm.retour) }}
+                        <a href="{{ path('reject_inscription', {'id': sortie.id}) }}">Tester s'enregistrer</a>
                     </div>
                 </div>
 
@@ -78,9 +79,4 @@
     </div>
 {% endblock %}
 {% block javascripts %}
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker();
-        });
-    </script>
 {% endblock %}

@@ -36,15 +36,15 @@ class InscriptionsRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Inscriptions
+
+       public function findOneByEvent($event): ?Inscriptions
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.sortie = :val')
+            ->setParameter('val', $event)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }

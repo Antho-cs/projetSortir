@@ -36,20 +36,9 @@ class Inscriptions
      * @ORM\ManyToOne(targetEntity=Participants::class, inversedBy="inscriptions")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $participants;
+    private $participant;
 
-    public function __construct()
-    {
-        $this->participants = new ArrayCollection();
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getNoInscription()
-    {
-        return $this->noInscription;
-    }
 
     public function getDateInscription(): ?\DateTimeInterface
     {
