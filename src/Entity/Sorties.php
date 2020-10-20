@@ -286,5 +286,14 @@ class Sorties
 
         }
 
+    public
+    function canInscrit(Participants $participant): bool
+    {
+        return $this->inscriptions->exists(function($key, $inscription) use ($participant) {
+            /** @var Inscriptions $inscription */
+            return $inscription->getParticipant() === $participant;
+        });
+    }
+
     }
 

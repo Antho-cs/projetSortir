@@ -65,18 +65,19 @@
 
 
                                 {# Afficher - Se desister #}
-                            {% elseif sortie.canRead() and sortie.inscriptions.contains(app.user)  %}
+                            {% elseif sortie.canRead() and sortie.canInscrit(app.user) %}
                                 <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a href="{{ path('reject_inscription',{'id' : sortie.id }) }}">Se désister</a>
 
                                 {# Afficher - S'inscrire #}
-                            {% elseif sortie.canRead() and sortie.inscriptions.contains(app.user) %}
+                            {% elseif sortie.canRead() and sortie.canInscrit(app.user) is same as (false)  %}
                                 <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a href="{{ path('inscription_to_event',{'id' : sortie.id }) }}">S'inscrire</a>
 
 
                                 {# Afficher #}
                             {% else %}
                                 <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a>
-                                {{ dump(sortie.inscriptions.contains(app.user)) }}
+
+
 
                             {% endif %}
 
