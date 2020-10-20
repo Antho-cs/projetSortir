@@ -25,23 +25,23 @@ class HomeType extends AbstractType
                 'required'=>false
             ])
             ->add('nomSortie', TextType::class, [
-                'label'=>'Nom de la sortie: ',
+                'label'=>'Nom de la sortie : ',
                 'required'=>false
             ])
             ->add('datedebut', DateType::class, [
-                'label'=> 'Date de début: ',
+                'label'=> 'Date de début : ',
                 'html5'=>true,
                 'widget'=>'single_text',
                 'required'=>false
             ])
             ->add('datecloture', DateType::class, [
-                'label'=> 'Date de début: ',
+                'label'=> 'Date de fin d\'inscription : ',
                 'html5'=>true,
                 'widget'=>'single_text',
                 'required'=>false
             ])
             ->add('condition', ChoiceType::class, [
-                'label'=>'Condition:',
+                'label'=>'Condition :',
                 'placeholder'=>'Veuillez choisir une condition...',
                 'required'=>false
             ])

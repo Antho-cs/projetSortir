@@ -72,19 +72,15 @@
         {% block titrePage %}
             <h1>Bienvenue à Sortir<span class="point-logo">.</span>com</h1>
         {%  endblock %}
-
-        {% block mainSection %}
-
-
-            {# Affiche flash messages #}
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ label }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
+        {# Affiche flash messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
             {% endfor %}
-        {% endblock %}
+        {% endfor %}
+        {% block mainSection %}{% endblock %}
     </div>
 </section><!-- End Hero -->
 

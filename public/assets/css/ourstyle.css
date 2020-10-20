@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*Variables*/
 /*classes to extend*/
-.formComplet, #infos, .listSortie, .upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
+.formComplet, #infos, .listSortie, .dates-home, .upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -13,6 +13,13 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: left;
+}
+
+.infos {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: right;
 }
 
 .disable-event-btns, .formDate, #event-creation-btn-save-container, .event-creation-btns-wrapper, .dates {
@@ -42,6 +49,10 @@
   border-radius: 30px;
   border: none;
   font-size: 1.5rem;
+}
+
+.width-100 {
+  width: 100%;
 }
 
 #mainBg {
@@ -235,7 +246,6 @@ button {
 
 .infos {
   margin-top: 5%;
-  text-align: center;
 }
 
 .formComplet {
@@ -254,10 +264,6 @@ button {
 /***** Form à Gauche *****/
 .formGauche {
   width: 40%;
-}
-
-.formTitre {
-  width: 100%;
 }
 
 .formListCampus {
@@ -299,6 +305,14 @@ button {
 
 .btnCreaEvent {
   margin-top: 3%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+> .home-content-form {
+  padding: 0 3px;
 }
 
 table, tr, td, th {

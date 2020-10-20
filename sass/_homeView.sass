@@ -9,7 +9,7 @@
 
 .infos
   margin-top: 5%
-  text-align: center
+  @extend %flex-container-right
 
 
 .formComplet
@@ -29,9 +29,6 @@
 /***** Form à Gauche *****/
 .formGauche
   width: 40%
-
-.formTitre
-  width: 100%
 
 .formListCampus
   width: 100%
@@ -69,3 +66,13 @@
 
 .btnCreaEvent
   margin-top: 3%
+
+.width-50
+  width: 50%
+
+.dates-home
+  @extend %flex-container-centered
+
+>.home-content-form
+  padding: 0 3px
+
