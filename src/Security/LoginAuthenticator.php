@@ -57,13 +57,13 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
     public function getCredentials(Request $request)
     {
         $credentials = [
-            'Pseudo' => $request->request->get('Pseudo'),
+            'PseudoOrMail' => $request->request->get('PseudoOrMail'),
             'password' => $request->request->get('password'),
             'csrf_token' => $request->request->get('_csrf_token'),
         ];
         $request->getSession()->set(
             Security::LAST_USERNAME,
-            $credentials['Pseudo']
+            $credentials['PseudoOrMail']
         );
 
         return $credentials;
@@ -76,7 +76,7 @@ class LoginAuthenticator extends AbstractFormLoginAuthenticator implements Passw
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(Participants::class)->findOneBy(['Pseudo' => $credentials['Pseudo']]);
+        $user = $this->entityManager->getRepository(Participants::class)->loadUserByUsername($credentials['PseudoOrMail']);
 
 
         if (!$user) {
