@@ -57,11 +57,11 @@
                         <td>
                             {#  Afficher - Annuler  #}
                             {% if sortie.canRead and sortie.canCancel(app.user) %}
-                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a href="#">Annuler</a>
+                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a href="{{ path('cancel_event',{'id' : sortie.id }) }}">Annuler</a>
 
                                 {# Modifié - Publier #}
                             {% elseif sortie.canModify(app.user)   %}
-                                <a href="{{ path('update_event',{'id' : sortie.id }) }}">Modifier</a> - <a href="#">Publier</a>
+                                <a href="{{ path('update_event',{'id' : sortie.id }) }}">Modifier</a> - <a href="{{ path('publish',{'id' : sortie.id }) }}">Publier</a>
 
 
                                 {# Afficher - Se desister #}
@@ -76,7 +76,7 @@
                                 {# Afficher #}
                             {% else %}
                                 <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a>
-                                {{ dump(sortie.inscriptions.contains(app.user.nom)) }}
+                                {{ dump(sortie.inscriptions.contains(app.user)) }}
 
                             {% endif %}
 
