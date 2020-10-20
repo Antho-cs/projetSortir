@@ -1,11 +1,18 @@
 @charset "UTF-8";
 /*Variables*/
 /*classes to extend*/
-.disable-event-wrapper, .formComplet, #infos, .listSortie, .upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
+.formComplet, #infos, .listSortie, .upProfileUser, .wrapper-event-creation, .wrapper-event-creation header, main, form {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.disable-event-wrapper, #disable-event-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
 }
 
 .disable-event-btns, .formDate, #event-creation-btn-save-container, .event-creation-btns-wrapper, .dates {
@@ -53,9 +60,16 @@ label, legend {
   text-shadow: 1px 1px white;
 }
 
+article {
+  padding: 10px 0;
+}
+
 h1 {
-  margin: 2rem 0;
   font-family: "Mako", sans-serif;
+}
+
+main {
+  height: 100%;
 }
 
 .nav-menu a {
@@ -121,6 +135,10 @@ button {
 
 .wrapper-event-creation {
   width: 50%;
+}
+
+.wrapper-event-creation-overide {
+  width: 100% !important;
 }
 
 .event-creation-form-first-cl {
@@ -202,17 +220,6 @@ button {
 
 .form-control {
   margin: 2px 3px;
-  /*Picture*/
-}
-
-.disable-event-asset {
-  height: 100vh;
-  width: 50%;
-}
-
-.disable-event-asset img {
-  height: 100%;
-  position: absolute;
 }
 
 .upProfileUser {
@@ -342,18 +349,55 @@ table a:hover {
 
 /*Motif*/
 .disable-event-motif {
-  width: 20%;
+  width: 100%;
   margin-top: 3rem;
+}
+
+.disable-event-motif .form-group {
+  width: 20%;
+  padding: 2rem 0;
 }
 
 /*Btn*/
 .disable-event-wrapper {
   width: 100%;
-  margin-top: 3rem;
 }
 
 .disable-event-btns {
   width: 30%;
+  padding-top: 4rem;
+  padding-right: 10px;
+}
+
+.disable-event-front-element-img {
+  display: flex;
+  z-index: 7;
+  color: #FFFFFF;
+}
+
+.disable-event-asset {
+  height: 100%;
+  width: 50%;
+}
+
+.disable-event-asset img {
+  height: 100%;
+  position: absolute;
+}
+
+.disable-event-general-wrapper {
+  height: 100% !important;
+  justify-content: left !important;
+}
+
+#disable-event-header {
+  padding: 4rem 0;
+}
+
+.navbar {
+  background-color: #FFFFFF !important;
+  color: #030509 !important;
+  font-family: "Mako", sans-serif !important;
 }
 
 /*# sourceMappingURL=ourstyle.css.map */

@@ -2,9 +2,6 @@
 @use 'general'
 
 
-
-
-
 /*Infos*/
 
 .disable-event-information
@@ -16,18 +13,56 @@
 
 /*Motif*/
 .disable-event-motif
-  width: 20%
+  width: 100%
   margin-top: 3rem
+
+.disable-event-motif
+  .form-group
+    width: 20%
+    padding: 2rem 0
 
 
 /*Btn*/
 .disable-event-wrapper
-  @extend %flex-container-centered
-
+  @extend %flex-container-left
   width: 100%
-  margin-top: 3rem
+
+
 
 
 .disable-event-btns
   @extend %flex-container-spaceArd
   width: 30%
+
+  padding-top: 4rem
+  padding-right: 10px
+
+
+.disable-event-front-element-img
+  display: flex
+  z-index: 7
+  color: #FFFFFF
+
+.disable-event-asset
+  height: 100%
+  width: 50%
+
+.disable-event-asset
+  img
+    height: 100%
+    position: absolute
+
+
+
+.disable-event-general-wrapper
+  height: 100% !important
+  justify-content: left !important
+
+#disable-event-header
+  @extend %flex-container-left
+  padding: 4rem 0
+
+.navbar
+  background-color: #FFFFFF !important
+  color: config.$textColor !important
+  font-family: config.$textFont !important

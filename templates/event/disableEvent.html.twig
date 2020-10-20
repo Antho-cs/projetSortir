@@ -6,12 +6,13 @@
 {% block navbar %} {% endblock %}
 {% block main %}
     <div class="disable-event-asset" style="background-image: {{ asset('assets/img/asset.jpg') }}">
-        <img src="{{ asset('assets/img/asset.jpg') }}" alt="">
+        <div class="disable-event-front-element-img">
+            <img src="{{ asset('assets/img/asset.jpg') }}" alt="">
+        </div>
     </div>
-
-    <div class="wrapper-event-creation">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="event-creation-nav-wrapper">
-            <a class="navbar-brand" href="#"><h1></h1></a>
+    <div class="wrapper-event-creation disable-event-general-wrapper">
+        {# nav bar #}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="event-creation-nav-wrapper disable-event-nav-wrapper">
             <div class="nav-item-wrapper">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -40,7 +41,8 @@
                 </div>
             </div>
         </nav>
-        <header>
+        {# content #}
+        <header id="disable-event-header">
             <h1>Annuler la sortie<span class="point">.</span></h1>
         </header>
         <main>
