@@ -7,24 +7,32 @@
 {% block mainSection %}
     <div class="pageComplet">
     <div class="infos">
-        Date du jour : {{ "now"|date("d/m/Y") }} <br>
-        Participant : {{ app.user.Pseudo }}
+        <div>
+            Date du jour : {{ "now"|date("d/m/Y") }} <br>
+            Participant : {{ app.user.Pseudo }}
+        </div>
     </div>
     {{ parent() }}
 
     <div class="formComplet">
-
-    <div class="formGauche">
-
-        <div class="formTitre">
+        <div class="formComplet-item width-100">
             <h3>Filtrer les sorties</h3>
+        </div>
+        <div class="home-content-form width-100 formComplet">
             {{ form_start(homeform) }}
             {{ form_row(homeform.campus) }}
             {{ form_row(homeform.nomSortie) }}
+            {{ form_row(homeform.condition) }}
             {{ form_row(homeform.datedebut, {'attr' : {'min': "now"|date('Y-m-d') }} ) }}
             {{ form_row(homeform.datecloture, {'attr' : {'min': "now"|date('Y-m-d') }} ) }}
+            <div class="width-100">
+                {{ form_row(homeform.search) }}
+            </div>
             {{ form_end(homeform) }}
-
+            <div class="btnCreaEvent">
+                <button type="submit" class="btn btn-primary mb-2"><a href="{{ path('create_event') }}">Créer une sortie</a>
+                </button>
+            </div>
         </div>
         {# -------------------  Liste Déroulante des Sorties ----------------------- #}
 
@@ -41,11 +49,9 @@
                     <th>Actions</th>
                 </tr>
 
-
                 {# //TODO  Voir les objet/attributs à call #}
                 {% for sortie in sorties %}
                     <tr>
-
                         <td> {{ sortie.nom}} </td>
                         <td> {{ sortie.getDateDebut() | date ('d-m-Y')}} </td>
                         <td> {{ sortie.dateCloture() | date ('d-m-Y')}} </td>
@@ -76,27 +82,12 @@
                                 {# Afficher #}
                             {% else %}
                                 <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a>
-
-
-
                             {% endif %}
-
-
                         </td>
-
                     </tr>
                 {% endfor %}
-
             </table>
-
-        </div>
         {# -------------------  Bouton Création d'une sortie ----------------------- #}
-        <div class="btnCreaEvent">
-            <button type="submit" class="btn btn-primary mb-2"><a href="{{ path('create_event') }}">Créer une sortie</a>
-            </button>
-
-        </div>
-
 
     </div>
 {% endblock %}
