@@ -17,6 +17,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Class EventController
@@ -32,28 +35,39 @@ class EventController extends AbstractController
     {
         $homeForm = $this->createForm(HomeType::class);
         $homeForm->handleRequest($request);
-        $sortie = new Sorties();
-        $rechercheNom = null;
-
+        $user = $this->getUser();
         // Tout les campus //
         $campus = $campusRepository->findAll();
         // Toutes les sorties //
         $sorties = $sortiesRepository->findAll();
 
+        //Filtres de recherche
         if ($homeForm->isSubmitted() && $homeForm->isValid()) {
-            $rechercheNom = $homeForm['nomSortie']->getData();
-            $rechercheCampus = $homeForm['campus']->getData();
-            $dateDebut = $homeForm['datedebut']->getData();
-            $dateCloture = $homeForm['datecloture']->getData();
-            if ($rechercheNom != null) {
-                $sorties = $sortiesRepository->contains($rechercheNom);
+            $campus = $homeForm['campus']->getData();
+            $nomSortie = $homeForm['nomSortie']->getData();
+            $dateDebut = $homeForm['dateDebut']->getData();
+            $dateFin = $homeForm['dateCloture']->getData();
+
+            $organisateur = $homeForm['organisateur']->getData();
+            if ($organisateur) {
+                $organisateur = $user->getId();
             }
-            if ($rechercheCampus != null) {
-                $sorties = $sortiesRepository->findBy(['campus'=>$rechercheCampus]);
+
+            $inscrit = $homeForm['inscrit']->getData();
+            if ($inscrit) {
+                $inscrit = $user;
             }
-            if ($dateDebut != null || $dateCloture != null) {
-                $sorties = $sortiesRepository->findByDate($dateDebut,$dateCloture);
+
+            $noninscrit = $homeForm['noninscrit']->getData();
+            if ($noninscrit) {
+                $noninscrit = $user;
             }
+
+            $outdated = $homeForm['outdated']->getData();
+            if ($outdated) {
+                $outdated = new \DateTime('now');
+            }
+            $sorties = $sortiesRepository->findByCriteria($campus, $nomSortie, $dateDebut, $dateFin, $organisateur, $inscrit, $noninscrit, $outdated);
         }
 
         //TODO Ecrire la fonction

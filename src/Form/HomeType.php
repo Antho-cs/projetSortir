@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Campus;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -28,23 +29,26 @@ class HomeType extends AbstractType
                 'label'=>'Nom de la sortie : ',
                 'required'=>false
             ])
-            ->add('datedebut', DateType::class, [
-                'label'=> 'Date de début : ',
+            ->add('dateDebut', DateType::class, [
+                'label'=> 'Entre: ',
                 'html5'=>true,
                 'widget'=>'single_text',
                 'required'=>false
             ])
-            ->add('datecloture', DateType::class, [
-                'label'=> 'Date de fin d\'inscription : ',
+            ->add('dateCloture', DateType::class, [
+                'label'=> 'Et: ',
                 'html5'=>true,
                 'widget'=>'single_text',
                 'required'=>false
             ])
-            ->add('condition', ChoiceType::class, [
-                'label'=>'Condition :',
-                'placeholder'=>'Veuillez choisir une condition...',
-                'required'=>false
-            ])
+            ->add('organisateur', CheckboxType::class, ['label'=>'Sorties dont je suis l\'organisateur',
+                'required'=>false])
+            ->add('inscrit', CheckboxType::class, ['label'=>'Sorties auxquelles je suis inscrit',
+                'required'=>false])
+            ->add('noninscrit', CheckboxType::class, ['label'=>'Sorties auxquelles je suis inscrit',
+                'required'=>false])
+            ->add('outdated', CheckboxType::class, ['label'=>'Sorties passées',
+                'required'=>false])
             ->add('search', SubmitType::class, [
                 'label'=>'Rechercher'
             ])

@@ -22,12 +22,12 @@
             {{ form_start(homeform) }}
             {{ form_row(homeform.campus) }}
             {{ form_row(homeform.nomSortie) }}
-            {{ form_row(homeform.condition) }}
-            {{ form_row(homeform.datedebut, {'attr' : {'min': "now"|date('Y-m-d') }} ) }}
-            {{ form_row(homeform.datecloture, {'attr' : {'min': "now"|date('Y-m-d') }} ) }}
-            <div class="width-100">
-                {{ form_row(homeform.search) }}
-            </div>
+            {{ form_row(homeform.dateDebut, {'attr' : {'min': "now"|date('Y-m-d')}} ) }}
+            {{ form_row(homeform.dateCloture, {'attr' : {'min': "now"|date('Y-m-d') }} ) }}
+            {{ form_row(homeform.organisateur) }}
+            {{ form_row(homeform.inscrit) }}
+            {{ form_row(homeform.noninscrit) }}
+            {{ form_row(homeform.outdated) }}
             {{ form_end(homeform) }}
             <div class="btnCreaEvent">
                 <button type="submit" class="btn btn-primary mb-2"><a href="{{ path('create_event') }}">Créer une sortie</a>
