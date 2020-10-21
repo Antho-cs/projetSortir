@@ -46,7 +46,6 @@ class UpProfileUserFormType extends AbstractType
                         'mimeTypesMessage' => 'Please upload a valid PDF document',
                     ])]
             ])
-            //TODO ajout urlPhoto
             ->add('enregistrer', SubmitType::class, [
                 'label'=> 'Enregistrer'
             ])

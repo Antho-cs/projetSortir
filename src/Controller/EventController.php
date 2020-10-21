@@ -74,7 +74,6 @@ class EventController extends AbstractController
             $sorties = $sortiesRepository->findByCriteria($campus, $nomSortie, $dateDebut, $dateFin, $organisateur, $inscrit, $noninscrit, $outdated);
         }
 
-        //TODO Ecrire la fonction
 
         return $this->render('event/home.html.twig', ['controller_name' => 'EventController',
             'campus' => $campus,
