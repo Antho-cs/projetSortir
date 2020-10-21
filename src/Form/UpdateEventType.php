@@ -21,12 +21,19 @@ class UpdateEventType extends AbstractType
                 'label' => 'Nom de la sortie :'
             ])
             ->add('dateDebut', DateTimeType::class, [
-                'label' => 'Date de début :'
+                'label' => 'Date de début :',
+                'html5'=>true,
+                'widget'=>'single_text',
+                'required'=>false
             ])
             ->add('duree', null, [
                 'label' => 'Durée en minutes: '])
             ->add('dateCloture', DateTimeType::class, [
-                'label' => 'Date de fin : '])
+                'label' => 'Date de fin : ',
+                'html5'=>true,
+                'widget'=>'single_text',
+                'required'=>false
+            ])
             ->add('nbInscriptionsmax', null, [
                 'label' => 'Nombre maximal des participants : '])
             ->add('descriptionsInfos', TextType::class, [
