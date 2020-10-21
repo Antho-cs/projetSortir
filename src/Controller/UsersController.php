@@ -52,14 +52,20 @@ class UsersController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             //btn enregistrer
             if ($form->getClickedButton() === $form->get('enregistrer')) {
-                $password = $form['password']->getData();
-                $encoded = $encoder->encodePassword($participant, $password);
-                $participant->setPassword($encoded);
 
-                $img = $form->get('urlPhoto')->getData();
-                $newFileName = sha1(uniqid()) . '.' . $img->guessExtension();
-                $img->move($this->getParameter('img_directory'), $newFileName);
-                $participant->setUrlPhoto($newFileName);
+
+
+                    $password = $form['password']->getData();
+                    $encoded = $encoder->encodePassword($participant, $password);
+                    $participant->setPassword($encoded);
+              
+                if (!empty($form->get('urlPhoto')->getData())) {
+
+                    $img = $form->get('urlPhoto')->getData();
+                    $newFileName = sha1(uniqid()) . '.' . $img->guessExtension();
+                    $img->move($this->getParameter('img_directory'), $newFileName);
+                    $participant->setUrlPhoto($newFileName);
+                }
 
                 $em->persist($participant);
                 $em->flush();
