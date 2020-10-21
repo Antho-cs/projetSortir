@@ -7,9 +7,20 @@
 {% block mainSection %}
     <div class="pageComplet">
     <div class="infos">
-        <div>
-            Date du jour : {{ "now"|date("d/m/Y") }} <br>
-            Participant : {{ app.user.Pseudo }}
+        <div class="width-100">
+            <div class="width-50">
+                Date du jour : {{ "now"|date("d/m/Y") }} <br>
+                Participant : {{ app.user.Pseudo }}
+            </div>
+            <div class="home-message-flash width-50">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
     {{ parent() }}
@@ -120,6 +131,5 @@
                 {% endfor %}
             </table>
         {# -------------------  Bouton Création d'une sortie ----------------------- #}
-
     </div>
 {% endblock %}
