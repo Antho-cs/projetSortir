@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 
 class HomeType extends AbstractType
 {
@@ -39,7 +40,10 @@ class HomeType extends AbstractType
                 'label'=> 'Et: ',
                 'html5'=>true,
                 'widget'=>'single_text',
-                'required'=>false
+                'required'=>false,
+                'constraints'=>[
+                    new GreaterThan(['propertyPath'=>'parent.all[dateDebut].data'])
+                ]
             ])
             ->add('organisateur', CheckboxType::class, ['label'=>'Sorties dont je suis l\'organisateur',
                 'required'=>false])

@@ -67,6 +67,14 @@
         {% endblock %}
     </header><!-- End Header -->
     <main>
+        {# Affiche flash messages #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
         {% block mainSection %}{% endblock %}
     </main>
     <footer>

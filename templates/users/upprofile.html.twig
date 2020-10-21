@@ -19,21 +19,10 @@
             {{ form_row(upProfilUserFormType.nom, {'attr' : {'placeholder': app.user.nom }}) }}
             {{ form_row(upProfilUserFormType.telephone, {'attr' : {'placeholder': app.user.telephone }}) }}
             {{ form_row(upProfilUserFormType.mail, {'attr' : {'placeholder': app.user.mail }}) }}
+            {{ form_row(upProfilUserFormType.campus) }}
             {{ form_row(upProfilUserFormType.password.first) }}
             {{ form_row(upProfilUserFormType.password.second) }}
 
-            <div class="upProfileUser_campus">
-            <label for="exampleFormControlSelect1">Campus</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-                {% for c in campus %}
-                    <option>
-                        {{ c.nomCampus }}
-                    </option>
-                {% endfor %}
-            </select>
-            </div>
-
-        </div>
 
         <div class="side">
             {{ form_row(upProfilUserFormType.urlPhoto) }}
