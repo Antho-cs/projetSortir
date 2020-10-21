@@ -9,27 +9,51 @@ use Symfony\Component\Validator\Constraints\Date;
 
 class StateEventUpdate
 {
-    public function setUpdatedEventState(SortiesRepository $sortiesRepository, EtatsRepository $etatsRepository)
+    private $sortiesRepository;
+    private $etatsRepository;
+    private $converter;
+
+    public function __construct(SortiesRepository $sortiesRepository, EtatsRepository $etatsRepository, ConvertMinIntoHours $converter)
     {
+        $this->sortiesRepository = $sortiesRepository;
+        $this->etatsRepository = $etatsRepository;
+        $this->converter = $converter;
+    }
+
+    public function setUpdatedEventState()
+    {
+        $converter = $this->converter;
+        $sortiesRepository = $this->sortiesRepository;
         //get all events
         $allSorties = $sortiesRepository->findAll();
         $currentDate = new \DateTime('now');
 
+
         //update each event's state
         foreach ($allSorties as $currentSortie){
+            $etatsRepository = $this->etatsRepository;
+
+            //get duration and convert it into hour/min
+            $durationInHours = $converter->convertHourMin($currentSortie->getDuree());
+
+            /** @var \DateTime $dateFin */
+            $dateFin = clone $currentSortie->getDateDebut();
+            $dateFin->add(new \DateInterval('PT'.$currentSortie->getDuree().'M'));
+
+
             if (sizeof($currentSortie->getInscriptions()) >= $currentSortie->getNbInscriptionsmax() OR $currentDate > $currentSortie->getDateCloture())
             {
                 //set cloturée
                 $currentSortie->setEtat($etatsRepository->find(3));
             }
 
-            if ($currentDate === $currentSortie->getDateDebut())
+            if ($currentDate >= $currentSortie->getDateDebut() AND $currentDate < $dateFin)
             {
                 //set activité en cours
                 $currentSortie->setEtat($etatsRepository->find(4));
             }
 
-            if ($currentDate > $currentSortie->getDateDebut())
+            if ($currentDate > $dateFin)
             {
                 //set passée
                 $currentSortie->setEtat($etatsRepository->find(5));

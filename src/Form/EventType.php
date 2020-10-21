@@ -23,7 +23,7 @@ class EventType extends AbstractType
         $builder
             ->add('nom', null, [
                 'label' => 'Nom de la sortie :'])
-            ->add('dateDebut', DateType::class, [
+            ->add('dateDebut', DateTimeType::class, [
                 'label' => 'Date de la sortie :',
                 'html5'=>true,
                 'widget'=>'single_text',
@@ -31,7 +31,7 @@ class EventType extends AbstractType
                 ])
             ->add('duree', null, [
                 'label' => 'Durée en minutes: '])
-            ->add('dateCloture', DateType::class, [
+            ->add('dateCloture', DateTimeType::class, [
                 'label'=> 'Date de fin d\'inscription : ',
                 'html5'=>true,
                 'widget'=>'single_text',
