@@ -45,25 +45,30 @@ class UsersController extends AbstractController
         $campus = $campusRepository->findAll();
 
 
-
         $form = $this->createForm(UpProfileUserFormType::class, $participant);
 
-        $form ->handleRequest($request);
+        $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             //btn enregistrer
-            if($form->getClickedButton() === $form->get('enregistrer')) {
-                $password =$form['password']->getData();;
+            if ($form->getClickedButton() === $form->get('enregistrer')) {
+                $password = $form['password']->getData();
                 $encoded = $encoder->encodePassword($participant, $password);
                 $participant->setPassword($encoded);
-            $em->persist($participant);
-            $em->flush();
-            $this->addFlash('success', 'Votre profil a bien été mis à jour!');
 
-            return $this->redirectToRoute('home');
+                $img = $form->get('urlPhoto')->getData();
+                $newFileName = sha1(uniqid()) . '.' . $img->guessExtension();
+                $img->move($this->getParameter('img_directory'), $newFileName);
+                $participant->setUrlPhoto($newFileName);
+
+                $em->persist($participant);
+                $em->flush();
+                $this->addFlash('success', 'Votre profil a bien été mis à jour!');
+
+                return $this->redirectToRoute('home');
             }
             //btn retour
-            if($form->getClickedButton() === $form->get('retour')) {
+            if ($form->getClickedButton() === $form->get('retour')) {
                 return $this->redirectToRoute(('home'));
             }
         }

@@ -30,19 +30,23 @@ class UpProfileUserFormType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'options' => ['attr' => ['class' => 'password-field']],
-                'required' => true,
+                'required' => false,
                 'first_options'  => ['label' => 'password'],
                 'second_options' => ['label' => 'Confirmation password'],
             ])
-            ->add('photo', FileType::class, [
-                'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    new Image([
-                        'maxSize' => '7024k',
-                    ])
-                ],
+            ->add('urlPhoto', FileType::class, ['label'=>'Choisissez votre avatar:',
+                'mapped'=>false,
+                'required'=>false,
+                'constraints'=>[new Image([
+                        'maxSize' => '8024k',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])]
             ])
+            //TODO ajout urlPhoto
             ->add('enregistrer', SubmitType::class, [
                 'label'=> 'Enregistrer'
             ])
