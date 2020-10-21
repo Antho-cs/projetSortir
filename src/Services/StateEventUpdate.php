@@ -13,11 +13,10 @@ class StateEventUpdate
     private $etatsRepository;
     private $converter;
 
-    public function __construct(SortiesRepository $sortiesRepository, EtatsRepository $etatsRepository, ConvertMinIntoHours $converter)
+    public function __construct(SortiesRepository $sortiesRepository, EtatsRepository $etatsRepository)
     {
         $this->sortiesRepository = $sortiesRepository;
         $this->etatsRepository = $etatsRepository;
-        $this->converter = $converter;
     }
 
     public function setUpdatedEventState()
@@ -32,9 +31,6 @@ class StateEventUpdate
         //update each event's state
         foreach ($allSorties as $currentSortie){
             $etatsRepository = $this->etatsRepository;
-
-            //get duration and convert it into hour/min
-            $durationInHours = $converter->convertHourMin($currentSortie->getDuree());
 
             /** @var \DateTime $dateFin */
             $dateFin = clone $currentSortie->getDateDebut();
