@@ -42,6 +42,9 @@
                         {# pages accessible to admin #}
                         {% if is_granted("ROLE_ADMIN") %}
                             <li class="nav-item">
+                                <a href="{{ path('create_users') }}">Ajout d'utilisateur</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ path('edit_villes') }}">Ville</a>
                             </li>
                             <li class="nav-item">
@@ -52,7 +55,7 @@
                             <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Mon profil</a>
+                            <a href="{{ path('update_user',{'id' : app.user.id}) }}">Mon profil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>

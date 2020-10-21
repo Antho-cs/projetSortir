@@ -26,7 +26,7 @@ class Participants implements UserInterface
      * @Assert\NotBlank(message="SVP renseignez votre pseudo!")
      * @Assert\Length(
      *     min="3",
-     *     max="8",
+     *     max="30",
      *     minMessage="trop court",
      *     maxMessage="trop long"
      * )

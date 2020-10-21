@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Campus;
+use App\Entity\Participants;
 use App\Entity\Villes;
 use App\Form\AddCampusType;
+use App\Form\AddUserType;
 use App\Form\AddVillesType;
 use App\Form\DeleteCampusType;
 use App\Form\DeleteVillesType;
@@ -12,6 +14,7 @@ use App\Form\RechercheCampusType;
 use App\Form\RechercheVilleType;
 use App\Form\UpdateCampusType;
 use App\Form\UpdateVillesType;
+use App\Form\UpProfileUserFormType;
 use App\Repository\CampusRepository;
 use App\Repository\VillesRepository;
 use Doctrine\ORM\EntityManager;
@@ -19,6 +22,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Class AdminController
@@ -85,7 +89,7 @@ class AdminController extends AbstractController
             $em->remove($villeASupp);
             $em->flush();
             $this->addFlash('warning', 'La ville a bien été supprimée !');
-        return $this->redirectToRoute('edit_villes');
+            return $this->redirectToRoute('edit_villes');
         }
         return $this->render('admin/delvilles.html.twig', [
             'controller_name' => 'AdminController',
@@ -206,4 +210,53 @@ class AdminController extends AbstractController
             'updateCampusForm' => $updateCampusForm->createView()
         ]);
     }
+
+    /**
+     * @Route("/create_User", name="create_users")
+     */
+    public function createUser(Request $request, EntityManagerInterface $em, CampusRepository  $campusRepository, UserPasswordEncoderInterface $encoder)
+    {
+        //créer une entité vide
+        $newUser = new Participants();
+
+        // Les Campus //
+        $campus = $campusRepository->findAll();
+
+        //créer le formulaire
+        $userForm = $this->createForm(AddUserType::class, $newUser);
+
+
+        $newUser->setAdministrateur(false);
+        $newUser->setActif(true);
+
+
+        $userForm->handleRequest($request);
+
+        if ($userForm->isSubmitted() && $userForm->isValid()) {
+            $newUser->setRoles([$userForm->get('role')->getData()]);
+
+            if ($userForm->getClickedButton() === $userForm->get('enregistrer')) {
+
+                $password =$userForm['password']->getData();
+                $encoded = $encoder->encodePassword($newUser, $password);
+                $newUser->setPassword($encoded);
+
+                $em->persist($newUser);
+                $em->flush();
+                $this->addFlash('success', 'Un nouvel utilisateur à bien été créée!');
+
+                return $this->redirectToRoute('home');
+            }
+
+            //btn retour
+            if($userForm->getClickedButton() === $userForm->get('retour')) {
+                return $this->redirectToRoute(('home'));
+            }
+
+        }
+        return $this->render('admin/editUser.html.twig', [
+            'userForm' => $userForm->createView(), 'campus' => $campus
+        ]);
+    }
+
 }

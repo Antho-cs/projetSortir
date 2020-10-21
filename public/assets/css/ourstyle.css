@@ -240,6 +240,11 @@ button {
   justify-content: center;
 }
 
+.custom-file-input {
+  opacity: unset;
+  width: unset;
+}
+
 .pageComplet {
   width: 100%;
 }

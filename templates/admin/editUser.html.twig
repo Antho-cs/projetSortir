@@ -1,0 +1,36 @@
+{% extends 'layoutDisplay.html.twig' %}
+
+{% block title %}
+Ajout d'un Utilisateur
+{% endblock %}
+
+{% block main %}
+    <h1>Inscription nouvel utilisateur</h1>
+
+    <div class="addProfileUser">
+
+        {{ form_start(userForm) }}
+
+        <div>
+            {{ form_row(userForm.Pseudo) }}
+            {{ form_row(userForm.prenom) }}
+            {{ form_row(userForm.nom) }}
+            {{ form_row(userForm.telephone) }}
+            {{ form_row(userForm.mail) }}
+            {{ form_row(userForm.role) }}
+            {{ form_row(userForm.campus) }}
+
+            {{ form_row(userForm.password.first) }}
+            {{ form_row(userForm.password.second) }}
+
+
+        <div class="upProfileUser-btn">
+            {{ form_row(userForm.enregistrer) }}
+            {{ form_row(userForm.retour) }}
+        </div>
+
+    </div>
+
+    {{ form_end(userForm) }}
+
+{% endblock %}
