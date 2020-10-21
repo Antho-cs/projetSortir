@@ -61,6 +61,15 @@ class SortiesRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+//    public function findInscriptions($sortie) {
+//        return $this->createQueryBuilder('s')
+//            ->join('s.inscriptions', 'i')
+//            ->andWhere('i.sortie = :s')
+//            ->setParameter('s', $sortie)
+//            ->getQuery()
+//            ->getResult()
+//            ;
+//    }
 //    // Vérifier si le nom de la ville contient la string passée en argument
 //    public function contains($recherche)
 //    {
