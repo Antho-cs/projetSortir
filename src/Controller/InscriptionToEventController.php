@@ -21,6 +21,7 @@ class InscriptionToEventController extends AbstractController
 
         //set inscription instance
         $inscription->setDateInscription(new \DateTime());
+
         //organisateur ne voit pas le btn dont supposons que le check supplémentaire n'est pas important
         $inscription->setParticipant($this->getUser());
         $inscription->setSortie($sortie);
@@ -30,9 +31,11 @@ class InscriptionToEventController extends AbstractController
 
         $this->addFlash('success', 'Vous êtes bien inscrit-e sur l\'événement');
 
-
         return $this->redirectToRoute('home');
+
     }
+
+
 
 
     /**

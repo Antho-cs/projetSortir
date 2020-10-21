@@ -17,8 +17,8 @@
             <section class="event-creation-form-first-cl">
                 {{ form_row(eventForm.nom) }}
                 <div class="dates">
-                    {{ form_row(eventForm.dateDebut, {'attr': {'type': 'datetime-local'}}) }}
-                    {{ form_row(eventForm.dateCloture) }}
+                    {{ form_row(eventForm.dateDebut, {'attr': {'value': 'now'|date('Y-m-d') }}) }}
+                    {{ form_row(eventForm.dateCloture, {'attr': {'value': 'yesterday'|date('Y-m-d') }}) }}
                 </div>
                 {{ form_row(eventForm.duree) }}
                 {{ form_row(eventForm.nbInscriptionsmax) }}

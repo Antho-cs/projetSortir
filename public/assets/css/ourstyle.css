@@ -296,6 +296,10 @@ button {
   width: 100%;
 }
 
+.home-checkbox {
+  width: 40%;
+}
+
 /***** Liste des sorties *****/
 .listSortie {
   overflow-y: scroll;

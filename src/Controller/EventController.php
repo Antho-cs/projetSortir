@@ -13,6 +13,7 @@ use App\Form\UpdateEventType;
 use App\Repository\CampusRepository;
 use App\Repository\EtatsRepository;
 use App\Repository\SortiesRepository;
+use App\Services\StateEventUpdate;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,8 +32,11 @@ class EventController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function home(Request $request, CampusRepository $campusRepository, SortiesRepository $sortiesRepository)
+    public function home(Request $request, CampusRepository $campusRepository, SortiesRepository $sortiesRepository, StateEventUpdate $stateUpdater, EtatsRepository $etatsRepository)
     {
+        //check and update all created events
+        $stateUpdater->setUpdatedEventState($sortiesRepository, $etatsRepository);
+
         $homeForm = $this->createForm(HomeType::class);
         $homeForm->handleRequest($request);
         $user = $this->getUser();

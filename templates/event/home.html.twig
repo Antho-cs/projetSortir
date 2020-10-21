@@ -24,10 +24,15 @@
             {{ form_row(homeform.nomSortie) }}
             {{ form_row(homeform.dateDebut, {'attr' : {'min': "now"|date('Y-m-d')}} ) }}
             {{ form_row(homeform.dateCloture, {'attr' : {'min': "now"|date('Y-m-d') }} ) }}
-            {{ form_row(homeform.organisateur) }}
-            {{ form_row(homeform.inscrit) }}
-            {{ form_row(homeform.noninscrit) }}
-            {{ form_row(homeform.outdated) }}
+            <div class="width-100">
+                <div class="home-checkbox">
+                    {{ form_row(homeform.organisateur) }}
+                    {{ form_row(homeform.inscrit) }}
+                    {{ form_row(homeform.noninscrit) }}
+                    {{ form_row(homeform.outdated) }}
+                </div>
+            </div>
+
             {{ form_end(homeform) }}
             <div class="btnCreaEvent">
                 <button type="submit" class="btn btn-primary mb-2"><a href="{{ path('create_event') }}">Créer une sortie</a>
