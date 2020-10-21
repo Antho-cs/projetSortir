@@ -44,12 +44,14 @@ class SortiesRepository extends ServiceEntityRepository
                 ->setParameter('o', $organisateur);
         }
         if ($inscrit) {
-            $builder->join('q.inscriptions', 'p', Expr\Join::WITH, 'p = :ok')
+            $builder->join('q.inscriptions', 'p')
+                ->andWhere('p.participant = :ok')
                 ->setParameter('ok', $inscrit);
         }
         if ($noninscrit) {
-            $builder->join('q.inscriptions', 'p', Expr\Join::WITH, 'p != :ok')
-                ->setParameter('ok', $noninscrit);
+            $builder->leftjoin('q.inscriptions', 'p2')
+                ->andWhere('p2.participant != :ko OR p2.participant is null')
+                ->setParameter('ko', $noninscrit);
         }
         if ($outdated) {
             $builder->andWhere('q.dateDebut < :n')

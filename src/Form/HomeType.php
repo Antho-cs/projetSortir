@@ -45,7 +45,7 @@ class HomeType extends AbstractType
                 'required'=>false])
             ->add('inscrit', CheckboxType::class, ['label'=>'Sorties auxquelles je suis inscrit',
                 'required'=>false])
-            ->add('noninscrit', CheckboxType::class, ['label'=>'Sorties auxquelles je suis inscrit',
+            ->add('noninscrit', CheckboxType::class, ['label'=>'Sorties auxquelles je ne suis pas inscrit',
                 'required'=>false])
             ->add('outdated', CheckboxType::class, ['label'=>'Sorties passées',
                 'required'=>false])
