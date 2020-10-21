@@ -32,7 +32,7 @@ class UpProfileUserFormType extends AbstractType
             ])
             ->add('password',RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'Le mot de passe ne correspond pas.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => false,
                 'first_options'  => ['label' => 'password'],
@@ -47,7 +47,7 @@ class UpProfileUserFormType extends AbstractType
                             'image/png',
                             'image/jpg',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                        'mimeTypesMessage' => 'Seuls les formats PNG et JPG sont acceptés' ,
                     ])]
             ])
             ->add('enregistrer', SubmitType::class, [
