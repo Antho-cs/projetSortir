@@ -54,11 +54,10 @@ class UsersController extends AbstractController
             if ($form->getClickedButton() === $form->get('enregistrer')) {
 
 
+                $password = $form['password']->getData();
+                $encoded = $encoder->encodePassword($participant, $password);
+                $participant->setPassword($encoded);
 
-                    $password = $form['password']->getData();
-                    $encoded = $encoder->encodePassword($participant, $password);
-                    $participant->setPassword($encoded);
-              
                 if (!empty($form->get('urlPhoto')->getData())) {
 
                     $img = $form->get('urlPhoto')->getData();
@@ -73,11 +72,13 @@ class UsersController extends AbstractController
 
                 return $this->redirectToRoute('home');
             }
-            //btn retour
-            if ($form->getClickedButton() === $form->get('retour')) {
-                return $this->redirectToRoute(('home'));
-            }
         }
+
+        //btn retour
+        if ($form->getClickedButton() === $form->get('retour')) {
+            return $this->redirectToRoute(('home'));
+        }
+
 
         return $this->render('/users/upprofile.html.twig', [
             'upProfilUserFormType' => $form->createView(), 'campus' => $campus
