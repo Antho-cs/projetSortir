@@ -453,21 +453,6 @@ section {
   margin-bottom: 0;
 }
 
-footer{
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-
-  background-color: rgba(197, 97, 131,0.4);
-}
-
-footer p{
-  color: #030509;
-}
-
 .welcome{
   font-family: "Mako", sans-serif;
   letter-spacing: 2px;
