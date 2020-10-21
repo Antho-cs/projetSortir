@@ -49,15 +49,15 @@ class AddUserType extends AbstractType
                 'first_options' => ['label' => 'password'],
                 'second_options' => ['label' => 'Confirmation password'],
             ])
-            ->add('photo', FileType::class, [
-                'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    new Image([
-                        'maxSize' => '7024k',
-                    ])
-                ],
-            ])
+//            ->add('photo', FileType::class, [
+//                'mapped' => false,
+//                'required' => false,
+//                'constraints' => [
+//                    new Image([
+//                        'maxSize' => '7024k',
+//                    ])
+//                ],
+//            ])
             ->add('enregistrer', SubmitType::class, [
                 'label' => 'Enregistrer'
             ])
