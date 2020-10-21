@@ -26,6 +26,10 @@ class UpProfileUserFormType extends AbstractType
             ->add('prenom')
             ->add('telephone')
             ->add('mail')
+            ->add('campus', EntityType::class, [
+                'class' => Campus::class,
+                'choice_label' => 'nomCampus',
+            ])
             ->add('password',RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
