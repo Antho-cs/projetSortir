@@ -83,6 +83,7 @@
                 {% for sortie in sorties %}
 
                     {% if sortie.getEtat().getLibelle() == 'Créée' and sortie.organisateur != app.user %}
+
                     {% else %}
                         <tr>
                             {# Nom de la sortie #}
@@ -139,6 +140,10 @@
                                 {% elseif sortie.canRead() and sortie.canInscrit(app.user) %}
                                     <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a
                                         href="{{ path('reject_inscription',{'id' : sortie.id }) }}">Se désister</a>
+
+                                    {# Si Clôturée ne pas pouvoir s'inscrire#}
+                                {% elseif sortie.getEtat().getLibelle() == 'Clôturée' %}
+                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a>
 
                                     {# Afficher - S'inscrire #}
                                 {% elseif sortie.canRead() and sortie.canInscrit(app.user) is same as (false) %}
