@@ -37,8 +37,8 @@ class UpProfileUserFormType extends AbstractType
                 'invalid_message' => 'Le mot de passe ne correspond pas.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => false,
-                'first_options'  => ['label' => 'password'],
-                'second_options' => ['label' => 'Confirmation password'],
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmation du mot de passe'],
                 'empty_data' => ''
             ])
             ->add('urlPhoto', FileType::class, ['label'=>'Choisissez votre avatar:',
