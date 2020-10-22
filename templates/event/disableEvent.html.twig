@@ -3,6 +3,9 @@
 {% block title %}Annuler la sortie{% endblock %}
 {% block navbar %} {% endblock %}
 {% block mainSection %}
+    <div>
+
+    </div>
     <div class="disable-event-asset" style="background-image: {{ asset('assets/img/asset.jpg') }}">
         <div class="disable-event-front-element-img">
             <img src="{{ asset('assets/img/asset.jpg') }}" alt="">
@@ -19,6 +22,9 @@
                     <ul class="navbar-nav mr-auto">
                         {# pages accessible to admin #}
                         {% if is_granted("ROLE_ADMIN") %}
+                            <li class="nav-item">
+                            <a class="nav-link" href="{{ path('create_users') }}">Ajout d'utilisateur</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('edit_villes') }}">Ville</a>
                             </li>
