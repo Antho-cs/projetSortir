@@ -1,6 +1,9 @@
 {% extends 'layoutDisplay.html.twig' %}
-{% block titrePage %}
+
+{% block title %}
+    Sortir.com | Profil
 {% endblock %}
+
 {% block mainSection %}
     <h2 class="displayPseudo">{{ currentUser.pseudo }}</h2>
     <div class="sidebyside">
@@ -15,7 +18,7 @@
         <b>Campus: </b>{{ currentUser.campus.nomCampus }}<br>
         </div>
     </div>
-    <footer>
-        <p>Made with ❤️</p>
-    </footer>
+{#    <footer>#}
+{#        <p>Made with ❤️</p>#}
+{#    </footer>#}
 {% endblock %}
