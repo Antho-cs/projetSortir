@@ -2,18 +2,20 @@
 {% block titrePage %}
 {% endblock %}
 {% block mainSection %}
-
     <h2 class="displayPseudo">{{ currentUser.pseudo }}</h2>
-<div class="sidebyside">
-    <div class="side">
-    <img src="{{ currentUser.urlPhoto }}">
+    <div class="sidebyside">
+        <div class="side">
+        <img src="{{ currentUser.urlPhoto }}">
+        </div>
+        <div class="side">
+        <b>Prénom: </b>{{ currentUser.prenom }}<br>
+        <b>Nom: </b>{{ currentUser.nom }}<br>
+        <b>Téléphone: </b>{{ currentUser.telephone }}<br>
+        <b>Adresse mail: </b>{{ currentUser.mail }}<br>
+        <b>Campus: </b>{{ currentUser.campus.nomCampus }}<br>
+        </div>
     </div>
-    <div class="side">
-    <b>Prénom: </b>{{ currentUser.prenom }}<br>
-    <b>Nom: </b>{{ currentUser.nom }}<br>
-    <b>Téléphone: </b>{{ currentUser.telephone }}<br>
-    <b>Adresse mail: </b>{{ currentUser.mail }}<br>
-    <b>Campus: </b>{{ currentUser.campus.nomCampus }}<br>
-    </div>
-</div>
+    <footer>
+        <p>Made with ❤️</p>
+    </footer>
 {% endblock %}

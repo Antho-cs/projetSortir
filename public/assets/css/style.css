@@ -91,6 +91,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Pacifico', cursive;
 }
 
+.point-logo{
+  color: #0069B9;
+}
+
 #header .logo img {
   padding: 0;
   margin: 0;

@@ -1,6 +1,5 @@
 {% extends 'layoutDisplay.html.twig' %}
-{% block titrePage %}
-{% endblock %}
+{% block title %}{{ sortie.nom }}{% endblock %}
 {% block mainSection %}
     <div class="sidebyside">
         <div class="side">
@@ -35,4 +34,7 @@
             </tbody>
         </table>
     </div>
+    <footer>
+        <p>Made with ❤️</p>
+    </footer>
 {% endblock %}
