@@ -12,10 +12,13 @@
 
 .home-user-info
   width: 30%
-  padding: 10px 30px
+  padding: 10px 40px
+  font-size: 1.25rem
+
 
 .home-message-flash
-  width: 40%
+  width: 100%
+  text-align: center
 
 .formComplet
   width: 100%
@@ -27,6 +30,14 @@
   text-align: center
   text-transform: uppercase
 
+.home-checkbox-wrapper
+  display: flex
+  justify-content: center
+
+
+.home-checkbox
+  width: 20%
+  padding: 20px 0
 
 #infos
   display: flex
@@ -65,8 +76,6 @@
 >.formDroit
  width : 100%
 
-.home-checkbox
-  width: 40%
 /***** Liste des sorties *****/
 
 .listSortie
@@ -75,9 +84,12 @@
   @extend %flex-container-centered
   margin-top: 5%
 
+.home-tbl-wrapper
+  padding: 3rem 5rem
+
+
 .btnCreaEvent
   margin-top: 3%
-
 
 
 .dates-home
@@ -85,6 +97,49 @@
 
 >.home-content-form
   padding: 0 3px
+
+
+.home-form-btn-search
+  padding-top: 3.5rem
+  margin-right: 4rem
+
+.home-form-btn-search
+  .form-group
+    button
+      width: 150px
+
+.home-filters-not-checkbox
+  display: flex
+  justify-content: center
+
+.home-filters-not-checkbox
+  form
+    width: 70%
+    display: flex
+    justify-content: space-around
+
+.home-tbl
+  width: 90%
+  text-align: center
+
+/*Btn down*/
+
+go-down
+  animation-duration: 3s
+  animation-delay: 15s
+  animation-name: glissement
+  animation-iteration-count: infinite
+
+@keyframes glissement
+    from
+      padding-top: 100%
+      width: 300%
+
+
+    to
+      padding-top: 0%
+      width: 100%
+
 
 
 

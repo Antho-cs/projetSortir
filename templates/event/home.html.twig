@@ -9,8 +9,12 @@
     <div class="infos">
         <div class="width-100">
             <div class="home-user-info">
-                Date du jour : {{ "now"|date("d/m/Y") }} <br>
-                Participant : {{ app.user.Pseudo }}
+                <p>
+                    Date du jour : {{ "now"|date("d/m/Y") }}
+                </p>
+                <p>
+                    Participant : {{ app.user.Pseudo }}
+                </p>
             </div>
             <div class="home-message-flash">
                 {% for label, messages in app.flashes %}
@@ -25,7 +29,7 @@
     </div>
     <div class="formComplet">
     <div class="formComplet-item width-100">
-        <h3>Filtrer les sorties</h3>
+        <h3>Filtrer les sorties<span class="point-logo">.</span></h3>
     </div>
     <div class="home-content-form width-100 formComplet">
         <div class="home-filters-not-checkbox width-100">
@@ -35,7 +39,7 @@
             {{ form_row(homeform.dateDebut, {'attr' : {'min': "now"|date('Y-m-d')}} ) }}
             {{ form_row(homeform.dateCloture, {'attr' : {'min': "now"|date('Y-m-d') }} ) }}
         </div>
-        <div class="width-100">
+        <div class="width-100 home-checkbox-wrapper">
             <div class="home-checkbox">
                 {{ form_row(homeform.organisateur) }}
                 {{ form_row(homeform.inscrit) }}
@@ -43,17 +47,24 @@
                 {{ form_row(homeform.outdated) }}
             </div>
         </div>
-
+        <div class="home-form-btn-search">
+            {{ form_row(homeform.search) }}
+        </div>
         {{ form_end(homeform) }}
         <div class="btnCreaEvent">
             <button type="submit" class="btn btn-primary mb-2"><a href="{{ path('create_event') }}">Créer une sortie</a>
             </button>
         </div>
     </div>
+    <div class="width-100 flex-centered">
+        <a href="#table">
+            <img src="{{ asset('assets/img/down-btn.svg') }}" alt="go down" width="60px" class="go-down">
+        </a>
+    </div>
     {# -------------------  Liste Déroulante des Sorties ----------------------- #}
-
+    <div class="home-tbl-wrapper"></div>
     <div class="listSortie table-responsive">
-        <table class="table-sm table-striped table-bordered table-hover">
+        <table class="table-sm table-striped table-bordered table-hover home-tbl" id="table">
             <thead class="thead-dark">
             <tr>
                 <th>Nom de la sortie</th>
