@@ -1,19 +1,29 @@
 {% extends 'layoutDisplay.html.twig' %}
 
-{% block titrePage %}
+{% block title %}
+    Mon profil
 {% endblock %}
+
+
 
 {% block mainSection %}
 
+    <div class="titre-h1">
+        <h1>Mon profil<span class="point-logo">.</span></h1>
+    </div>
 
-    <h1>Mon profil</h1>
+<div class="img+form">
+    <div class="UpProfile-img">
+    <img src="{{ asset('uploads/' ~ app.user.urlPhoto) }}" alt="avatar_user"/>
+    </div>
+
 
     <div class="upProfileUser">
 
     {{ form_start(upProfilUserFormType) }}
 
     <div>
-        <img src="{{ asset('uploads/' ~ app.user.urlPhoto) }}" alt="avatar_user"/>
+
         {{ form_row(upProfilUserFormType.Pseudo, {'attr' : {'placeholder': app.user.Pseudo }}) }}
         {{ form_row(upProfilUserFormType.prenom, {'attr' : {'placeholder': app.user.prenom }}) }}
         {{ form_row(upProfilUserFormType.nom, {'attr' : {'placeholder': app.user.nom }}) }}
@@ -35,8 +45,8 @@
     </div>
 
     {{ form_end(upProfilUserFormType) }}
-    <a href="{{ path('home') }}">
-        <button class="btn btn-primary">Retour</button>
+    <a class="btn-retour" href="{{ path('home') }}">
+        <button class="btn btn-primary btn-retour">Retour</button>
     </a>
-
+    </div>
 {% endblock %}

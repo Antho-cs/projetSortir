@@ -12,6 +12,7 @@ Ajout d'un Utilisateur
             </section>
             <section class="addProfileUser flex-centered width-100">
                 {{ form_start(userForm) }}
+
                     {{ form_row(userForm.Pseudo) }}
                     {{ form_row(userForm.prenom) }}
                     {{ form_row(userForm.nom) }}
@@ -22,13 +23,15 @@ Ajout d'un Utilisateur
 
                     {{ form_row(userForm.password.first) }}
                     {{ form_row(userForm.password.second) }}
-                    <div class="upProfileUser-btn">
+                    <div class="upProfileUser-btn btn-upUser">
                         {{ form_row(userForm.enregistrer) }}
                     </div>
                 {{ form_end(userForm) }}
-                <a href="{{ path('home') }}">
-                    <button class="btn btn-primary">Retour</button>
-                </a>
+                <div class="edit-user-retour">
+                    <a href="{{ path('home') }}">
+                        <button class="btn btn-primary">Retour</button>
+                    </a>
+                </div>
             </section>
          </div>
     </div>
