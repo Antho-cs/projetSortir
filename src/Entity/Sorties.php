@@ -276,7 +276,7 @@ class Sorties
         public
         function canRead(): bool
         {
-            return self::PAST === $this->etat->getLibelle() || self::ONGOING === $this->etat->getLibelle() || self::OPEN === $this->etat->getLibelle();
+            return self::FENCE === $this->etat->getLibelle() || self::ONGOING === $this->etat->getLibelle() || self::OPEN === $this->etat->getLibelle();
         }
 
         public
