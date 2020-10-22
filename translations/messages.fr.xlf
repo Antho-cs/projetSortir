@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="fr-FR" target-language="en" datatype="plaintext" original="file.ext">
+  <file source-language="fr-FR" target-language="fr" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
       <trans-unit id="twkkwGM" resname="Veuillez choisir un campus...">
         <source>Veuillez choisir un campus...</source>
-        <target>Please select a campus...</target>
+        <target>Veuillez choisir un campus...</target>
       </trans-unit>
       <trans-unit id="LUoSXYJ" resname="Campus:">
         <source>Campus:</source>
@@ -27,47 +27,47 @@
       </trans-unit>
       <trans-unit id="LxK3TBH" resname="Sorties dont je suis l'organisateur">
         <source>Sorties dont je suis l'organisateur</source>
-        <target>Events I created</target>
+        <target>Sorties dont je suis l'organisateur</target>
       </trans-unit>
       <trans-unit id="uqGbi2d" resname="Sorties auxquelles je suis inscrit">
         <source>Sorties auxquelles je suis inscrit</source>
-        <target>Events I subscribed</target>
+        <target>Sorties auxquelles je suis inscrit</target>
       </trans-unit>
       <trans-unit id="hXT2qZJ" resname="Sorties auxquelles je ne suis pas inscrit">
         <source>Sorties auxquelles je ne suis pas inscrit</source>
-        <target>Events I did not subscribed</target>
+        <target>Sorties auxquelles je ne suis pas inscrit</target>
       </trans-unit>
       <trans-unit id="wsCoDHd" resname="Sorties passées">
         <source>Sorties passées</source>
-        <target>Passed events</target>
+        <target>Sorties passées</target>
       </trans-unit>
       <trans-unit id="cz0cdCZ" resname="Rechercher">
         <source>Rechercher</source>
-        <target>Search</target>
+        <target>Rechercher</target>
       </trans-unit>
       <trans-unit id="APnFM0V" resname="Ajouter">
         <source>Ajouter</source>
-        <target>Add</target>
+        <target>Ajouter</target>
       </trans-unit>
       <trans-unit id="BH9Ys5T" resname="Pseudo">
         <source>Pseudo</source>
-        <target>Nickname</target>
+        <target>Pseudo</target>
       </trans-unit>
       <trans-unit id="t8_nMCO" resname="Prenom">
         <source>Prenom</source>
-        <target>First name</target>
+        <target>Prenom</target>
       </trans-unit>
       <trans-unit id="ssEkU20" resname="Nom">
         <source>Nom</source>
-        <target>Last name</target>
+        <target>Nom</target>
       </trans-unit>
       <trans-unit id="hOzWMou" resname="Telephone">
         <source>Telephone</source>
-        <target>Phone</target>
+        <target>Telephone</target>
       </trans-unit>
       <trans-unit id="B_1sz2v" resname="Mail">
         <source>Mail</source>
-        <target>Email</target>
+        <target>Mail</target>
       </trans-unit>
       <trans-unit id="FHNqLrn" resname="Role">
         <source>Role</source>
@@ -87,15 +87,15 @@
       </trans-unit>
       <trans-unit id=".5yLjAZ" resname="Mot de passe">
         <source>Mot de passe</source>
-        <target>Password</target>
+        <target>Mot de passe</target>
       </trans-unit>
       <trans-unit id="B5ksO1b" resname="Confirmation du mot de passe">
         <source>Confirmation du mot de passe</source>
-        <target>Password confirmation</target>
+        <target>Confirmation du mot de passe</target>
       </trans-unit>
       <trans-unit id="cdx0hz4" resname="Enregistrer">
         <source>Enregistrer</source>
-        <target>Save</target>
+        <target>Enregistrer</target>
       </trans-unit>
     </body>
   </file>
