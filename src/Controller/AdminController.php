@@ -61,7 +61,7 @@ class AdminController extends AbstractController
             $newVilles->setCodePostal($codePostal);
             $em->persist($newVilles);
             $em->flush();
-            $this->addFlash('success', 'La ville a bien été créé !');
+            $this->addFlash('success', 'La ville a bien été créée !');
 
 
             return $this->redirectToRoute('edit_villes');
@@ -176,7 +176,7 @@ class AdminController extends AbstractController
             $campusASupp = $campusRepository->find($id);
             $em->remove($campusASupp);
             $em->flush();
-            $this->addFlash('warning', 'Le campus a bien été supprimée !');
+            $this->addFlash('warning', 'Le campus a bien été supprimé !');
             return $this->redirectToRoute('edit_campus');
         }
         return $this->render('admin/delcampus.html.twig', [
@@ -243,7 +243,7 @@ class AdminController extends AbstractController
 
                 $em->persist($newUser);
                 $em->flush();
-                $this->addFlash('success', 'Un nouvel utilisateur à bien été créée!');
+                $this->addFlash('success', 'Un nouvel utilisateur a bien été créé!');
 
                 return $this->redirectToRoute('home');
             }

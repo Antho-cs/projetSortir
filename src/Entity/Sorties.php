@@ -15,7 +15,7 @@ class Sorties
 {
     public const CREATE = 'Créée';
     public const OPEN = 'Ouverte';
-    public const FENCE = 'Clôturée'; //TODO Dat Google Trad! ;)
+    public const FENCE = 'Clôturée';
     public const ONGOING = 'Activité en cours';
     public const PAST = 'Passée';
     public const CANCEL = 'Annulée';
