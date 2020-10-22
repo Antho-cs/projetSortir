@@ -6,6 +6,7 @@ use App\Entity\Sorties;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr;
 use Doctrine\Persistence\ManagerRegistry;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Sorties|null find($id, $lockMode = null, $lockVersion = null)
@@ -48,10 +49,16 @@ class SortiesRepository extends ServiceEntityRepository
                 ->andWhere('p.participant = :ok')
                 ->setParameter('ok', $inscrit);
         }
-        if ($noninscrit) {
-            $builder->leftjoin('q.inscriptions', 'p2')
-                ->andWhere('p2.participant != :ko OR p2.participant is null')
-                ->setParameter('ko', $noninscrit);
+        if ($noninscrit) { //NOTE Je n'aurais pas trouvé seul
+            $builder->where(
+                $builder->expr()->notIn('q.id',
+                    $this->createQueryBuilder('sq')
+                        ->select('sq.id')
+                        ->join('sq.inscriptions', 'i')
+                        ->where('i.participant = :p')
+                        ->getDQL()
+                )
+            )->setParameter('p', $noninscrit);
         }
         if ($outdated) {
             $builder->andWhere('q.dateDebut < :n')
