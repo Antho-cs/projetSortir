@@ -88,7 +88,10 @@
                     <td> {{ sortie.getEtat().getLibelle() }} </td>
 
                     {# Inscrit #}
-                    <td> {% if sortie.canInscrit(app.user) is same as (true) %}
+                    <td>
+                        {% if sortie.getOrganisateur().pseudo is same as (app.user.pseudo) %}
+                        
+                        {% elseif sortie.canInscrit(app.user) is same as (true) %}
                             'Oui'
                         {% else %}
                             'Non'
