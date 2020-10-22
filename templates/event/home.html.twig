@@ -58,109 +58,116 @@
     </div>
     <div class="width-100 flex-centered">
         <a href="#table">
-            <img src="{{ asset('assets/img/down-btn.svg') }}" alt="go down" width="60px" class="go-down">
+            <img src="{{ asset('assets/img/down-btn.svg') }}" alt="go down" width="60px" class="go-down" id="go-down-id">
         </a>
     </div>
+    </div>
     {# -------------------  Liste Déroulante des Sorties ----------------------- #}
-    <div class="home-tbl-wrapper"></div>
-    <div class="listSortie table-responsive">
-        <table class="table-sm table-striped table-bordered table-hover home-tbl" id="table">
-            <thead class="thead-dark">
-            <tr>
-                <th>Nom de la sortie</th>
-                <th>Date de la sortie</th>
-                <th>Clôture</th>
-                <th>Inscrits/Places</th>
-                <th>Etat</th>
-                <th>Inscrit</th>
-                <th>Organisateur</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {# //TODO  Voir les objet/attributs à call #}
-            {% for sortie in sorties %}
 
-                {% if sortie.getEtat().getLibelle() == 'Créée' and sortie.organisateur != app.user %}
-                {% else %}
-                    <tr>
-                        {# Nom de la sortie #}
-                        <td> {{ sortie.nom }}</td>
+        <div class="listSortie table-responsive">
+            <table class="table-sm table-striped table-bordered table-hover home-tbl" id="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Nom de la sortie</th>
+                    <th>Date de la sortie</th>
+                    <th>Clôture</th>
+                    <th>Inscrits/Places</th>
+                    <th>Etat</th>
+                    <th>Inscrit</th>
+                    <th>Organisateur</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {# //TODO  Voir les objet/attributs à call #}
+                {% for sortie in sorties %}
 
-                        {# Date de Début #}
-                        <td> {{ sortie.getDateDebut() | date ('d-m-Y') }} </td>
+                    {% if sortie.getEtat().getLibelle() == 'Créée' and sortie.organisateur != app.user %}
+                    {% else %}
+                        <tr>
+                            {# Nom de la sortie #}
+                            <td> {{ sortie.nom }}</td>
 
-                        {# Date de Cloture #}
-                        <td> {{ sortie.dateCloture() | date ('d-m-Y') }} </td>
+                            {# Date de Début #}
+                            <td> {{ sortie.getDateDebut() | date ('d-m-Y') }} </td>
 
-                        {# Nombre d'inscrit #}
-                        <td> {{ sortie.inscriptions|length }} / {{ sortie.nbInscriptionsmax }} </td>
+                            {# Date de Cloture #}
+                            <td> {{ sortie.dateCloture() | date ('d-m-Y') }} </td>
 
-                        {# Libelle de l'Etat #}
-                        <td> {{ sortie.getEtat().getLibelle() }} </td>
+                            {# Nombre d'inscrit #}
+                            <td> {{ sortie.inscriptions|length }} / {{ sortie.nbInscriptionsmax }} </td>
 
-
-                    {# Inscrit #}
-                    <td>
-                        {% if sortie.getOrganisateur().pseudo is same as (app.user.pseudo) %}
-                        
-                        {% elseif sortie.canInscrit(app.user) is same as (true) %}
-                            'Oui'
-                        {% else %}
-                            'Non'
-                        {% endif %}
-                    </td>
-
-                        {# Nom de l'organisateur avec lien du profil #}
-                        <td>{% if sortie.getOrganisateur().pseudo is same as (app.user.pseudo) %}
-                                {{ sortie.getOrganisateur().pseudo }}
+                            {# Libelle de l'Etat #}
+                            <td> {{ sortie.getEtat().getLibelle() }} </td>
 
 
+                        {# Inscrit #}
+                        <td>
+                            {% if sortie.getOrganisateur().pseudo is same as (app.user.pseudo) %}
+
+                            {% elseif sortie.canInscrit(app.user) is same as (true) %}
+                                'Oui'
                             {% else %}
-                                <a href="{{ path('user',{'id' : sortie.getOrganisateur().id }) }}">{{ sortie.getOrganisateur().pseudo }}</a>
-
+                                'Non'
                             {% endif %}
                         </td>
 
-                        {# Action #}
-                        <td>
-                            {# Afficher - Annuler #}
-                            {% if sortie.canRead and sortie.canCancel(app.user) %}
-                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a
-                                    href="{{ path('cancel_event',{'id' : sortie.id }) }}">Annuler</a>
-
-                                {# Modifié - Publier #}
-                            {% elseif sortie.canModify(app.user) %}
-                                <a href="{{ path('update_event',{'id' : sortie.id }) }}">Modifier</a> - <a
-                                    href="{{ path('publish',{'id' : sortie.id }) }}">Publier</a>
+                            {# Nom de l'organisateur avec lien du profil #}
+                            <td>{% if sortie.getOrganisateur().pseudo is same as (app.user.pseudo) %}
+                                    {{ sortie.getOrganisateur().pseudo }}
 
 
-                                {# Afficher - Se desister #}
-                            {% elseif sortie.canRead() and sortie.canInscrit(app.user) %}
-                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a
-                                    href="{{ path('reject_inscription',{'id' : sortie.id }) }}">Se désister</a>
+                                {% else %}
+                                    <a href="{{ path('user',{'id' : sortie.getOrganisateur().id }) }}">{{ sortie.getOrganisateur().pseudo }}</a>
 
-                                {# Afficher - S'inscrire #}
-                            {% elseif sortie.canRead() and sortie.canInscrit(app.user) is same as (false) %}
-                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a
-                                    href="{{ path('inscription_to_event',{'id' : sortie.id }) }}">S'inscrire</a>
+                                {% endif %}
+                            </td>
+
+                            {# Action #}
+                            <td>
+                                {# Afficher - Annuler #}
+                                {% if sortie.canRead and sortie.canCancel(app.user) %}
+                                    <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a
+                                        href="{{ path('cancel_event',{'id' : sortie.id }) }}">Annuler</a>
+
+                                    {# Modifié - Publier #}
+                                {% elseif sortie.canModify(app.user) %}
+                                    <a href="{{ path('update_event',{'id' : sortie.id }) }}">Modifier</a> - <a
+                                        href="{{ path('publish',{'id' : sortie.id }) }}">Publier</a>
+
+                                    {# Afficher - Se desister #}
+                                {% elseif sortie.canRead() and sortie.canInscrit(app.user) %}
+                                    <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a
+                                        href="{{ path('reject_inscription',{'id' : sortie.id }) }}">Se désister</a>
+
+                                    {# Afficher - S'inscrire #}
+                                {% elseif sortie.canRead() and sortie.canInscrit(app.user) is same as (false) %}
+                                    <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a
+                                        href="{{ path('inscription_to_event',{'id' : sortie.id }) }}">S'inscrire</a>
+                                {# Afficher #}
+                            {% else %}
+                                <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endif %}
+
+                {% endfor %}
+                </tbody>
+            </table>
+            {# -------------------  Bouton Création d'une sortie ----------------------- #}
 
 
-
-                            {# Afficher #}
-                        {% else %}
-                            <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endif %}
-
-            {% endfor %}
-            </tbody>
-        </table>
-        {# -------------------  Bouton Création d'une sortie ----------------------- #}
-    </div>
     <footer>
         <p>Made with ❤️</p>
     </footer>
+{% endblock %}
+
+{% block js %}
+     <script>
+        document.getElementById('home_search').addEventListener("click", function (){
+           document.getElementById('go-down-id').style = 'display:block';
+        })
+    </script>
+
 {% endblock %}

@@ -5,6 +5,7 @@
   width: 100%
   height: 100vh
   @extend %paddingContenuPage
+  background-color: #FFE9D1
 
 .infos
   margin-top: 5%
@@ -25,6 +26,8 @@
   @extend %flex-container-centered
   margin-top: 3%
   font-family: config.$textFont
+  background-color: rgba(255, 255, 255, 0.5)
+  z-index: 10
 
 .formComplet-item
   text-align: center
@@ -82,7 +85,9 @@
   overflow-y: scroll
   overflow-x: unset
   @extend %flex-container-centered
-  margin-top: 5%
+  margin-top: 10%
+  padding-top: 30px
+  padding-bottom: 30px
 
 .home-tbl-wrapper
   padding: 3rem 5rem
@@ -124,21 +129,8 @@
 
 /*Btn down*/
 
-go-down
-  animation-duration: 3s
-  animation-delay: 15s
-  animation-name: glissement
-  animation-iteration-count: infinite
-
-@keyframes glissement
-    from
-      padding-top: 100%
-      width: 300%
-
-
-    to
-      padding-top: 0%
-      width: 100%
+.go-down
+  display: none
 
 
 

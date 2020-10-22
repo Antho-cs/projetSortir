@@ -286,6 +286,7 @@ footer {
 .pageComplet {
   width: 100%;
   height: 100vh;
+  background-color: #FFE9D1;
 }
 
 .infos {
@@ -307,6 +308,8 @@ footer {
   width: 100%;
   margin-top: 3%;
   font-family: "Mako", sans-serif;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 10;
 }
 
 .formComplet-item {
@@ -371,7 +374,9 @@ footer {
 .listSortie {
   overflow-y: scroll;
   overflow-x: unset;
-  margin-top: 5%;
+  margin-top: 10%;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .home-tbl-wrapper {
@@ -412,23 +417,10 @@ footer {
 }
 
 /*Btn down*/
-go-down {
-  animation-duration: 3s;
-  animation-delay: 15s;
-  animation-name: glissement;
-  animation-iteration-count: infinite;
+.go-down {
+  display: none;
 }
 
-@keyframes glissement {
-  from {
-    padding-top: 100%;
-    width: 300%;
-  }
-  to {
-    padding-top: 0%;
-    width: 100%;
-  }
-}
 .thead-dark th {
   color: #FFFFFF;
   background-color: #343A40;
