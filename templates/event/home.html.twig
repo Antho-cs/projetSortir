@@ -69,6 +69,8 @@
             <tbody>
             {# //TODO  Voir les objet/attributs à call #}
             {% for sortie in sorties %}
+                {% if sortie.getEtat().getLibelle() == 'Créé' and sortie.organisateur != app.user %}
+                {% else %}
                 <tr>
 
                     {# Nom de la sortie #}
@@ -134,6 +136,7 @@
                         {% endif %}
                     </td>
                 </tr>
+                {% endif %}
             {% endfor %}
             </tbody>
         </table>
