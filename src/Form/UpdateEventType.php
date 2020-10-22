@@ -44,7 +44,7 @@ class UpdateEventType extends AbstractType
             ->add('lieu', LieuType::class)
             ->add('enregistrer', SubmitType::class, ['label' => 'Enregistrer'])
             ->add('supprimer', SubmitType::class, ['label' => 'Supprimer'])
-            ->add('retourner', SubmitType::class, ['label' => 'Annuler'])
+            ->add('retourner', SubmitType::class, ['label' => 'Retour'])
             ->add('publier', SubmitType::class, ['label' => 'Publier'])
         ;
     }
