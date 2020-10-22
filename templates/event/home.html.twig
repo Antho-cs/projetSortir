@@ -69,6 +69,7 @@
             <tbody>
             {# //TODO  Voir les objet/attributs à call #}
             {% for sortie in sorties %}
+
                 <tr>
 
                     {# Nom de la sortie #}
@@ -111,7 +112,7 @@
                             <a href="{{ path('event',{'id' : sortie.id }) }}">Afficher</a> - <a
                                 href="{{ path('cancel_event',{'id' : sortie.id }) }}">Annuler</a>
 
-                            {# Modifié - Publier #}
+                            {# Modifier - Publier #}
                         {% elseif sortie.canModify(app.user) %}
                             <a href="{{ path('update_event',{'id' : sortie.id }) }}">Modifier</a> - <a
                                 href="{{ path('publish',{'id' : sortie.id }) }}">Publier</a>
