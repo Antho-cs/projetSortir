@@ -6,26 +6,28 @@
     {{ parent() }}
     {{ form(campusForm) }}
     {{ form_start(addCampusForm) }}
-    <table class="scroll">
-        <thead>
-        <tr>
-            <th>Campus</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for c in listeCampus %}
+    <div class="table-responsive">
+        <table class="scroll table-sm table-striped table-bordered table-hover">
+            <thead class="thead-dark">
             <tr>
-                <td>{{ c.nomCampus }}</td>
-                <td><a href="{{ path('up_campus', {'id': c.id}) }}">Modifier</a> -
-                    <a href="{{ path('del_campus', {'id': c.id}) }}">Supprimer</a>
+                <th>Campus</th>
+                <th>Actions</th>
             </tr>
-        {% endfor %}
-        <tr>
+            </thead>
+            <tbody>
+            {% for c in listeCampus %}
+                <tr>
+                    <td>{{ c.nomCampus }}</td>
+                    <td><a href="{{ path('up_campus', {'id': c.id}) }}">Modifier</a> -
+                        <a href="{{ path('del_campus', {'id': c.id}) }}">Supprimer</a>
+                </tr>
+            {% endfor %}
+            <tr>
                 <td>{{ form_widget(addCampusForm.nomCampus) }}</td>
                 <td>{{ form_rest(addCampusForm) }}</td>
-        </tr>
-        </tbody>
-    </table>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     {{ form_end(addCampusForm) }}
 {% endblock %}
