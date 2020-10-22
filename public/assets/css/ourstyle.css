@@ -187,7 +187,7 @@ footer {
 }
 
 .wrapper-event-creation-overide {
-  width: 65 !important;
+  width: 50% !important;
 }
 
 .event-creation-form-first-cl {
@@ -271,8 +271,12 @@ footer {
   margin: 2px 3px;
 }
 
+.create-event-header {
+  text-align: center;
+}
+
 .upProfileUser {
-  width: 30%;
+  width: auto;
   padding: 20px 60px;
   align-items: flex-start;
   justify-content: center;
@@ -285,6 +289,43 @@ footer {
 
 .custom-file-label {
   display: none;
+}
+
+.UpProfile-img {
+  width: 200px;
+  height: 200px;
+}
+
+.titre-h1 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 75px;
+  margin-top: 1%;
+}
+
+.img\+form {
+  display: contents;
+}
+
+.btn-upUser .form-group button {
+  padding-top: 20rem;
+}
+
+.upProfileUser-btn {
+  margin-left: 150px;
+}
+
+#up_profile_user_form_enregistrer {
+  width: 150px;
+}
+
+.btn .btn-primary {
+  width: 150px !important;
+}
+
+.btn-retour {
+  margin-left: 5px;
+  width: 150px;
 }
 
 .pageComplet {
@@ -549,6 +590,10 @@ footer {
   width: 25%;
 }
 
+.edit-user-retour {
+  width: 20%;
+}
+
 .upProfileUser-btn {
   display: flex;
   flex-direction: row;
@@ -562,8 +607,14 @@ footer {
 }
 
 .edit-user-wrapper {
+  padding-top: 5rem;
   margin-bottom: 60px;
   font-family: "Mako", sans-serif;
+  width: 40%;
+}
+
+.add-user-btn {
+  width: 20%;
 }
 
 /*# sourceMappingURL=ourstyle.css.map */

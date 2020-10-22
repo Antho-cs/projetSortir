@@ -6,9 +6,9 @@ Ajout d'un Utilisateur
 
 {% block mainSection %}
     <div class="w-100 flex-centered">
-        <div class="edit-user-wrapper upperCase flex-centered width-60">
+        <div class="edit-user-wrapper flex-centered width-60">
             <section class="edit-user-heading width-100">
-                <h1>Nouvel utilisateur</h1>
+                <h1>Nouvel utilisateur<span class="point-logo">.</span></h1>
             </section>
             <section class="addProfileUser flex-centered width-100">
                 {{ form_start(userForm) }}
@@ -23,7 +23,8 @@ Ajout d'un Utilisateur
 
                     {{ form_row(userForm.password.first) }}
                     {{ form_row(userForm.password.second) }}
-                    <div class="upProfileUser-btn btn-upUser">
+
+                    <div class="add-user-btn">
                         {{ form_row(userForm.enregistrer) }}
                     </div>
                 {{ form_end(userForm) }}
