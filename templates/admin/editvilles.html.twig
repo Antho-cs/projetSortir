@@ -1,13 +1,15 @@
 {% extends 'layoutDisplay.html.twig' %}
-{% block titrePage %}
-{% endblock %}
+{% block title %}Ajouter une ville{% endblock %}
 
 {% block mainSection %}
-    <div class="edit-ville-wrapper">
+    <div class="width-100 text-align our-font edit-ville-header">
+        <h1>Ajouter une ville<span class="point-logo">.</span></h1>
+    </div>
+    <div class="edit-ville-wrapper our-font">
         {{ parent() }}
         {{ form(villesForm) }}
         {{ form_start(addVillesForm) }}
-        <div class="table-responsive">
+        <div class="table-responsive edit-ville-table">
             <table class="scroll table-sm table-striped table-bordered table-hover">
                 <thead class="thead-dark">
                 <tr>

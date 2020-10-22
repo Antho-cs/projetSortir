@@ -79,6 +79,14 @@
   text-transform: uppercase;
 }
 
+.text-align {
+  text-align: center;
+}
+
+.our-font {
+  font-family: "Mako", sans-serif;
+}
+
 #mainBg {
   background: url("../img/background.jpg") top center;
   width: 100%;
@@ -478,6 +486,16 @@ footer {
 
 .edit-ville-wrapper {
   height: 100vh;
+  width: 100%;
+}
+
+.edit-ville-header {
+  padding: 60px 10px;
+  margin-bottom: 10rem;
+}
+
+.edit-ville-table {
+  padding-top: 10rem;
 }
 
 .sidebyside {
