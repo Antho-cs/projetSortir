@@ -10,18 +10,18 @@
 
     <div class="upProfileUser">
 
-        {{ form_start(upProfilUserFormType) }}
+    {{ form_start(upProfilUserFormType) }}
 
-        <div>
-            <img src="{{ asset('uploads/' ~ app.user.urlPhoto) }}" alt="avatar_user"/>
-            {{ form_row(upProfilUserFormType.Pseudo, {'attr' : {'placeholder': app.user.Pseudo }}) }}
-            {{ form_row(upProfilUserFormType.prenom, {'attr' : {'placeholder': app.user.prenom }}) }}
-            {{ form_row(upProfilUserFormType.nom, {'attr' : {'placeholder': app.user.nom }}) }}
-            {{ form_row(upProfilUserFormType.telephone, {'attr' : {'placeholder': app.user.telephone }}) }}
-            {{ form_row(upProfilUserFormType.mail, {'attr' : {'placeholder': app.user.mail }}) }}
-            {{ form_row(upProfilUserFormType.campus) }}
-            {{ form_row(upProfilUserFormType.password.first) }}
-            {{ form_row(upProfilUserFormType.password.second) }}
+    <div>
+        <img src="{{ asset('uploads/' ~ app.user.urlPhoto) }}" alt="avatar_user"/>
+        {{ form_row(upProfilUserFormType.Pseudo, {'attr' : {'placeholder': app.user.Pseudo }}) }}
+        {{ form_row(upProfilUserFormType.prenom, {'attr' : {'placeholder': app.user.prenom }}) }}
+        {{ form_row(upProfilUserFormType.nom, {'attr' : {'placeholder': app.user.nom }}) }}
+        {{ form_row(upProfilUserFormType.telephone, {'attr' : {'placeholder': app.user.telephone }}) }}
+        {{ form_row(upProfilUserFormType.mail, {'attr' : {'placeholder': app.user.mail }}) }}
+        {{ form_row(upProfilUserFormType.campus) }}
+        {{ form_row(upProfilUserFormType.password.first) }}
+        {{ form_row(upProfilUserFormType.password.second) }}
 
 
         <div class="side">
@@ -30,11 +30,13 @@
 
         <div class="upProfileUser-btn">
             {{ form_row(upProfilUserFormType.enregistrer) }}
-            {{ form_row(upProfilUserFormType.retour) }}
         </div>
 
     </div>
 
     {{ form_end(upProfilUserFormType) }}
+    <a href="{{ path('home') }}">
+        <button class="btn btn-primary">Retour</button>
+    </a>
 
 {% endblock %}

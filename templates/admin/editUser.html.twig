@@ -24,9 +24,11 @@ Ajout d'un Utilisateur
                 {{ form_row(userForm.password.second) }}
                 <div class="upProfileUser-btn">
                     {{ form_row(userForm.enregistrer) }}
-                    {{ form_row(userForm.retour) }}
                 </div>
             {{ form_end(userForm) }}
+            <a href="{{ path('home') }}">
+                <button class="btn btn-primary">Retour</button>
+            </a>
          </div>
     </div>
 {% endblock %}

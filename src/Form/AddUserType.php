@@ -61,9 +61,7 @@ class AddUserType extends AbstractType
             ->add('enregistrer', SubmitType::class, [
                 'label' => 'Enregistrer'
             ])
-            ->add('retour', SubmitType::class, [
-                'label' => 'Retour'
-            ]);;
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
