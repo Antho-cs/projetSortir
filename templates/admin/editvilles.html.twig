@@ -3,35 +3,41 @@
 {% endblock %}
 
 {% block mainSection %}
-    {{ parent() }}
-    {{ form(villesForm) }}
-    {{ form_start(addVillesForm) }}
-    <div class="table-responsive">
-        <table class="scroll table-sm table-striped table-bordered table-hover">
-            <thead class="thead-dark">
-            <tr>
-                <th>Ville</th>
-                <th>Code postal</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for v in listeVilles %}
+    <div class="edit-ville-wrapper">
+        {{ parent() }}
+        {{ form(villesForm) }}
+        {{ form_start(addVillesForm) }}
+        <div class="table-responsive">
+            <table class="scroll table-sm table-striped table-bordered table-hover">
+                <thead class="thead-dark">
                 <tr>
-                    <td>{{ v.nomVille }}</td>
-                    <td>{{ v.codePostal }}</td>
-                    <td><a href="{{ path('up_villes', {'id': v.id}) }}">Modifier</a> -
-                        <a href="{{ path('del_villes', {'id': v.id}) }}">Supprimer</a>
-                    </td>
+                    <th>Ville</th>
+                    <th>Code postal</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-            <tr>
-                <td>{{ form_widget(addVillesForm.nomVille) }}</td>
-                <td>{{ form_widget(addVillesForm.codePostal) }}</td>
-                <td>{{ form_rest(addVillesForm) }}</td>
-            </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for v in listeVilles %}
+                    <tr>
+                        <td>{{ v.nomVille }}</td>
+                        <td>{{ v.codePostal }}</td>
+                        <td><a href="{{ path('up_villes', {'id': v.id}) }}">Modifier</a> -
+                            <a href="{{ path('del_villes', {'id': v.id}) }}">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td>{{ form_widget(addVillesForm.nomVille) }}</td>
+                    <td>{{ form_widget(addVillesForm.codePostal) }}</td>
+                    <td>{{ form_rest(addVillesForm) }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {{ form_end(addVillesForm) }}
     </div>
-    {{ form_end(addVillesForm) }}
+        <footer>
+            <p>Made with ❤️</p>
+        </footer>
+
 {% endblock %}

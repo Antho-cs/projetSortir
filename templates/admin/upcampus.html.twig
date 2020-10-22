@@ -1,13 +1,16 @@
 {% extends 'layoutDisplay.html.twig' %}
 
-{% block titrePage %}
-
-{% endblock %}
+{% block title %}Campus{% endblock %}
 
 {% block mainSection %}
-    <h3>Mettre à jour le campus</h3>
-{{ form_start(updateCampusForm) }}
-{{ form_widget(updateCampusForm.nomCampus, {'attr' : {'value': campus.nomCampus}}) }}
-{{ form_end(updateCampusForm) }}
+    <div class="edit-campus-wrapper">
+        <h3>Mettre à jour le campus</h3>
+        {{ form_start(updateCampusForm) }}
+        {{ form_widget(updateCampusForm.nomCampus, {'attr' : {'value': campus.nomCampus}}) }}
+        {{ form_end(updateCampusForm) }}
+    </div>
+    <footer>
+        <p>Made with ❤️</p>
+    </footer>
 {% endblock %}
 

@@ -109,15 +109,11 @@ main {
 
 .alert {
   margin-top: 1rem;
+  text-align: center;
 }
 
-footer {
-  width: 100%;
-  height: 4rem;
-  margin: 0;
-  bottom: 0;
-  text-align: center;
-  background-color: #010207;
+.btn-primary a {
+  color: #FFFFFF;
 }
 
 footer p {
@@ -160,12 +156,25 @@ button {
   color: #0069B9;
 }
 
+footer {
+  width: 100%;
+  height: 4rem;
+  margin-top: 10px;
+  bottom: 0;
+  text-align: center;
+  background-color: #010207;
+}
+
+.edit-campus-wrapper {
+  height: 100vh;
+}
+
 .wrapper-event-creation {
   width: 50%;
 }
 
 .wrapper-event-creation-overide {
-  width: 100% !important;
+  width: 65 !important;
 }
 
 .event-creation-form-first-cl {
@@ -263,6 +272,7 @@ button {
 
 .pageComplet {
   width: 100%;
+  height: 100vh;
 }
 
 .infos {
@@ -340,24 +350,19 @@ button {
   padding: 0 3px;
 }
 
-table, tr, td, th {
-  border: 1px solid black;
-  border-collapse: collapse;
+.thead-dark th {
+  color: #FFFFFF;
+  background-color: #343A40;
+  border-color: #454D55;
 }
 
-table tbody tr:nth-child(odd) {
-  background-color: #b0ced7;
+.table-responsive {
+  display: flex;
+  justify-content: center;
 }
 
-table thead {
-  background-color: bisque;
-}
-
-table a {
-  color: black;
-}
-table a:hover {
-  color: #718C00;
+.edit-ville-wrapper {
+  height: 100vh;
 }
 
 .sidebyside {
