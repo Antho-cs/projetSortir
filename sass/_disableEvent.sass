@@ -7,6 +7,7 @@
 .disable-event-information
   font-size: 1rem
   font-family: config.$textFont
+  height: fit-content
 
 .disable-event-lbl
   font-weight: bold
@@ -14,7 +15,8 @@
 /*Motif*/
 .disable-event-motif
   width: 100%
-  margin-top: 3rem
+  display: flex
+  justify-content: center
 
 .disable-event-motif
   .form-group
@@ -24,7 +26,7 @@
 
 /*Btn*/
 .disable-event-wrapper
-  @extend %flex-container-left
+  @extend %flex-container-centered
   width: 100%
 
 
@@ -55,14 +57,27 @@
 
 
 .disable-event-general-wrapper
-  height: 100% !important
   justify-content: left !important
 
 #disable-event-header
-  @extend %flex-container-left
+  @extend %flex-container-centered
+  text-align: center
   padding: 4rem 0
 
 .navbar
   background-color: #FFFFFF !important
   color: config.$textColor !important
   font-family: config.$textFont !important
+
+.wrapper-event-creation
+  width: 100%
+
+.disable-event-content
+  width: 100%
+
+.disable-event-main
+  width: 60%
+  display: flex
+  justify-content: center
+  height: 70%
+

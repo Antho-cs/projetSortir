@@ -1,85 +1,49 @@
 {% extends 'layoutDisplay.html.twig' %}
 
 {% block title %}Annuler la sortie{% endblock %}
-{% block navbar %} {% endblock %}
-{% block mainSection %}
-    <div>
 
-    </div>
-    <div class="disable-event-asset" style="background-image: {{ asset('assets/img/asset.jpg') }}">
-        <div class="disable-event-front-element-img">
-            <img src="{{ asset('assets/img/asset.jpg') }}" alt="">
-        </div>
-    </div>
-    <div class="wrapper-event-creation disable-event-general-wrapper">
-        {# nav bar #}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="event-creation-nav-wrapper disable-event-nav-wrapper">
-            <div class="nav-item-wrapper">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        {# pages accessible to admin #}
-                        {% if is_granted("ROLE_ADMIN") %}
-                            <li class="nav-item">
-                            <a class="nav-link" href="{{ path('create_users') }}">Ajout d'utilisateur</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('edit_villes') }}">Ville</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('edit_campus') }}">Campus</a>
-                            </li>
-                        {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('home') }}">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Mon profil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+{% block mainSection %}
+
         {# content #}
-        <header id="disable-event-header">
-            <h1>Annuler la sortie<span class="point">.</span></h1>
-        </header>
-        <main>
-            <section class="disable-event-wrapper">
-                <div class="disable-event-information">
-                    <article>
-                        <span class="disable-event-lbl">Nom de la sortie : </span><span class="disable-event-input">{{ sortie.nom }}</span>
-                    </article>
-                    <article>
-                        <span class="disable-event-lbl">Date de la sortie : </span><span class="disable-event-input">{{ sortie.dateDebut|date("m/d/Y") }}</span>
-                    </article>
-                    <article>
-                        <span class="disable-event-lbl">Campus : </span><span class="disable-event-input">  {{ sortie.campus.nomCampus }}</span>
-                    </article>
-                    <article>
-                        <span class="disable-event-lbl">Lieu :  </span><span class="disable-event-input">  {{ sortie.lieu.nomLieu }}</span>
-                    </article>
-                </div>
-                {{ form_start(disableEventForm) }}
-                <div class="disable-event-motif">
-                    {{ form_row(disableEventForm.motifAnnulation) }}
-                </div>
-                <div class="disable-event-wrapper">
-                    <div class="disable-event-btns">
-                        {{ form_row(disableEventForm.valider) }}
-                        {{ form_row(disableEventForm.retour) }}
-                    </div>
-                </div>
-                {{ form_end(disableEventForm) }}
-            </section>
-        </main>
+        <div class="disable-event-content">
+            <header id="disable-event-header">
+                <h1>Annuler la sortie<span class="point">.</span></h1>
+            </header>
+            <div class="flex-centered height-100">
+                <main class="disable-event-main">
+                    <section class="disable-event-wrapper">
+                        <div class="disable-event-information">
+                            <article>
+                                <span class="disable-event-lbl">Nom de la sortie : </span><span class="disable-event-input">{{ sortie.nom }}</span>
+                            </article>
+                            <article>
+                                <span class="disable-event-lbl">Date de la sortie : </span><span class="disable-event-input">{{ sortie.dateDebut|date("m/d/Y") }}</span>
+                            </article>
+                            <article>
+                                <span class="disable-event-lbl">Campus : </span><span class="disable-event-input">  {{ sortie.campus.nomCampus }}</span>
+                            </article>
+                            <article>
+                                <span class="disable-event-lbl">Lieu :  </span><span class="disable-event-input">  {{ sortie.lieu.nomLieu }}</span>
+                            </article>
+                        </div>
+                        {{ form_start(disableEventForm) }}
+                        <div class="disable-event-motif">
+                            {{ form_row(disableEventForm.motifAnnulation) }}
+                        </div>
+                        <div class="disable-event-wrapper">
+                            <div class="disable-event-btns">
+                                {{ form_row(disableEventForm.valider) }}
+                                {{ form_row(disableEventForm.retour) }}
+                            </div>
+                        </div>
+                        {{ form_end(disableEventForm) }}
+                    </section>
+                </main>
+            </div>
+            <footer>
+                <p>Made with ❤️</p>
+            </footer>
     </div>
-    <footer>
-        <p>Made with ❤️</p>
-    </footer>
+
+
 {% endblock %}
