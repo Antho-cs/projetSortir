@@ -4,9 +4,12 @@
 
 {% block mainSection %}
     {{ parent() }}
+    <div class="titre-h1-campus">
+        <h1>Ajouter un Campus<span class="point-logo">.</span></h1>
+    </div>
     {{ form(campusForm) }}
     {{ form_start(addCampusForm) }}
-    <div class="table-responsive">
+    <div class="table-responsive-Campus">
         <table class="scroll table-sm table-striped table-bordered table-hover">
             <thead class="thead-dark">
             <tr>
