@@ -6,17 +6,26 @@
   height: 100vh
   @extend %paddingContenuPage
 
-
-
 .infos
   margin-top: 5%
   @extend %flex-container-right
 
+.home-user-info
+  width: 30%
+  padding: 10px 30px
+
+.home-message-flash
+  width: 40%
 
 .formComplet
   width: 100%
   @extend %flex-container-centered
   margin-top: 3%
+  font-family: config.$textFont
+
+.formComplet-item
+  text-align: center
+  text-transform: uppercase
 
 
 #infos
@@ -69,8 +78,7 @@
 .btnCreaEvent
   margin-top: 3%
 
-.width-50
-  width: 50%
+
 
 .dates-home
   @extend %flex-container-centered
