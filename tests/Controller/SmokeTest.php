@@ -2,6 +2,8 @@
 
 namespace App\Tests\Controller;
 
+use App\Entity\Participants;
+use App\Repository\ParticipantsRepository;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class SmokeTest extends WebTestCase
@@ -11,7 +13,14 @@ class SmokeTest extends WebTestCase
      */
     public function testPageIsSuccessful($url)
     {
-        $client = self::createClient();
+        $client = static::createClient();
+
+        //Récupération d'un utilisateur
+        $participantsRepository = static::$container->get(ParticipantsRepository::class);
+        $testUser = $participantsRepository->findOneBy(['Pseudo'=>'test']); // où test est l'administrateur
+        //Connexion de l'utilisateur
+        $client->loginUser($testUser);
+
         $client->request('GET', $url);
 
         $this->assertTrue($client->getResponse()->isSuccessful());
@@ -20,24 +29,23 @@ class SmokeTest extends WebTestCase
     public function urlProvider() //TODO Tenir à jour
     {
         yield ['/'];
-        //yield ['/logout'];
-        yield ['/users/1'];
-        yield ['/users/update/1'];
-        yield ['/event'];
-        yield ['/event/1'];
+//        yield ['/logout'];
+        yield ['/users/2'];
+        yield ['/users/update/2'];
+        yield ['/event/'];
+        yield ['/event/3'];
         yield ['/event/create'];
-        yield ['/event/update/1'];
-        yield ['/event/annuler/1'];
+        yield ['/event/update/3'];
+        yield ['/event/annuler/3'];
         yield ['/admin/villes'];
-        yield ['/admin/villes/delete/{id}'];
-        yield ['/admin/villes/update/{id}'];
+        yield ['/admin/villes/delete/1'];
+        yield ['/admin/villes/update/1'];
         yield ['/admin/campus'];
-        yield ['/admin/campus/delete/{id}'];
-        yield ['/admin/villes/update/{id}'];
+        yield ['/admin/campus/delete/1'];
+        yield ['/admin/villes/update/1'];
         yield ['/admin/create_User'];
-        yield ['/inscription/{id}'];
-        yield ['/sedesister/{id}'];
-        yield ['/publish/{id}'];
-        // ...
+        //yield ['/inscription/3']; //Note Réponse 302
+        //yield ['/sedesister/3']; //Note Réponse 302
+        //yield ['/publish/3']; //Note Réponse 302
     }
 }
