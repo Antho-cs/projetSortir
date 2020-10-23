@@ -5,9 +5,26 @@
 {% endblock %}
 
 {% block mainSection %}
-    <h3>Voulez-vous vraiment supprimer la ville ?</h3>
-{{ form_start(deleteVillesForm) }}
-{{ form_widget(deleteVillesForm.Supprimer, {'attr':{'class':'btn-danger'}}) }}
-{{ form_end(deleteVillesForm) }}
+    <div class="delete-campus">
+        <h3>Voulez-vous vraiment supprimer la ville<span class="point-logo">?</span></h3>
+    </div>
+    <div class="width-100 flex-centered" >
+        <img src="{{ asset('assets/img/delete.jpg') }}" alt="sure?" class="delete-pic" id="delete-pic-id" height="250px">
+    </div>
+    {{ form_start(deleteVillesForm) }}
+    <div>
+        {{ form_widget(deleteVillesForm.Supprimer, {'attr':{'class':'btn-danger'}}) }}
+    </div>
+    {{ form_end(deleteVillesForm) }}
+    <footer class="home-footer">
+        <p>Made with ❤️</p>
+    </footer>
 {% endblock %}
-
+{% block js %}
+    <script>
+        document.getElementById('delete_villes_Supprimer').addEventListener("mouseover", function (){
+            document.getElementById('delete-pic-id').style = 'display:block !important';
+            document.getElementById('delete_villes_Supprimer').style = 'margin-top:-175px !important';
+        })
+    </script>
+{% endblock %}

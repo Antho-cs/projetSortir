@@ -8,6 +8,9 @@
     <div class="delete-campus">
         <h3>Voulez-vous vraiment supprimer le campus <span class="point-logo">?</span></h3>
     </div>
+    <div class="width-100 flex-centered" >
+        <img src="{{ asset('assets/img/delete.jpg') }}" alt="sure?" class="delete-pic" id="delete-pic-id" height="250px">
+    </div>
     {{ form_start(deleteCampusForm) }}
     <div>
         {{ form_widget(deleteCampusForm.Supprimer, {'attr':{'class':'btn-danger'}}) }}
@@ -19,3 +22,11 @@
     </footer>
 {% endblock %}
 
+{% block js %}
+    <script>
+        document.getElementById('delete_campus_Supprimer').addEventListener("mouseover", function (){
+            document.getElementById('delete-pic-id').style = 'display:block !important';
+            document.getElementById('delete_campus_Supprimer').style = 'margin-top:-175px !important';
+        })
+    </script>
+{% endblock %}

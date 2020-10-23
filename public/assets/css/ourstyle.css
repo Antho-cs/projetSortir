@@ -488,6 +488,10 @@ footer {
   margin-bottom: 100px;
 }
 
+.delete-pic {
+  display: none;
+}
+
 .sidebyside {
   display: flex;
   width: 100%;
