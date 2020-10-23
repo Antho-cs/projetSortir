@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block mainSection %}
+
+    <div class="titre-h1-event">
+        <h1>Evènement<span class="point-logo">.</span></h1>
+    </div>
+
     <div class="sidebyside">
         <div class="side">
             <p><b>Nom:</b> {{ sortie.nom }} <br></p>
@@ -23,8 +28,13 @@
             <p><b>Longitude:</b> {{ sortie.lieu.longitude }} <br></p>
         </div>
     </div>
-    <h4>Affichage des participants</h4>
-    <div class="scrollableDiv flex-centered table-responsive">
+    <div class="List-participants">
+
+       <div class="titre-h5-participants">
+    <h5>Affichage des participants :</h5>
+       </div>
+
+    <div class="flex-centered scrollableDiv flex-centered table-responsive">
         <table class="table-sm table-striped table-bordered table-hover">
             <thead class="thead-dark">
             <th>Pseudo</th>
@@ -39,6 +49,7 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
     </div>
     <footer>
         <p>Made with ❤️</p>
