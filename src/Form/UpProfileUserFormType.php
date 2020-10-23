@@ -46,8 +46,8 @@ class UpProfileUserFormType extends AbstractType
                 'required'=>false,
                 'constraints'=>[new Image([
                         'maxSize' => '8024k',
-                        'maxHeight' => '250',
-                        'maxWidth' => '250',
+//                        'maxHeight' => '250',
+//                        'maxWidth' => '250',
 
                         'mimeTypes' => [
                             'image/png',
