@@ -24,7 +24,7 @@
         </div>
     </div>
     <h4>Affichage des participants</h4>
-    <div class="scrollableDiv table-responsive">
+    <div class="scrollableDiv flex-centered table-responsive">
         <table class="table-sm table-striped table-bordered table-hover">
             <thead class="thead-dark">
             <th>Pseudo</th>
@@ -32,8 +32,10 @@
             </thead>
             <tbody>
             {% for p in participants %}
-                <td>{{ p.participant.pseudo }}</td>
-                <td>{{ p.participant.nom }} {{ p.participant.prenom }}</td>
+                <tr>
+                    <td>{{ p.participant.pseudo }}</td>
+                    <td>{{ p.participant.nom }} {{ p.participant.prenom }}</td>
+                </tr>
             {% endfor %}
             </tbody>
         </table>
