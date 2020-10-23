@@ -5,10 +5,15 @@ Admin | Villes
 {% endblock %}
 
 {% block mainSection %}
-    <h3>Mettre à jour la ville</h3>
-{{ form_start(updateVillesForm) }}
-{{ form_widget(updateVillesForm.nomVille, {'attr' : {'value': ville.nomVille}}) }}
-{{ form_widget(updateVillesForm.codePostal, {'attr' : {'value': ville.codePostal}}) }}
-{{ form_end(updateVillesForm) }}
+    <h3>Mettre à jour la ville<span class="point-logo">.</span></h3>
+    <div class="width-100 flex-centered">
+        <div class="width-60 flex-centered">
+            {{ form_start(updateVillesForm) }}
+            {{ form_widget(updateVillesForm.nomVille, {'attr' : {'value': ville.nomVille}}) }}
+            {{ form_widget(updateVillesForm.codePostal, {'attr' : {'value': ville.codePostal}}) }}
+            {{ form_end(updateVillesForm) }}
+        </div>
+    </div>
+
 {% endblock %}
 

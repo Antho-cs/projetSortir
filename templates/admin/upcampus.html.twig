@@ -5,14 +5,15 @@
 {% endblock %}
 
 {% block mainSection %}
-    <div class="edit-campus-wrapper">
-        <h3>Mettre à jour le campus</h3>
-        {{ form_start(updateCampusForm) }}
-        {{ form_widget(updateCampusForm.nomCampus, {'attr' : {'value': campus.nomCampus}}) }}
-        {{ form_end(updateCampusForm) }}
+    <div class="width-100 flex-centered">
+        <div class="width-60 flex-centered">
+            <h3>Mettre à jour le campus<span class="point-logo">.</span></h3>
+            {{ form_start(updateCampusForm) }}
+            {{ form_widget(updateCampusForm.nomCampus, {'attr' : {'value': campus.nomCampus}}) }}
+            {{ form_end(updateCampusForm) }}
+        </div>
     </div>
-    <footer>
+    <footer class="home-footer">
         <p>Made with ❤️</p>
     </footer>
 {% endblock %}
-
