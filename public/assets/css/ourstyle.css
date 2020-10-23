@@ -440,6 +440,11 @@ footer {
   bottom: 0;
 }
 
+.delete-campus {
+  padding-top: 150px;
+  font-family: "Mako", sans-serif;
+}
+
 .thead-dark th {
   color: #FFFFFF;
   background-color: #343A40;
@@ -485,6 +490,10 @@ footer {
 
 .sidebyside {
   display: flex;
+  width: 100%;
+  height: 200px;
+  justify-content: center;
+  margin-top: -250px;
 }
 
 .side {
@@ -498,6 +507,21 @@ footer {
 
 .displayPseudo {
   color: red !important;
+}
+
+.List-participants {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-top: -75px;
+}
+
+.titre-h5-participants {
+  text-align: center;
+}
+
+.img-profil {
+  border-radius: 20% 10% 20% 10%;
 }
 
 /*Infos*/

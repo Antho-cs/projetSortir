@@ -5,9 +5,17 @@
 {% endblock %}
 
 {% block mainSection %}
-    <h3>Voulez-vous vraiment supprimer le campus ?</h3>
+    <div class="delete-campus">
+        <h3>Voulez-vous vraiment supprimer le campus <span class="point-logo">?</span></h3>
+    </div>
     {{ form_start(deleteCampusForm) }}
-    {{ form_widget(deleteCampusForm.Supprimer, {'attr':{'class':'btn-danger'}}) }}
+    <div>
+        {{ form_widget(deleteCampusForm.Supprimer, {'attr':{'class':'btn-danger'}}) }}
+    </div>
     {{ form_end(deleteCampusForm) }}
+
+    <footer class="home-footer">
+        <p>Made with ❤️</p>
+    </footer>
 {% endblock %}
 
