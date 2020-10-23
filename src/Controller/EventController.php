@@ -35,7 +35,7 @@ class EventController extends AbstractController
     public function home(Request $request, CampusRepository $campusRepository, SortiesRepository $sortiesRepository, StateEventUpdate $stateUpdater, EtatsRepository $etatsRepository)
     {
         //check and update all created events
-        $stateUpdater->setUpdatedEventState($sortiesRepository, $etatsRepository, );
+        $stateUpdater->setUpdatedEventState($sortiesRepository, $etatsRepository);
 
         $homeForm = $this->createForm(HomeType::class);
         $homeForm->handleRequest($request);
