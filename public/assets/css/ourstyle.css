@@ -37,13 +37,6 @@
   padding-bottom: 10%;
 }
 
-#event_enregistrer, #event_publier, #event_annuler {
-  padding: 8px 20px;
-  border-radius: 30px;
-  border: none;
-  font-size: 1.5rem;
-}
-
 /*Ready to use*/
 .width-100 {
   width: 100%;
@@ -239,42 +232,6 @@ footer {
   width: 40%;
 }
 
-/*Static*/
-#event_enregistrer {
-  background-color: #0069B9;
-}
-
-#event_publier {
-  background-color: #C56183;
-}
-
-#event_annuler {
-  background-color: #030509;
-  color: #FFFFFF;
-}
-
-/*Hovered*/
-#event_enregistrer:hover {
-  background-color: #FFFFFF;
-  border: 2px solid #0069B9;
-  color: #0069B9;
-  transition: color, background-color, border 0.12s;
-}
-
-#event_publier:hover {
-  background-color: #FFFFFF;
-  border: 2px solid #C56183;
-  color: #C56183;
-  transition: color, background-color, border 0.12s;
-}
-
-#event_annuler:hover {
-  background-color: #FFFFFF;
-  border: 2px solid #030509;
-  color: #030509;
-  transition: color, background-color, border 0.12s;
-}
-
 .form-control {
   margin: 2px 3px;
 }
@@ -427,6 +384,7 @@ footer {
   overflow-y: scroll;
   overflow-x: unset;
   margin-top: 10%;
+  margin-bottom: 120px;
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -471,6 +429,12 @@ footer {
 /*Btn down*/
 .go-down {
   display: none;
+}
+
+.home-footer {
+  margin-top: 40px;
+  position: fixed;
+  bottom: 0;
 }
 
 .thead-dark th {
